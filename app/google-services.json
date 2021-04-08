@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "405770184366",
+    "firebase_url": "https://rentalcars-52e81-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "rentalcars-52e81",
+    "storage_bucket": "rentalcars-52e81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405770184366:android:9a27de94daa7c9bfab6f3f",
+        "android_client_info": {
+          "package_name": "com.example.RentalCars"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405770184366-42rmhs39u1ufqop2do9g73o3pu5ttdae.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDSAN9aEa_AIJcvsqunFoVzRvrsVetD7p0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405770184366-42rmhs39u1ufqop2do9g73o3pu5ttdae.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
