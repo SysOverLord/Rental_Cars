@@ -46,47 +46,48 @@ public class RegisterActivity extends AppCompatActivity {
                     emailText.getText().toString(), passText.getText().toString());
 
 
+
             FirebaseDatabase database = FirebaseDatabase.getInstance();
              myRef  = database.getReference("users");
             myRef = myRef.child(userText.getText().toString());
 
 
-            myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    // This method is called once with the initial value and again
-                    // whenever data at this location is updated.
-                    String username = dataSnapshot.child("username").getValue(String.class);
-                    String password = dataSnapshot.child("password").getValue(String.class);
-                    String email= dataSnapshot.child("email").getValue(String.class);
-                    if(username == null){
-                        builder.setMessage("User created.");
-                        AlertDialog alert = builder.create();
-                        alert.setTitle("Notify");
-                        alert.show();
-                    }
-
-                    else if(username.equals(userText.getText().toString())){
-                        User oldUser = new User(username,email,password);
-                        myRef.setValue(oldUser);
-                        builder.setMessage("User has already created.");
-                        AlertDialog alert = builder.create();
-                        alert.setTitle("Notify");
-                        alert.show();
-                    }
-                }
-                @Override
-                public void onCancelled(DatabaseError error) {
-                    // Failed to read value
-
-                }
-            });
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if(user.getUsername().equals("")){
+                builder.setMessage("Username is empty");
+                AlertDialog alert = builder.create();
+                alert.setTitle("Notify");
+                alert.show();
             }
-                myRef.setValue(user);
+
+
+            else{
+                myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        if(!dataSnapshot.exists()){
+                            myRef.setValue(user);
+                            builder.setMessage("User created.");
+                            AlertDialog alert = builder.create();
+                            alert.setTitle("Notify");
+                            alert.show();
+                        }
+                        else {
+                            builder.setMessage("User has already created.");
+                            AlertDialog alert = builder.create();
+                            alert.setTitle("Notify");
+                            alert.show();
+                        }
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+
+                    }
+                });
+
+
+            }
+
 
         });
 
