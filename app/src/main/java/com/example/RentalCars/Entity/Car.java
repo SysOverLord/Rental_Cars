@@ -2,6 +2,7 @@ package com.example.RentalCars.Entity;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.UUID;
 
 public class Car {
     private String model;
@@ -9,33 +10,19 @@ public class Car {
     private String desc;
     private String brand;
     private String color;
-    private int carId;
-    public void Car(String model, int dailyPrice, String desc, String brand, String color, ArrayList<Integer> carIds){
+    private String carId;
+    public void Car(String model, int dailyPrice, String desc, String brand, String color){
         this.model = model;
         this.dailyPrice = dailyPrice;
         this.desc = desc;
         this.brand = brand;
         this.color = color;
-        boolean flag;
-        Random rnd = new Random();
-        do{
-            flag = false;
-            carId = rnd.nextInt();
-            if(carIds.contains(carId))
-                flag = true;
-        }while(flag);
-        carIds.add(carId);
+        this.carId = UUID.randomUUID().toString();
+
     }
-    public void Car(ArrayList<Integer> carIds){
-        boolean flag;
-        Random rnd = new Random();
-        do{
-            flag = false;
-            carId = rnd.nextInt();
-            if(carIds.contains(carId))
-                flag = true;
-        }while(flag);
-        carIds.add(carId);
+    public void Car(){
+        // Default constructor required for calls to DataSnapshot.getValue(Car.class)
+        this.carId = UUID.randomUUID().toString();
     }
 
     public String getModel() {
