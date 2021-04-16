@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="yellow">#F3D784</color>
+    <color name="gray">#2c3e50</color>
+    <color name="ItemSelectedColor">#F87032</color>
+    <color name="ItemUnselectedColor">#F3B99F</color>
+    <color name="homeFragmentBgColor">#FF835B</color>
+    <color name="advertFragmentBgColor">#FFC107</color>
+    <color name="profileFragmentBgColor">#FFEB3B</color>
 </resources>
