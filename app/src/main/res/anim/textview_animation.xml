@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android" android:fillAfter="true">
+
+    // IN
+    <translate
+        android:duration="2000"
+        android:startOffset="1500"
+        android:fromYDelta="100%"
+        android:toYDelta="0%">
+    </translate>
+
+    <alpha
+        android:duration="1000"
+        android:startOffset="1500"
+        android:fromAlpha="0"
+        android:toAlpha="1">
+    </alpha>
+
+    <!--
+    // OUT
+    <translate
+        android:duration="2000"
+        android:startOffset="3500"
+        android:fromYDelta="0%"
+        android:toYDelta="100%">
+    </translate>
+
+    <alpha
+        android:duration="1000"
+        android:startOffset="3500"
+        android:fromAlpha="1"
+        android:toAlpha="0">
+    </alpha>
+    -->
+
+</set>
