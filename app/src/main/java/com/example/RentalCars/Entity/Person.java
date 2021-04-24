@@ -7,16 +7,13 @@ public class Person extends User{
     String lastName;
     Address address;
     CreditCard creditCard;
-    ArrayList <Rental> rentals;
 
-    public Person(String firstName, String lastName, Address address, CreditCard creditCard, ArrayList<Rental> rentals) {
+    public Person(String firstName, String lastName, Address address, CreditCard creditCard) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.creditCard = creditCard;
-        this.rentals = new ArrayList<Rental>();
     }
-
     public String getFirstName() {
         return firstName;
     }
@@ -49,11 +46,4 @@ public class Person extends User{
         this.creditCard = creditCard;
     }
 
-    public ArrayList<Rental> getRentals() {
-        return rentals;
-    }
-
-    public void setRentals(ArrayList<Rental> rentals) {
-        this.rentals = rentals;
-    }
 }
