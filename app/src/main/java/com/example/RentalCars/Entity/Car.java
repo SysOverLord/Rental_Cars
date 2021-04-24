@@ -1,9 +1,5 @@
 package com.example.RentalCars.Entity;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.UUID;
-
 public class Car {
     private String model;
     private int dailyPrice;
@@ -11,8 +7,8 @@ public class Car {
     private String brand;
     private String color;
     private String carId;
-    private Customer owner;
-    public Car(String model, int dailyPrice, String desc, String brand, String color, String carId, Customer owner) {
+    private Person owner;
+    public Car(String model, int dailyPrice, String desc, String brand, String color, String carId, Person owner) {
         this.model = model;
         this.dailyPrice = dailyPrice;
         this.desc = desc;
@@ -29,7 +25,7 @@ public class Car {
         return carId;
     }
 
-    public Customer getOwner() {
+    public Person getOwner() {
         return owner;
     }
 
