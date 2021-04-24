@@ -4,12 +4,12 @@ import java.util.Date;
 
 public class CreditCard {
     int limit;
-    Date date;
+    Date expireDate;
     String cardNo;
 
-    public CreditCard(int limit, Date date, String cardNo) {
+    public CreditCard(int limit, Date expireDate, String cardNo) {
         this.limit = limit;
-        this.date = date;
+        this.expireDate = expireDate;
         this.cardNo = cardNo;
     }
 
@@ -21,12 +21,12 @@ public class CreditCard {
         this.limit = limit;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getExpireDate() {
+        return expireDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setExpireDate(Date expireDate) {
+        this.expireDate = expireDate;
     }
 
     public String getCardNo() {
