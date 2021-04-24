@@ -25,6 +25,14 @@ public class Car {
         // Default constructor required for calls to DataSnapshot.getValue(Car.class)
     }
 
+    public String getCarId() {
+        return carId;
+    }
+
+    public Customer getOwner() {
+        return owner;
+    }
+
     public String getModel() {
         return model;
     }
