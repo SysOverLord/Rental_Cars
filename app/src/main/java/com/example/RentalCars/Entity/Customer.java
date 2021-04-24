@@ -3,11 +3,13 @@ package com.example.RentalCars.Entity;
 import java.util.ArrayList;
 
 public class Customer extends User{
+    String firstName;
+    String lastName;
+    Address address;
+    CreditCard creditCard;
     ArrayList <Rental> rentals;
 
-    public Customer(){
-        rentals = new ArrayList<Rental>();
-    }
+
 
     public ArrayList<Rental> getRentals() {
         return rentals;
