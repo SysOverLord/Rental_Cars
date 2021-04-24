@@ -3,14 +3,14 @@ package com.example.RentalCars.Entity;
 import java.util.Date;
 
 public class Rental {
-    Car rentedCar;
-    Date startDate;
-    Date endDate;
-    float totalPrice;
-    String renterId;
+    private String rentedCarId;
+    private Date startDate;
+    private Date endDate;
+    private float totalPrice;
+    private String renterId;
 
-    public Rental(Car rentedCar, Date startDate, Date endDate, float totalPrice, String renterId) {
-        this.rentedCar = rentedCar;
+    public Rental(String rentedCarId, Date startDate, Date endDate, float totalPrice, String renterId) {
+        this.rentedCarId = rentedCarId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.totalPrice = totalPrice;
@@ -25,12 +25,12 @@ public class Rental {
         this.totalPrice = totalPrice;
     }
 
-    public Car getRentedCar() {
-        return rentedCar;
+    public String getRentedCarId() {
+        return rentedCarId;
     }
 
-    public void setRentedCar(Car rentedCar) {
-        this.rentedCar = rentedCar;
+    public void setRentedCarId(String rentedCarId) {
+        this.rentedCarId = rentedCarId;
     }
 
     public Date getStartDate() {

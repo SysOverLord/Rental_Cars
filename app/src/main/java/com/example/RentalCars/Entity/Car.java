@@ -3,7 +3,7 @@ package com.example.RentalCars.Entity;
 public class Car {
 
     private String model;
-    private int dailyPrice;
+    private float dailyPrice;
     private String desc;
     private String brand;
     private String color;
@@ -11,7 +11,7 @@ public class Car {
     private String ownerId;
 
 
-    public Car(String model, int dailyPrice, String desc, String brand, String color, String carId, String ownerId) {
+    public Car(java.lang.String model, float dailyPrice, java.lang.String desc, java.lang.String brand, java.lang.String color, java.lang.String carId, java.lang.String ownerId) {
         this.model = model;
         this.dailyPrice = dailyPrice;
         this.desc = desc;
@@ -40,11 +40,11 @@ public class Car {
         this.model = model;
     }
 
-    public int getDailyPrice() {
+    public float getDailyPrice() {
         return dailyPrice;
     }
 
-    public void setDailyPrice(int dailyPrice) {
+    public void setDailyPrice(float dailyPrice) {
         this.dailyPrice = dailyPrice;
     }
 

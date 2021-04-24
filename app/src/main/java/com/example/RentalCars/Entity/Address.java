@@ -1,14 +1,24 @@
 package com.example.RentalCars.Entity;
 
 public class Address {
-    String city;
-    String town;
-    int no;
+    private String city;
+    private String district;
+    private String street;
+    private String no;
 
-    public Address(String city, String town, int no) {
+    public Address(String city, String district, String street,String no) {
         this.city = city;
-        this.town = town;
+        this.district = district;
+        this.street = street;
         this.no = no;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public String getCity() {
@@ -19,19 +29,19 @@ public class Address {
         this.city = city;
     }
 
-    public String getTown() {
-        return town;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setTown(String town) {
-        this.town = town;
+    public void setDistrict(String district) {
+        this.district = district;
     }
 
-    public int getNo() {
+    public String getNo() {
         return no;
     }
 
-    public void setNo(int no) {
+    public void setNo(String no) {
         this.no = no;
     }
 }
