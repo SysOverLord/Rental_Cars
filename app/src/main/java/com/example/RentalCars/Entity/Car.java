@@ -11,18 +11,18 @@ public class Car {
     private String brand;
     private String color;
     private String carId;
-    public void Car(String model, int dailyPrice, String desc, String brand, String color){
+    private Customer owner;
+    public Car(String model, int dailyPrice, String desc, String brand, String color, String carId, Customer owner) {
         this.model = model;
         this.dailyPrice = dailyPrice;
         this.desc = desc;
         this.brand = brand;
         this.color = color;
-        this.carId = UUID.randomUUID().toString();
-
+        this.carId = carId;
+        this.owner = owner;
     }
     public void Car(){
         // Default constructor required for calls to DataSnapshot.getValue(Car.class)
-        this.carId = UUID.randomUUID().toString();
     }
 
     public String getModel() {
