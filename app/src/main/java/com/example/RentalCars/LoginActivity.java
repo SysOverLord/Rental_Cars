@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             if(username.equals("")){
                 builder.setMessage("Username is empty");
                 AlertDialog alert = builder.create();
-                alert.setTitle("Retard Alert");
+                alert.setTitle("Notify");
                 alert.show();
             }
             else{
