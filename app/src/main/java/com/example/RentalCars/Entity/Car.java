@@ -1,21 +1,24 @@
 package com.example.RentalCars.Entity;
 
 public class Car {
+
     private String model;
     private int dailyPrice;
     private String desc;
     private String brand;
     private String color;
     private String carId;
-    private Person owner;
-    public Car(String model, int dailyPrice, String desc, String brand, String color, String carId, Person owner) {
+    private String ownerId;
+
+
+    public Car(String model, int dailyPrice, String desc, String brand, String color, String carId, String ownerId) {
         this.model = model;
         this.dailyPrice = dailyPrice;
         this.desc = desc;
         this.brand = brand;
         this.color = color;
         this.carId = carId;
-        this.owner = owner;
+        this.ownerId = ownerId;
     }
     public void Car(){
         // Default constructor required for calls to DataSnapshot.getValue(Car.class)
@@ -25,8 +28,8 @@ public class Car {
         return carId;
     }
 
-    public Person getOwner() {
-        return owner;
+    public String getOwnerId() {
+        return ownerId;
     }
 
     public String getModel() {

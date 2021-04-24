@@ -7,18 +7,18 @@ public class Rental {
     Date startDate;
     Date endDate;
     float totalPrice;
-    Person renter;
+    String renterId;
 
-    public Rental(Car rentedCar, Date startDate, Date endDate, float totalPrice, Person renter) {
+    public Rental(Car rentedCar, Date startDate, Date endDate, float totalPrice, String renterId) {
         this.rentedCar = rentedCar;
         this.startDate = startDate;
         this.endDate = endDate;
         this.totalPrice = totalPrice;
-        this.renter = renter;
+        this.renterId = renterId;
     }
 
-    public Person getRenter() {
-        return renter;
+    public String getRenterId() {
+        return renterId;
     }
 
     public void setTotalPrice(float totalPrice) {
