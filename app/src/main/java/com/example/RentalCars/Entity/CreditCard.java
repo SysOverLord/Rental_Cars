@@ -29,15 +29,9 @@ public class CreditCard {
         return expireDate;
     }
 
-    public void setExpireDate(Date expireDate) {
-        this.expireDate = expireDate;
-    }
 
     public String getCardNo() {
         return cardNo;
     }
 
-    public void setCardNo(String cardNo) {
-        this.cardNo = cardNo;
-    }
 }
