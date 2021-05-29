@@ -20,6 +20,15 @@ public class Person extends User{
         this.registerDate = registerDate;
     }
 
+    public Person(User user,String firstName, String lastName, Address address, CreditCard creditCard, Date registerDate) {
+        super(user);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.creditCard = creditCard;
+        this.registerDate = registerDate;
+    }
+
     public String getFirstName() {
         return firstName;
     }

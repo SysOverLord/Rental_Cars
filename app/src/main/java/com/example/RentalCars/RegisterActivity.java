@@ -40,9 +40,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         regButton.setOnClickListener(v -> {
 
-
+            String newId = UUID.randomUUID().toString();
             User user = new User(userText.getText().toString(),
-                    emailText.getText().toString(), passText.getText().toString());
+                    emailText.getText().toString(), passText.getText().toString(), newId);
 
 
             // public void registerToServer(User user)
@@ -50,8 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             myRef  = database.getReference("users");
             Query query = myRef.orderByChild("username").equalTo(user.getUsername());
-            String rId = UUID.randomUUID().toString();
-            myRef = myRef.child(rId);
+            myRef = myRef.child(newId);
 
 
             if(user.getUsername().equals("")){

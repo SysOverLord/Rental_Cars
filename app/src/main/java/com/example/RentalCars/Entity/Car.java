@@ -2,25 +2,25 @@ package com.example.RentalCars.Entity;
 
 public class Car {
 
+    private String brand;
     private String model;
+    private String color;
     private float dailyPrice;
     private String desc;
-    private String brand;
-    private String color;
     private String carId;
     private String ownerId;
 
-
-    public Car(java.lang.String model, float dailyPrice, java.lang.String desc, java.lang.String brand, java.lang.String color, java.lang.String carId, java.lang.String ownerId) {
+    public Car(String brand, String model, String color, float dailyPrice, String desc, String carId, String ownerId) {
+        this.brand = brand;
         this.model = model;
+        this.color = color;
         this.dailyPrice = dailyPrice;
         this.desc = desc;
-        this.brand = brand;
-        this.color = color;
         this.carId = carId;
         this.ownerId = ownerId;
     }
-    public void Car(){
+
+    public Car(){
         // Default constructor required for calls to DataSnapshot.getValue(Car.class)
     }
 

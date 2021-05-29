@@ -1,15 +1,16 @@
 package com.example.RentalCars.Entity;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Rental {
     private String rentedCarId;
-    private Date startDate;
-    private Date endDate;
+    private Calendar startDate;
+    private Calendar endDate;
     private float totalPrice;
     private String renterId;
 
-    public Rental(String rentedCarId, Date startDate, Date endDate, float totalPrice, String renterId) {
+    public Rental(String rentedCarId, Calendar startDate, Calendar endDate, float totalPrice, String renterId) {
         this.rentedCarId = rentedCarId;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -26,16 +27,13 @@ public class Rental {
         return rentedCarId;
     }
 
-
-    public Date getStartDate() {
+    public Calendar getStartDate() {
         return startDate;
     }
 
-
-    public Date getEndDate() {
+    public Calendar getEndDate() {
         return endDate;
     }
-
 
     public float getTotalPrice() {
         return totalPrice;

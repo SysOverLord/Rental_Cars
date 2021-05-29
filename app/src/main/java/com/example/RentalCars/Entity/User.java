@@ -16,6 +16,12 @@ public class User {
         this.password = password;
         this.userId = userId;
     }
+    public User(User user){ // For register activity while creating Person class
+        this.username = user.username;
+        this.email = user.email;
+        this.password = user.password;
+        this.userId = user.userId;
+    }
 
     public String getUsername() {
         return username;
