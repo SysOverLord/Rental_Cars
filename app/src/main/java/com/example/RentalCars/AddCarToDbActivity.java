@@ -19,12 +19,13 @@ public class AddCarToDbActivity extends AppCompatActivity {
 
     private void addToDB(Car newCar){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("cars/" + newCar.getBrand() +
-                "/" + newCar.getModel() + "/" + newCar.getCarId());
+        DatabaseReference myRef = database.getReference("cars/" + newCar.getCarId());
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
                 myRef.setValue(newCar);
+                myRef.child("BMF").setValue(newCar.getBrand() + "_" + newCar.getModel());
             }
 
             @Override
@@ -39,8 +40,8 @@ public class AddCarToDbActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Bundle extras = getIntent().getExtras();
         setContentView(R.layout.activity_add_car_to_db);
-        String brand = "Nissan";
-        String model = "Micra";
+        String brand = "BMW";
+        String model = "9 Series Sedan";
         String color = "orange";
         float dailyPrice = 25.1f;
         String desc = "-";

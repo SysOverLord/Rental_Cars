@@ -85,13 +85,20 @@ public class RentActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         //String rentedCarId = extras.getString("rentedCarId");
         //String renterId = extras.getString("renterId");
+        //float dailyPrice = extras.getInt("dailyPrice");
+        float dailyPrice = 15f;
         String rentedCarId = "096ba1f4-15a9-4344-8fcc-074b33c46203";
         String renterId = "5276eb86-5265-463d-a2ec-60aea1a4bdcc";
         Calendar startDate = Calendar.getInstance();
         startDate.set(2021,11,25);
         Calendar endDate = Calendar.getInstance();
         endDate.set(2021,11,27);
-        float totalPrice = 0.0f;
+
+
+        int yearDiff = endDate.getTime().getYear() - startDate.getTime().getYear();
+        int monthDiff = endDate.getTime().getMonth() - startDate.getTime().getMonth();
+        int dayDiff = endDate.getTime().getDate() - startDate.getTime().getDate();
+        float totalPrice = (yearDiff * 365 + monthDiff * 30 + dayDiff) * dailyPrice;
 
 
         Rental rent = new Rental(rentedCarId,startDate,endDate,totalPrice,renterId);

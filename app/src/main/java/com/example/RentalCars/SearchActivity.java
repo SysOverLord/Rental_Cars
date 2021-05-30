@@ -18,13 +18,27 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class SearchActivity extends AppCompatActivity {
-
-    private Queue searchQueue;
+    private void showSearchQueue(Queue searchQueue){
+        //Ekrana liste bastırma
+    }
 
     private  void createSearchQueue(String fBrand,String fModel, int page) {
+
+        Queue searchQueue = new LinkedList();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("cars/" + fBrand + "/" + fModel);
-        Query query = myRef.orderByChild("model").equalTo(fModel);
+        DatabaseReference myRef = database.getReference("cars/");
+        Query query;
+        // Filtreleme başlangıcı
+        if(!fBrand.equals("") && !fModel.equals("")){
+            query = myRef.orderByChild("BMF").equalTo(fBrand + "_" + fModel);
+        }
+        else if (!fModel.equals(""))
+            query = myRef.orderByChild("model").equalTo(fModel);
+        else if (!fBrand.equals(""))
+            query = myRef.orderByChild("brand").equalTo(fBrand);
+        else
+            query = myRef.orderByValue();
+        //Filtreleme bitişi
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -34,6 +48,9 @@ public class SearchActivity extends AppCompatActivity {
                     }
 
                 }
+                //Show SearchQueue
+                showSearchQueue(searchQueue);
+                searchQueue.size();
             }
 
             @Override
@@ -45,12 +62,11 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_test);
-        String fBrand = "BMW";
-        String fModel = "9 Series Sedan";
+        String fBrand = "";
+        String fModel = "";
         int page = 1;
-        searchQueue = new LinkedList();
+        //Tuşa bastığında bunu çağıracak
         createSearchQueue(fBrand,fModel,page);
-        searchQueue.peek();
 
 
     }
