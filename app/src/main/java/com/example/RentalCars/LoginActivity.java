@@ -29,15 +29,15 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
-        TextInputLayout textInputLayoutUser = findViewById(R.id.userName);
-        TextInputLayout textInputLayoutPass = findViewById(R.id.password);
+        TextInputLayout textInputLayoutUser = findViewById(R.id.login_username);
+        TextInputLayout textInputLayoutPass = findViewById(R.id.login_password);
         Button button = findViewById(R.id.login);
         Button toRegBut = findViewById(R.id.signUpScreen);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
 
         toRegBut.setOnClickListener(v -> {
-            Intent register = new Intent(this, RegisterActivity.class);
+            Intent register = new Intent(this, SignUp.class);
             startActivity(register);
         });
 
@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 alert.show();
             }
             else{
-                Intent main = new Intent(this, MainActivity.class);
+                Intent mainPage = new Intent(this, MainPage.class);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -75,7 +75,8 @@ public class LoginActivity extends AppCompatActivity {
                             AlertDialog alert = builder.create();
                             alert.setTitle("Notify");
                             alert.show();
-                            startActivity(main);
+                            //Login olduk MainPageye götür
+                            startActivity(mainPage);
                         }
                         else{
                             builder.setMessage("Wrong password");

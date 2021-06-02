@@ -14,4 +14,5 @@
     <color name="homeFragmentBgColor">#FF835B</color>
     <color name="advertFragmentBgColor">#FFC107</color>
     <color name="profileFragmentBgColor">#FFEB3B</color>
+
 </resources>

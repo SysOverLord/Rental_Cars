@@ -1,6 +1,7 @@
 package com.example.RentalCars.Entity;
 
 import java.util.Date;
+import java.util.Random;
 
 public class CreditCard {
     private float limit;
@@ -8,8 +9,8 @@ public class CreditCard {
     private String cardNo;
     private String cvvNo;
 
-    public CreditCard(float limit, Date expireDate, String cvvNo,String cardNo) {
-        this.limit = limit;
+    public CreditCard(Date expireDate, String cvvNo,String cardNo) {
+        this.limit = new Random().nextInt(4800) + 200;
         this.expireDate = expireDate;
         this.cvvNo = cvvNo;
         this.cardNo = cardNo;
