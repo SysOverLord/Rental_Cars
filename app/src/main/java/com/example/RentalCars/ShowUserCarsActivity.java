@@ -22,7 +22,6 @@ public class ShowUserCarsActivity  extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("cars" );
         Query query = myRef.orderByChild("ownerId").equalTo(userId);
-        //BMF = B_M
 
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
