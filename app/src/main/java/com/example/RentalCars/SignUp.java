@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -45,6 +46,8 @@ public class SignUp extends AppCompatActivity {
     Button btn_signup;
     DatabaseReference myRef;
 
+    Boolean anyEmpty = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,66 +60,65 @@ public class SignUp extends AppCompatActivity {
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String newId = UUID.randomUUID().toString();
-                User user = new User(username.getEditText().getText().toString(),
-                        email.getEditText().getText().toString(),
-                    password.getEditText().getText().toString(), newId);
-                Address address = new Address(city.getEditText().getText().toString(),
-                        district.getEditText().getText().toString(), street.getEditText().getText().toString(),
-                        no.getEditText().getText().toString());
+                anyEmpty = isEmpty();
+                if(!anyEmpty){
+                    String newId = UUID.randomUUID().toString();
+                    User user = new User(username.getEditText().getText().toString(),
+                            email.getEditText().getText().toString(),
+                            password.getEditText().getText().toString(), newId);
+                    Address address = new Address(city.getEditText().getText().toString(),
+                            district.getEditText().getText().toString(), street.getEditText().getText().toString(),
+                            no.getEditText().getText().toString());
                     //EXPİRE DATE NULL OLMAYACAK DEĞİŞTİR ONU
-                CreditCard creditCard = new CreditCard(null,cardCvv.getEditText().getText().toString()
-                        ,cardNo.getEditText().getText().toString());
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-                Date registerDate = new Date();
-                Person person = new Person(user,firstName.getEditText().getText().toString(),
-                        lastName.getEditText().getText().toString(),address, creditCard,registerDate);
+                    CreditCard creditCard = new CreditCard(null,cardCvv.getEditText().getText().toString()
+                            ,cardNo.getEditText().getText().toString());
+                    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                    Date registerDate = new Date();
+                    Person person = new Person(user,firstName.getEditText().getText().toString(),
+                            lastName.getEditText().getText().toString(),address, creditCard,registerDate);
 
 
 
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                myRef  = database.getReference("users");
-                Query query = myRef.orderByChild("username").equalTo(user.getUsername());
-                myRef = myRef.child(newId);
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    myRef  = database.getReference("users");
+                    Query query = myRef.orderByChild("username").equalTo(user.getUsername());
+                    myRef = myRef.child(newId);
 
 
-                if(user.getUsername().equals("")){
-                    builder.setMessage("Username is empty");
-                    AlertDialog alert = builder.create();
-                    alert.setTitle("Notify");
-                    alert.show();
-                }
+                    if(user.getUsername().equals("")){
+                        builder.setMessage("Username is empty");
+                        AlertDialog alert = builder.create();
+                        alert.setTitle("Notify");
+                        alert.show();
+                    }
 
-                else{
-                    query.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            if(!dataSnapshot.exists()){
-                                myRef.setValue(person);
-                                builder.setMessage("User created.");
-                                AlertDialog alert = builder.create();
-                                alert.setTitle("Notify");
-                                alert.show();
-                                // Üyeliğine girmiş gibi düşün ona göre çağır
+                    else{
+                        query.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                if(!dataSnapshot.exists()){
+                                    myRef.setValue(person);
+                                    builder.setMessage("User created.");
+                                    AlertDialog alert = builder.create();
+                                    alert.setTitle("Notify");
+                                    alert.show();
+                                    // Üyeliğine girmiş gibi düşün ona göre çağır
+                                }
+                                else {
+                                    builder.setMessage("User has already created.");
+                                    AlertDialog alert = builder.create();
+                                    alert.setTitle("Notify");
+                                    alert.show();
+                                }
                             }
-                            else {
-                                builder.setMessage("User has already created.");
-                                AlertDialog alert = builder.create();
-                                alert.setTitle("Notify");
-                                alert.show();
+                            @Override
+                            public void onCancelled(DatabaseError error) {
+                                // Failed to read value
+
                             }
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError error) {
-                            // Failed to read value
-
-                        }
-                    });
-
-
+                        });
+                    }
                 }
-
-
             }
         });
 
@@ -149,4 +151,56 @@ public class SignUp extends AppCompatActivity {
         btn_call_login = (Button)findViewById(R.id.btn_login_screen);
     }
 
+    private boolean isEmpty() {
+        if (firstName.getEditText().getText().toString().matches("")) {
+            Toast.makeText(this, "You did not enter a name", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (lastName.getEditText().getText().toString().matches("")) {
+            Toast.makeText(this, "You did not enter a surname", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (username.getEditText().getText().toString().matches("")) {
+            Toast.makeText(this, "You did not enter a username", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (email.getEditText().getText().toString().matches("")) {
+            Toast.makeText(this, "You did not enter a email", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (password.getEditText().getText().toString().matches("")) {
+            Toast.makeText(this, "You did not enter a password", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (city.getEditText().getText().toString().matches("")) {
+            Toast.makeText(this, "You did not enter a city", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (district.getEditText().getText().toString().matches("")) {
+            Toast.makeText(this, "You did not enter a district", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (street.getEditText().getText().toString().matches("")) {
+            Toast.makeText(this, "You did not enter a street", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (no.getEditText().getText().toString().matches("")) {
+            Toast.makeText(this, "You did not enter a no", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (cardName.getEditText().getText().toString().matches("")) {
+            Toast.makeText(this, "You did not enter a cardName", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (cardNo.getEditText().getText().toString().matches("")) {
+            Toast.makeText(this, "You did not enter a cardNo", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        if (cardCvv.getEditText().getText().toString().matches("")) {
+            Toast.makeText(this, "You did not enter a cardCvv", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return false;
+
+    }
 }
