@@ -6,15 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class AdvertFragment extends Fragment {
 
-    private EditText brand;
-    private EditText model;
-    private EditText color;
-    private EditText price;
+    private TextInputLayout brand;
+    private TextInputLayout model;
+    private TextInputLayout color;
+    private TextInputLayout price;
     private EditText detail;
     private Button btn_add;
 
@@ -25,21 +28,16 @@ public class AdvertFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_advert, container, false);
 
-        defineElements(v);
+        CheckingInputs[] checkingInputs = defineElements(v);
 
-        addCar(v);
-
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!isEmpty(checkingInputs))
+                    addCar(v);
+            }
+        });
         return v;
-    }
-
-
-    private void defineElements(View v){
-        brand = (EditText)v.findViewById(R.id.advert_car_brand);
-        model = (EditText)v.findViewById(R.id.advert_car_model);
-        color = (EditText)v.findViewById(R.id.advert_car_color);
-        price = (EditText)v.findViewById(R.id.advert_car_price);
-        detail = (EditText)v.findViewById(R.id.advert_car_description);
-        btn_add = (Button)v.findViewById(R.id.add);
     }
 
     private void addCar(View v){
@@ -54,4 +52,35 @@ public class AdvertFragment extends Fragment {
         });
     }
 
+    private CheckingInputs[] defineElements(View v){
+        CheckingInputs[] checkingInputs = {new CheckingInputs("Brand", brand = (TextInputLayout)v.findViewById(R.id.advert_car_brand)),
+                new CheckingInputs("Model", model = (TextInputLayout)v.findViewById(R.id.advert_car_model)),
+                new CheckingInputs("Color", color = (TextInputLayout)v.findViewById(R.id.advert_car_color)),
+                new CheckingInputs("Price", price = (TextInputLayout)v.findViewById(R.id.advert_car_price)),
+                new CheckingInputs("Detail", detail = (EditText)v.findViewById(R.id.advert_car_description)),
+        };
+
+        btn_add = (Button)v.findViewById(R.id.btn_add);
+
+        return checkingInputs;
+    }
+
+    private boolean isEmpty(CheckingInputs[] checkingInputs) {
+        for (CheckingInputs input: checkingInputs) {
+            if(input.getClass().getName().equalsIgnoreCase("EditText")){
+                if (input.getEdText().getText().toString().matches("")) {
+                    Toast.makeText(getContext(), "You did not enter the " + input.getName(), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+            }
+            else{
+                if (input.getTextInput().getEditText().getText().toString().matches("")) {
+                    Toast.makeText(getContext(), "You did not enter the " + input.getName(), Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+            }
+
+        }
+        return false;
+    }
 }

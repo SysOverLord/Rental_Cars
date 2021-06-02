@@ -29,7 +29,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_test);
 
-
         EditText userText  = findViewById(R.id.editTextRegUser);
         EditText emailText = findViewById(R.id.editTextRegEmail);
         EditText passText = findViewById(R.id.editTextRegPass);
@@ -85,13 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     }
                 });
-
-
             }
-
-
         });
-
-
     }
 }

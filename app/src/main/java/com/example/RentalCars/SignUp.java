@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -23,7 +22,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.UUID;
@@ -46,22 +44,19 @@ public class SignUp extends AppCompatActivity {
     Button btn_signup;
     DatabaseReference myRef;
 
-    Boolean anyEmpty = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sign_up);
 
-        defineElements();
+        CheckingInputs[] checkingInputs = defineElements();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                anyEmpty = isEmpty();
-                if(!anyEmpty){
+                if(!isEmpty(checkingInputs)){
                     String newId = UUID.randomUUID().toString();
                     User user = new User(username.getEditText().getText().toString(),
                             email.getEditText().getText().toString(),
@@ -134,73 +129,34 @@ public class SignUp extends AppCompatActivity {
     }
 
 
-    private void defineElements(){
-        firstName = (TextInputLayout) findViewById(R.id.firstName);
-        lastName = (TextInputLayout) findViewById(R.id.lastName);
-        username = (TextInputLayout) findViewById(R.id.userName);
-        email = (TextInputLayout) findViewById(R.id.email);
-        password = (TextInputLayout) findViewById(R.id.password);
-        city = (TextInputLayout) findViewById(R.id.city);
-        district = (TextInputLayout) findViewById(R.id.district);
-        street = (TextInputLayout) findViewById(R.id.street);
-        no = (TextInputLayout) findViewById(R.id.addressNo);
-        cardName = (TextInputLayout) findViewById(R.id.cardName);
-        cardNo = (TextInputLayout) findViewById(R.id.cardNumber);
-        cardCvv = (TextInputLayout) findViewById(R.id.cardCvv);
+    private CheckingInputs[] defineElements(){
+        CheckingInputs[] checkingInputs = {new CheckingInputs("FirstName", firstName = (TextInputLayout) findViewById(R.id.firstName)),
+                                            new CheckingInputs("LastName", lastName = (TextInputLayout) findViewById(R.id.lastName)),
+                                            new CheckingInputs("Username", username = (TextInputLayout) findViewById(R.id.userName)),
+                                            new CheckingInputs("Email", email = (TextInputLayout) findViewById(R.id.email)),
+                                            new CheckingInputs("Password", password = (TextInputLayout) findViewById(R.id.password)),
+                                            new CheckingInputs("City", city = (TextInputLayout) findViewById(R.id.city)),
+                                            new CheckingInputs("District", district = (TextInputLayout) findViewById(R.id.district)),
+                                            new CheckingInputs("Street", street = (TextInputLayout) findViewById(R.id.street)),
+                                            new CheckingInputs("AddressNo", no = (TextInputLayout) findViewById(R.id.addressNo)),
+                                            new CheckingInputs("CardName", cardName = (TextInputLayout) findViewById(R.id.cardName)),
+                                            new CheckingInputs("CardNumber", cardNo = (TextInputLayout) findViewById(R.id.cardNumber)),
+                                            new CheckingInputs("CardCvv", cardCvv = (TextInputLayout) findViewById(R.id.cardCvv)),
+        };
+
         btn_signup = (Button)findViewById(R.id.btn_signup);
         btn_call_login = (Button)findViewById(R.id.btn_login_screen);
+
+        return checkingInputs;
     }
 
-    private boolean isEmpty() {
-        if (firstName.getEditText().getText().toString().matches("")) {
-            Toast.makeText(this, "You did not enter a name", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if (lastName.getEditText().getText().toString().matches("")) {
-            Toast.makeText(this, "You did not enter a surname", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if (username.getEditText().getText().toString().matches("")) {
-            Toast.makeText(this, "You did not enter a username", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if (email.getEditText().getText().toString().matches("")) {
-            Toast.makeText(this, "You did not enter a email", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if (password.getEditText().getText().toString().matches("")) {
-            Toast.makeText(this, "You did not enter a password", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if (city.getEditText().getText().toString().matches("")) {
-            Toast.makeText(this, "You did not enter a city", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if (district.getEditText().getText().toString().matches("")) {
-            Toast.makeText(this, "You did not enter a district", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if (street.getEditText().getText().toString().matches("")) {
-            Toast.makeText(this, "You did not enter a street", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if (no.getEditText().getText().toString().matches("")) {
-            Toast.makeText(this, "You did not enter a no", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if (cardName.getEditText().getText().toString().matches("")) {
-            Toast.makeText(this, "You did not enter a cardName", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if (cardNo.getEditText().getText().toString().matches("")) {
-            Toast.makeText(this, "You did not enter a cardNo", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-        if (cardCvv.getEditText().getText().toString().matches("")) {
-            Toast.makeText(this, "You did not enter a cardCvv", Toast.LENGTH_SHORT).show();
-            return true;
+    private boolean isEmpty(CheckingInputs[] checkingInputs) {
+        for (CheckingInputs input: checkingInputs) {
+            if (input.getTextInput().getEditText().getText().toString().matches("")) {
+                Toast.makeText(this, "You did not enter the " + input.getName(), Toast.LENGTH_SHORT).show();
+                return true;
+            }
         }
         return false;
-
     }
 }

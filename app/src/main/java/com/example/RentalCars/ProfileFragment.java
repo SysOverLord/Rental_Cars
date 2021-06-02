@@ -38,7 +38,6 @@ public class ProfileFragment extends Fragment {
         return v;
     }
 
-
     private void defineElements(View v){
         firstName = (TextView)v.findViewById(R.id.prf_firstName);
         lastName = (TextView)v.findViewById(R.id.prf_lastName);
