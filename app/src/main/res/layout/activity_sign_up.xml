@@ -11,29 +11,28 @@
 
 
     <ImageView
-        android:layout_width="150dp"
+        android:layout_width="343dp"
         android:layout_height="150dp"
         android:layout_marginTop="-30dp"
-        android:src="@drawable/logo2">
-    </ImageView>
+        android:src="@drawable/logo2"></ImageView>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="342dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="-50dp"
         android:fontFamily="@font/bungee"
         android:text="WELCOME"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="40sp">
-    </TextView>
+        android:textSize="40sp"></TextView>
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="341dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="-30dp"
         android:text="Sign up to start your new Journey"
-        android:textSize="18sp">
-    </TextView>
+        android:textAlignment="center"
+        android:textSize="18sp"></TextView>
 
     <ScrollView
         android:layout_width="match_parent"

@@ -11,21 +11,24 @@
 
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:src="@drawable/logo2">
-    </ImageView>
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@drawable/logo2"></ImageView>
 
     <TextView
         android:id="@+id/logoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello there, Welcome Back"
-        android:textSize="40sp"
         android:layout_marginTop="-50dp"
         android:fontFamily="@font/bungee"
-        android:textColor="@color/black">
-    </TextView>
+        android:scaleX="1"
+        android:scaleY="1"
+        android:text="Hello there Welcome Back"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="45sp"></TextView>
 
     <TextView
         android:layout_width="wrap_content"
