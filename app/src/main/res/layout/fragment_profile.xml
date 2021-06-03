@@ -23,14 +23,14 @@
         android:layout_margin="25dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/prf_firstName"
-            android:textSize="18dp"
-            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/aldrich"
             android:text="İSİM"
-            android:layout_marginBottom="5dp">
-        </TextView>
+            android:textColor="@color/black"
+            android:textSize="18dp"></TextView>
 
         <View
             android:layout_width="match_parent"
@@ -38,14 +38,14 @@
             android:background="@android:color/black" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/prf_lastName"
-            android:textSize="18dp"
-            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/aldrich"
             android:text="SOYİSİM "
-            android:layout_marginBottom="5dp">
-        </TextView>
+            android:textColor="@color/black"
+            android:textSize="18dp"></TextView>
 
         <View
             android:layout_width="match_parent"
@@ -53,14 +53,14 @@
             android:background="@android:color/black" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/prf_email"
-            android:textSize="18dp"
-            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/aldrich"
             android:text="MAİL"
-            android:layout_marginBottom="5dp">
-        </TextView>
+            android:textColor="@color/black"
+            android:textSize="18dp"></TextView>
 
         <View
             android:layout_width="match_parent"
@@ -68,14 +68,14 @@
             android:background="@android:color/black" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/prf_username"
-            android:textSize="18dp"
-            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/aldrich"
             android:text="KULLANICIADI"
-            android:layout_marginBottom="5dp">
-        </TextView>
+            android:textColor="@color/black"
+            android:textSize="18dp"></TextView>
 
         <View
             android:layout_width="match_parent"
@@ -83,14 +83,14 @@
             android:background="@android:color/black" />
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
             android:id="@+id/prf_cardLimit"
-            android:textSize="18dp"
-            android:textColor="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/aldrich"
             android:text="KREDİ KARTI LİMİTİ"
-            android:layout_marginBottom="5dp">
-        </TextView>
+            android:textColor="@color/black"
+            android:textSize="18dp"></TextView>
 
         <View
             android:layout_width="match_parent"
@@ -98,14 +98,14 @@
             android:background="@android:color/black" />
 
         <TextView
+            android:id="@+id/prf_register_time"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/prf_register_time"
-            android:textSize="18dp"
-            android:textColor="@color/black"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/aldrich"
             android:text="ŞU TARİHTEN BERİ ÜYE"
-            android:layout_marginBottom="5dp">
-        </TextView>
+            android:textColor="@color/black"
+            android:textSize="18dp"></TextView>
 
         <View
             android:layout_width="match_parent"

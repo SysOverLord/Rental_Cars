@@ -10,7 +10,7 @@
         android:label="@string/RentalCars"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.RentalCars">
+        android:theme="@style/Theme.RentalCars.NoActionBar">
         <activity android:name=".MainPage">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -76,6 +76,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

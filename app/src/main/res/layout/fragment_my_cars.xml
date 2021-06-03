@@ -11,12 +11,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        android:textColor="@color/gray"
+        android:fontFamily="@font/aldrich"
+        android:gravity="center"
         android:text="ARABALARIM"
-        android:fontFamily="@font/comfortaa_bold"
-        android:gravity="center"/>
+        android:textColor="@color/gray"
+        android:textSize="24dp"
+        android:textStyle="bold" />
 
     <ListView
         android:layout_width="match_parent"

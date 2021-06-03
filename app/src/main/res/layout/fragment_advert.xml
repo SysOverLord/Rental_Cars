@@ -8,90 +8,90 @@
 
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="32dp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/comfortaa_bold"
-        android:text="İLAN EKLEME"
-        android:layout_marginBottom="10dp"
+        android:layout_width="400dp"
+        android:layout_height="57dp"
         android:layout_marginTop="10dp"
-       android:gravity="center_horizontal" />
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/aldrich"
+        android:gravity="center_horizontal"
+        android:text="İLAN EKLEME"
+        android:textColor="@color/black"
+        android:textSize="32dp"
+        android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginRight="25dp"
+        android:layout_width="386dp"
+        android:layout_height="551dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="75dp">
+        android:layout_marginTop="75dp"
+        android:layout_marginRight="25dp"
+        android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/advert_car_brand"
-            android:hint="Enter your car's brand"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your car's brand">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/advert_car_model"
-            android:hint="Enter your car's model"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your car's model">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/advert_car_color"
-            android:hint="Enter your car's color"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter your car's color">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/advert_car_price"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/advert_car_price"
-            android:hint="Define a daily price"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:hint="Define a daily price">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <EditText
+            android:id="@+id/advert_car_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/advert_car_description"
-            android:hint="Express your car details"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/text_border"
             android:gravity="top"
+            android:hint="Express your car details"
             android:inputType="text"
             android:lines="1"
             android:maxLines="5"
-            android:scrollbars="vertical"
-            android:layout_marginTop="15dp"
             android:padding="10dp"
-            android:background="@drawable/text_border"/>
+            android:scrollbars="vertical" />
 
         <View
             android:layout_width="match_parent"
@@ -102,10 +102,10 @@
             android:id="@+id/btn_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ADD MY CAR"
-            android:backgroundTint="@color/gray"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/gray"
+            android:text="ADD MY CAR" />
 
     </LinearLayout>
 
