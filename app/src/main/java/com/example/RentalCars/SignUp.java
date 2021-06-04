@@ -130,22 +130,22 @@ public class SignUp extends AppCompatActivity {
 
 
     private CheckingInputs[] defineElements(){
-        CheckingInputs[] checkingInputs = {new CheckingInputs("FirstName", firstName = (TextInputLayout) findViewById(R.id.firstName)),
-                                            new CheckingInputs("LastName", lastName = (TextInputLayout) findViewById(R.id.lastName)),
-                                            new CheckingInputs("Username", username = (TextInputLayout) findViewById(R.id.userName)),
-                                            new CheckingInputs("Email", email = (TextInputLayout) findViewById(R.id.email)),
-                                            new CheckingInputs("Password", password = (TextInputLayout) findViewById(R.id.password)),
-                                            new CheckingInputs("City", city = (TextInputLayout) findViewById(R.id.city)),
-                                            new CheckingInputs("District", district = (TextInputLayout) findViewById(R.id.district)),
-                                            new CheckingInputs("Street", street = (TextInputLayout) findViewById(R.id.street)),
-                                            new CheckingInputs("AddressNo", no = (TextInputLayout) findViewById(R.id.addressNo)),
-                                            new CheckingInputs("CardName", cardName = (TextInputLayout) findViewById(R.id.cardName)),
-                                            new CheckingInputs("CardNumber", cardNo = (TextInputLayout) findViewById(R.id.cardNumber)),
-                                            new CheckingInputs("CardCvv", cardCvv = (TextInputLayout) findViewById(R.id.cardCvv)),
+        CheckingInputs[] checkingInputs = {new CheckingInputs("FirstName", firstName = findViewById(R.id.firstName)),
+                                            new CheckingInputs("LastName", lastName = findViewById(R.id.lastName)),
+                                            new CheckingInputs("Username", username = findViewById(R.id.userName)),
+                                            new CheckingInputs("Email", email = findViewById(R.id.email)),
+                                            new CheckingInputs("Password", password = findViewById(R.id.password)),
+                                            new CheckingInputs("City", city = findViewById(R.id.city)),
+                                            new CheckingInputs("District", district = findViewById(R.id.district)),
+                                            new CheckingInputs("Street", street = findViewById(R.id.street)),
+                                            new CheckingInputs("AddressNo", no = findViewById(R.id.addressNo)),
+                                            new CheckingInputs("CardName", cardName = findViewById(R.id.cardName)),
+                                            new CheckingInputs("CardNumber", cardNo = findViewById(R.id.cardNumber)),
+                                            new CheckingInputs("CardCvv", cardCvv = findViewById(R.id.cardCvv)),
         };
 
-        btn_signup = (Button)findViewById(R.id.btn_signup);
-        btn_call_login = (Button)findViewById(R.id.btn_login_screen);
+        btn_signup = findViewById(R.id.btn_signup);
+        btn_call_login = findViewById(R.id.btn_login_screen);
 
         return checkingInputs;
     }

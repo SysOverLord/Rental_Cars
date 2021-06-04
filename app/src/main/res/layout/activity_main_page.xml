@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient1"
+    android:background="@color/ItemUnselectedColor"
     tools:context=".MainPage">
 
     <FrameLayout
@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:layout_above="@id/main_page_bottomNavigationView"
         android:background="@color/ItemUnselectedColor"
-        android:backgroundTint="#2D2F31" />
+        android:backgroundTint="#002D2F31" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_page_bottomNavigationView"
@@ -24,7 +24,6 @@
         app:itemIconTint="@color/bottombar_color"
         app:itemTextColor="@color/bottombar_color"
         app:menu="@menu/bottombarmenu" />
-
 
 
 </RelativeLayout>

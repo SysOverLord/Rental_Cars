@@ -53,11 +53,11 @@ public class AdvertFragment extends Fragment {
     }
 
     private CheckingInputs[] defineElements(View v){
-        CheckingInputs[] checkingInputs = {new CheckingInputs("Brand", brand = (TextInputLayout)v.findViewById(R.id.advert_car_brand)),
-                new CheckingInputs("Model", model = (TextInputLayout)v.findViewById(R.id.advert_car_model)),
-                new CheckingInputs("Color", color = (TextInputLayout)v.findViewById(R.id.advert_car_color)),
-                new CheckingInputs("Price", price = (TextInputLayout)v.findViewById(R.id.advert_car_price)),
-                new CheckingInputs("Detail", detail = (EditText)v.findViewById(R.id.advert_car_description)),
+        CheckingInputs[] checkingInputs = {new CheckingInputs("Brand", brand = v.findViewById(R.id.advert_car_brand)),
+                new CheckingInputs("Model", model = v.findViewById(R.id.advert_car_model)),
+                new CheckingInputs("Color", color = v.findViewById(R.id.advert_car_color)),
+                new CheckingInputs("Price", price = v.findViewById(R.id.advert_car_price)),
+                new CheckingInputs("Detail", detail = v.findViewById(R.id.advert_car_description)),
         };
 
         btn_add = (Button)v.findViewById(R.id.btn_add);

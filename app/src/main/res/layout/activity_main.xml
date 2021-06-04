@@ -17,18 +17,17 @@
 
     <TextView
         android:id="@+id/txtAppName"
-        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OOP RENT A CAR"
-        android:textStyle="bold"
-        android:textSize="30dp"
-        android:fontFamily="@font/comfortaa_bold"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="@font/bungee"
+        android:text="CAR BOX APP"
         android:textColor="@color/gray"
+        android:textSize="45dp"
+        android:textStyle="bold"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="50dp">
-    </TextView>
+        app:layout_constraintStart_toStartOf="parent"></TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
