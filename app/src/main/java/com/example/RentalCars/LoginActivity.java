@@ -61,8 +61,10 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         String dbPass = "";
+                        String userId = "";
                         for(DataSnapshot snapshot: dataSnapshot.getChildren()){
                             dbPass = snapshot.child("password").getValue(String.class);
+                            userId = snapshot.child("userId").getValue(String.class);
                         }
                         if(dbPass.equals("")){
                             builder.setMessage("User not found");
@@ -76,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                             alert.setTitle("Notify");
                             alert.show();
                             //Login olduk MainPageye götür
+                            mainPage.putExtra("userId",userId);
                             startActivity(mainPage);
                         }
                         else{

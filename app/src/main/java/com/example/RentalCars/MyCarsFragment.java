@@ -81,8 +81,7 @@ public class MyCarsFragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_my_cars, container, false);
 
         Bundle extras = getArguments();
-        //String userId = extras.getString("userId");
-        String userId  = "5276eb86-5265-463d-a2ec-60aea1a4bdcc";
+        String userId = extras.getString("userId");
         createCarList(userId,v);
 
 

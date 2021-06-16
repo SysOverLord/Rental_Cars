@@ -7,9 +7,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.RentalCars.Entity.Person;
+
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class ProfileFragment extends Fragment {
@@ -32,12 +41,45 @@ public class ProfileFragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_profile, container, false);
 
         defineElements(v);
-
+        String userId = getArguments().getString("userId");
+        createProfileInf(userId);
         saveChanges(v);
 
         return v;
     }
 
+    public void createProfileInf(String userId){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users/");
+        Query query = myRef.orderByChild("userId").equalTo(userId);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+
+                    Person person = dataSnapshot.getValue(Person.class);
+
+                    firstName.setText(person.getFirstName());
+                    lastName.setText(person.getLastName());
+                    email.setText(person.getEmail());
+                    username.setText(person.getUsername());
+                    creditLimit.setText(Float.toString(person.getCreditCard().getLimit()));
+                    //registerDate.setText(person.getFirstName());
+
+                }
+
+
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
     private void defineElements(View v){
         firstName = (TextView)v.findViewById(R.id.prf_firstName);

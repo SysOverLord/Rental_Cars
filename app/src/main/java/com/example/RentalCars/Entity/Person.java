@@ -19,8 +19,8 @@ public class Person extends User{
         this.creditCard = creditCard;
         this.registerDate = registerDate;
     }
-    public Person(){
-
+     public Person(){
+            super();
     }
     public Person(User user,String firstName, String lastName, Address address, CreditCard creditCard, Date registerDate) {
         super(user);

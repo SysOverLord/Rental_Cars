@@ -15,6 +15,9 @@ public class CreditCard {
         this.cvvNo = cvvNo;
         this.cardNo = cardNo;
     }
+    public CreditCard(){
+
+    }
 
     public String getCvvNo() {
         return cvvNo;

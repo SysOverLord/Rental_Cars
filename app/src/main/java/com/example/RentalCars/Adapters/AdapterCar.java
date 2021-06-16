@@ -35,7 +35,7 @@ public class AdapterCar extends ArrayAdapter<Car> {
             inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         }catch (Exception e){
-            Log.e(LOG_TAG, "Construction error", ex);
+            Log.e(LOG_TAG, "Construction error", e);
         }
     }
 
@@ -57,7 +57,7 @@ public class AdapterCar extends ArrayAdapter<Car> {
         public TextView display_dailyPrice;
 
     }
-
+/*
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
         final ViewHolder holder;
@@ -90,5 +90,5 @@ public class AdapterCar extends ArrayAdapter<Car> {
 
         }
         return vi;
-    }
+    }*/
 }
