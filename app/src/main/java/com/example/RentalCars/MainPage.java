@@ -39,7 +39,9 @@ public class MainPage extends AppCompatActivity {
         mBottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Bundle bundle = new Bundle();
+
+                Bundle bundle;
+
                 switch (item.getItemId()){
 
                     case R.id.bottombar_menu_home:

@@ -20,6 +20,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+
 
 public class ProfileFragment extends Fragment {
 
@@ -43,7 +45,7 @@ public class ProfileFragment extends Fragment {
         defineElements(v);
         String userId = getArguments().getString("userId");
         createProfileInf(userId);
-        saveChanges(v);
+        saveChanges(v,userId);
 
         return v;
     }
@@ -52,7 +54,7 @@ public class ProfileFragment extends Fragment {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("users/");
         Query query = myRef.orderByChild("userId").equalTo(userId);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
@@ -64,7 +66,7 @@ public class ProfileFragment extends Fragment {
                     email.setText(person.getEmail());
                     username.setText(person.getUsername());
                     creditLimit.setText(Float.toString(person.getCreditCard().getLimit()));
-                    //registerDate.setText(person.getFirstName());
+                    registerDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(person.getRegisterDate()));
 
                 }
 
@@ -93,13 +95,25 @@ public class ProfileFragment extends Fragment {
         btn_save = (Button)v.findViewById(R.id.btn_save);
     }
 
-    private void saveChanges(View v){
+    private void saveChanges(View v,String userId){
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                DatabaseReference myRef = database.getReference("users/" + userId);
+               myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                   @Override
+                   public void onDataChange(@NonNull DataSnapshot snapshot) {
+                       myRef.child("email").setValue(newEmail.getEditText().getText().toString());
+                       myRef.child("password").setValue(newPassword.getEditText().getText().toString());
+                   }
 
-                // KAYDET BUTONUNA TIKLANDIGINDA GERCEKLESECEK OLAN ISLEMLER
+                   @Override
+                   public void onCancelled(@NonNull DatabaseError error) {
+
+                   }
+               });
 
             }
         });

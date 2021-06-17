@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.RentalCars.Entity.Car;
@@ -25,24 +26,37 @@ public class testForCarPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_for_car_page2);
+        setContentView(R.layout.car_details);
         Bundle extras = getIntent().getExtras();
-        String carId = extras.getString("carId");
-        //String carId = "73c61609-2a89-416c-934d-9a59f70183bd";
+        //String carId = extras.getString("carId");
+        String carId = "e3b41480-794a-4d9e-b13b-db9cca713b7d";
         createCarPageInformation(carId);
     }
 
     public void createCarPageInformation(String carId){
+
+        TextView textBrand = findViewById(R.id.car_details_txtViewCarBrand);
+        TextView textModel = findViewById(R.id.car_details_txtViewCarModel);
+        TextView textColor = findViewById(R.id.car_details_txtViewCarColor);
+        TextView textPrice = findViewById(R.id.car_details_txtViewCarPrice);
+        TextView textDesc = findViewById(R.id.car_details_txtViewCarDescription);
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("cars" );
         Query query = myRef.orderByChild("carId").equalTo(carId);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
+            Car car = new Car();
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Car car = dataSnapshot.getValue(Car.class);
+                    car = dataSnapshot.getValue(Car.class);
                 }
                 //Arabanın bilgi kutucuklarını değiştir
+                textBrand.setText(car.getBrand());
+                textModel.setText(car.getModel());
+                textColor.setText(car.getColor());
+                textPrice.setText(String.format("%s", car.getDailyPrice()));
+                textDesc.setText(car.getDesc());
             }
 
             @Override

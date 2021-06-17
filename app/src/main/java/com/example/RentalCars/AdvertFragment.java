@@ -44,8 +44,8 @@ public class AdvertFragment extends Fragment {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //if(!isEmpty(checkingInputs))
-                addCar(v, checkingInputs, userId);
+                if(!isEmpty(checkingInputs))
+                    addCar(v, checkingInputs, userId);
             }
         });
         return v;
@@ -97,14 +97,14 @@ public class AdvertFragment extends Fragment {
 
     private boolean isEmpty(CheckingInputs[] checkingInputs) {
         for (CheckingInputs input : checkingInputs) {
-            if (input.getClass().getName().equalsIgnoreCase("EditText")) {
+            if (input.getEdText() != null){
                 if (input.getEdText().getText().toString().matches("")) {
-                    Toast.makeText(getContext(), "You did not enter the " + input.getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "You did not enter the " + input.getName(), Toast.LENGTH_LONG).show();
                     return true;
                 }
             } else {
-                if (input.getTextInput().getEditText().getText().toString().matches("")) {
-                    Toast.makeText(getContext(), "You did not enter the " + input.getName(), Toast.LENGTH_SHORT).show();
+                if (input.getTextInput().toString().matches("")) {
+                    Toast.makeText(getContext(), "You did not enter the " + input.getName(), Toast.LENGTH_LONG).show();
                     return true;
                 }
             }

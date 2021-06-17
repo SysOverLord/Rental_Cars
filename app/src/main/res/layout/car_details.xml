@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:background="@color/yellow">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="İLAN DETAYLARI"
+        android:textStyle="bold"
+        android:fontFamily="@font/comfortaa_bold"
+        android:textSize="24dp"
+        android:gravity="center"
+        android:layout_marginBottom="10dp"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:id="@+id/car_details_carImage"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/car_details_txtViewCarBrand"
+            android:text="Marka"
+            android:textSize="18dp"
+            android:fontFamily="@font/bungee"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/car_details_txtViewCarModel"
+            android:text="Model"
+            android:textSize="18dp"
+            android:fontFamily="@font/bungee"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/car_details_txtViewCarColor"
+            android:text="Renk"
+            android:textSize="18dp"
+            android:fontFamily="@font/bungee"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/car_details_txtViewCarPrice"
+            android:text="Günlük Kira"
+            android:textSize="18dp"
+            android:fontFamily="@font/bungee"
+            android:layout_marginTop="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/car_details_txtViewCarDescription"
+            android:text="Açıklama"
+            android:textSize="18dp"
+            android:fontFamily="@font/bungee"
+            android:textStyle="bold"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="50dp"
+            android:scrollbars="vertical"/>
+
+    </LinearLayout>
+
+    <!-- Bu butonu cıkarıp base xml olarak bunu kullanacagımız include ile digerlerine dahil edecegiz
+   <Button
+       android:id="@+id/car_details_btn_delete"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="İLANI KALDIR"
+       android:backgroundTint="@color/gray"
+       android:layout_gravity="center"
+       android:visibility="visible"/>  -->
+
+
+    <!--
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/car_details_imgbtn_delete"
+        android:src="@drawable/ic_delete"
+        android:backgroundTint="@color/yellow"
+        android:layout_gravity="center"/>   -->
+
+
+</LinearLayout>

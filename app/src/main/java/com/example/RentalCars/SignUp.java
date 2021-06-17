@@ -22,8 +22,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
@@ -53,6 +56,7 @@ public class SignUp extends AppCompatActivity {
 
         defineElements();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        Intent intent = new Intent(this,MainPage.class);
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +71,6 @@ public class SignUp extends AppCompatActivity {
                     //EXPİRE DATE NULL OLMAYACAK DEĞİŞTİR ONU
                 CreditCard creditCard = new CreditCard(null,cardCvv.getEditText().getText().toString()
                         ,cardNo.getEditText().getText().toString());
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
                 Date registerDate = new Date();
                 Person person = new Person(user,firstName.getEditText().getText().toString(),
                         lastName.getEditText().getText().toString(),address, creditCard,registerDate);
@@ -88,6 +91,7 @@ public class SignUp extends AppCompatActivity {
                 }
 
                 else{
+
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -97,7 +101,9 @@ public class SignUp extends AppCompatActivity {
                                 AlertDialog alert = builder.create();
                                 alert.setTitle("Notify");
                                 alert.show();
-                                // Üyeliğine girmiş gibi düşün ona göre çağır
+                                intent.putExtra("userId",person.getUserId());
+                                startActivity(intent);
+
                             }
                             else {
                                 builder.setMessage("User has already created.");

@@ -39,7 +39,7 @@ public class RentActivity extends AppCompatActivity {
             }
         });
     }
-    private void checkDates(Calendar startDate, Calendar endDate, String rentedCarId,Rental rent){
+    private void checkDates(Date startDate, Date endDate, String rentedCarId,Rental rent){
         CircularProgressIndicator circular = findViewById(R.id.CPI);
         circular.setVisibility(View.VISIBLE);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -51,8 +51,8 @@ public class RentActivity extends AppCompatActivity {
                 dbReturned = true;
                 if (snapshot.exists()){
                     for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                        Calendar dbStart = dataSnapshot.child("startDate").getValue(Calendar.class);
-                        Calendar dbEnd = dataSnapshot.child("endDate").getValue(Calendar.class);
+                        Date dbStart = dataSnapshot.child("startDate").getValue(Date.class);
+                        Date dbEnd = dataSnapshot.child("endDate").getValue(Date.class);
                         if(dbEnd.compareTo(startDate) >= 0 && dbEnd.compareTo(endDate) <= 0){
                             isRentable = false;
                             break;
@@ -87,25 +87,29 @@ public class RentActivity extends AppCompatActivity {
         //String renterId = extras.getString("renterId");
         //float dailyPrice = extras.getInt("dailyPrice");
         float dailyPrice = 15f;
-        String rentedCarId = "096ba1f4-15a9-4344-8fcc-074b33c46203";
-        String renterId = "5276eb86-5265-463d-a2ec-60aea1a4bdcc";
-        Calendar startDate = Calendar.getInstance();
-        startDate.set(2021,11,25);
-        Calendar endDate = Calendar.getInstance();
-        endDate.set(2021,11,27);
+        String rentedCarId = "ec2503bb-32a5-41ad-94cd-de13bdc76fea";
+        String renterId = "b4d5676a-e34d-4de8-9c63-2f4898abd9ba";
+        Date startDate = new Date(2021,11,28);
+        Date endDate = new Date(2021,11,27);
+
+        if(startDate.compareTo(endDate) <= 0){
+            int yearDiff = endDate.getYear() - startDate.getYear();
+            int monthDiff = endDate.getMonth() - startDate.getMonth();
+            int dayDiff = endDate.getDate() - startDate.getDate();
+            float totalPrice = (yearDiff * 365 + monthDiff * 30 + dayDiff) * dailyPrice;
 
 
-        int yearDiff = endDate.getTime().getYear() - startDate.getTime().getYear();
-        int monthDiff = endDate.getTime().getMonth() - startDate.getTime().getMonth();
-        int dayDiff = endDate.getTime().getDate() - startDate.getTime().getDate();
-        float totalPrice = (yearDiff * 365 + monthDiff * 30 + dayDiff) * dailyPrice;
+            Rental rent = new Rental(rentedCarId,startDate,endDate,totalPrice,renterId);
+            isRentable = true;
+            dbReturned = false;
 
+            checkDates(startDate,endDate,rentedCarId,rent);
+        }
+        else{
+            //Hata mesajı
+            CircularProgressIndicator circular = findViewById(R.id.CPI);
+            circular.setVisibility(View.INVISIBLE);
+        }
 
-        Rental rent = new Rental(rentedCarId,startDate,endDate,totalPrice,renterId);
-        isRentable = true;
-        dbReturned = false;
-
-        checkDates(startDate,endDate,rentedCarId,rent);
-        String a = "";
     }
 }

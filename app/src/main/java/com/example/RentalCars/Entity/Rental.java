@@ -5,12 +5,12 @@ import java.util.Date;
 
 public class Rental {
     private String rentedCarId;
-    private Calendar startDate;
-    private Calendar endDate;
+    private Date startDate;
+    private Date endDate;
     private float totalPrice;
     private String renterId;
 
-    public Rental(String rentedCarId, Calendar startDate, Calendar endDate, float totalPrice, String renterId) {
+    public Rental(String rentedCarId, Date startDate, Date endDate, float totalPrice, String renterId) {
         this.rentedCarId = rentedCarId;
         this.startDate = startDate;
         this.endDate = endDate;
@@ -27,11 +27,11 @@ public class Rental {
         return rentedCarId;
     }
 
-    public Calendar getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public Calendar getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
