@@ -9,12 +9,14 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class AdvertFragment extends Fragment {
 
-    private EditText brand;
-    private EditText model;
-    private EditText color;
-    private EditText price;
+    private TextInputLayout brand;
+    private TextInputLayout model;
+    private TextInputLayout color;
+    private TextInputLayout price;
     private EditText detail;
     private Button btn_add;
 
@@ -34,10 +36,10 @@ public class AdvertFragment extends Fragment {
 
 
     private void defineElements(View v){
-        brand = (EditText)v.findViewById(R.id.advert_car_brand);
-        model = (EditText)v.findViewById(R.id.advert_car_model);
-        color = (EditText)v.findViewById(R.id.advert_car_color);
-        price = (EditText)v.findViewById(R.id.advert_car_price);
+        brand = (TextInputLayout)v.findViewById(R.id.advert_car_brand);
+        model = (TextInputLayout)v.findViewById(R.id.advert_car_model);
+        color = (TextInputLayout)v.findViewById(R.id.advert_car_color);
+        price = (TextInputLayout)v.findViewById(R.id.advert_car_price);
         detail = (EditText)v.findViewById(R.id.advert_car_description);
         btn_add = (Button)v.findViewById(R.id.add);
     }
@@ -50,8 +52,12 @@ public class AdvertFragment extends Fragment {
 
                 // İLAN VERME BUTONUNA TIKLANDIGINDA GERCEKLESECEK OLAN ISLEMLER
 
+
+
             }
         });
     }
+
+
 
 }

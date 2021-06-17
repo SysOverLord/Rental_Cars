@@ -57,6 +57,7 @@ public class SignUp extends AppCompatActivity {
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String newId = UUID.randomUUID().toString();
                 User user = new User(username.getEditText().getText().toString(),
                         email.getEditText().getText().toString(),
