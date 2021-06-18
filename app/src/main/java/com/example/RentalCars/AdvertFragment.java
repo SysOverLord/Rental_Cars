@@ -75,6 +75,9 @@ public class AdvertFragment extends Fragment {
                 myRef.child("BMF").setValue(newCar.getBrand() + "_" + newCar.getModel());
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 Fragment HomeFragment = new HomeFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString("userId",userId);
+                HomeFragment.setArguments(bundle);
                 activity.getSupportFragmentManager().beginTransaction().
                         replace(((ViewGroup)getView().getParent()).getId(),HomeFragment)
                         .addToBackStack(null).commit();

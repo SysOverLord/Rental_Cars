@@ -20,6 +20,7 @@ public class MainPage extends AppCompatActivity {
     private AdvertFragment advertFragment;
     private ProfileFragment profileFragment;
     private MyCarsFragment myCarsFragment;
+    Bundle bundle;
 
 
     @Override
@@ -34,17 +35,23 @@ public class MainPage extends AppCompatActivity {
         myCarsFragment = new MyCarsFragment();
         String userId = getIntent().getStringExtra("userId");
 
+        bundle = new Bundle();
+        bundle.putString("userId",userId);
+        homeFragment.setArguments(bundle);
         setFragment(homeFragment);
 
         mBottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                Bundle bundle;
+
 
                 switch (item.getItemId()){
 
                     case R.id.bottombar_menu_home:
+                        bundle = new Bundle();
+                        bundle.putString("userId",userId);
+                        homeFragment.setArguments(bundle);
                         setFragment(homeFragment);
                         Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
                         return true;

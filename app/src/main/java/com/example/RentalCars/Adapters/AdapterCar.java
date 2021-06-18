@@ -46,6 +46,10 @@ public class AdapterCar extends ArrayAdapter<Car> {
         return position;
     }
 
+    public void setCarList(ArrayList<Car> carList){
+        lCar = carList;
+    }
+
     public long getItemId(int position) {
         return position;
     }

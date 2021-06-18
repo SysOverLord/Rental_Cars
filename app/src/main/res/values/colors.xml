@@ -18,5 +18,6 @@
     <color name="searchBgColor">#F79F1F</color>
     <color name="searchBtnColor">#EDE8C7</color>
     <color name="searchTitleColor">#F79F1F</color>
+    <color name="deneme">#FEA82F</color>
 
 </resources>

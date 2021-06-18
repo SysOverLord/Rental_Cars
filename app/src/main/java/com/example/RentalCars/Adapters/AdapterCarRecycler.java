@@ -47,16 +47,21 @@ public class AdapterCarRecycler extends RecyclerView.Adapter<AdapterCarRecycler.
         return mCarList.size();
     }
 
+    public void setNewList(ArrayList<Car> carList){
+        this.mCarList = carList;
+    }
+
 
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView carBrand, carModel,carColor,carDesc;
+        TextView carBrand, carModel,carColor,carPrice;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             carBrand = (TextView) itemView.findViewById(R.id.car_item_txtViewCarBrand);
             carModel = (TextView) itemView.findViewById(R.id.car_item_txtViewCarModel);
             carColor = (TextView) itemView.findViewById(R.id.car_item_txtViewCarColor);
+            carPrice = (TextView) itemView.findViewById(R.id.car_item_txtViewCarPrice);
 
         }
 
@@ -65,6 +70,7 @@ public class AdapterCarRecycler extends RecyclerView.Adapter<AdapterCarRecycler.
             this.carBrand.setText(selectedCar.getBrand());
             this.carModel.setText(selectedCar.getModel());
             this.carColor.setText(selectedCar.getColor());
+            this.carPrice.setText(String.valueOf(selectedCar.getDailyPrice()));
 
 
         }

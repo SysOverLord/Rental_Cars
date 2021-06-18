@@ -40,8 +40,8 @@ public class RentActivity extends AppCompatActivity {
         });
     }
     private void checkDates(Date startDate, Date endDate, String rentedCarId,Rental rent){
-        CircularProgressIndicator circular = findViewById(R.id.CPI);
-        circular.setVisibility(View.VISIBLE);
+        //CircularProgressIndicator circular = findViewById(R.id.CPI);
+        //circular.setVisibility(View.VISIBLE);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("rentals/" );
         Query query = myRef.orderByChild("rentedCarId").equalTo(rentedCarId);
@@ -68,7 +68,7 @@ public class RentActivity extends AppCompatActivity {
                 }
                 if (isRentable)
                     rentCar(rent);
-                circular.setVisibility(View.INVISIBLE);
+                //circular.setVisibility(View.INVISIBLE);
 
             }
 
@@ -80,23 +80,18 @@ public class RentActivity extends AppCompatActivity {
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rent);
         Bundle extras = getIntent().getExtras();
-        //String rentedCarId = extras.getString("rentedCarId");
-        //String renterId = extras.getString("renterId");
-        //float dailyPrice = extras.getInt("dailyPrice");
-        float dailyPrice = 15f;
-        String rentedCarId = "ec2503bb-32a5-41ad-94cd-de13bdc76fea";
-        String renterId = "b4d5676a-e34d-4de8-9c63-2f4898abd9ba";
-        Date startDate = new Date(2021,11,28);
+        String rentedCarId = extras.getString("rentedCarId");
+        String renterId = extras.getString("renterId");
+        float dailyPrice = extras.getFloat("dailyPrice");
+        Date startDate = new Date(2021,11,27);
         Date endDate = new Date(2021,11,27);
 
         if(startDate.compareTo(endDate) <= 0){
             int yearDiff = endDate.getYear() - startDate.getYear();
             int monthDiff = endDate.getMonth() - startDate.getMonth();
             int dayDiff = endDate.getDate() - startDate.getDate();
-            float totalPrice = (yearDiff * 365 + monthDiff * 30 + dayDiff) * dailyPrice;
+            float totalPrice = (yearDiff * 365 + monthDiff * 30 + dayDiff + 1) * dailyPrice;
 
 
             Rental rent = new Rental(rentedCarId,startDate,endDate,totalPrice,renterId);

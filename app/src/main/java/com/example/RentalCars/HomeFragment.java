@@ -52,21 +52,22 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         defineElements(v);
 
-        fBrand = brandSearch.getText().toString();
-        fModel = modelSearch.getText().toString();
-        fColor = colorSearch.getText().toString();
+        fBrand = brandSearch.getText().toString().toLowerCase();
+        fModel = modelSearch.getText().toString().toLowerCase();
+        fColor = colorSearch.getText().toString().toLowerCase();
         mRecyclerView = (RecyclerView) v.findViewById(R.id.home_fragment_recyclerView);
-
-        createSearchQueue(fBrand,fModel,1,v);
+        adapterCarRecycler = new AdapterCarRecycler(getActivity(),new ArrayList<Car>());
+        String userId = getArguments().getString("userId");
+        createSearchList(fBrand,fModel,1,v,userId);
 
         btn_carSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                fBrand = brandSearch.getText().toString();
-                fModel = modelSearch.getText().toString();
-                fColor = colorSearch.getText().toString();
-                createSearchQueue(fBrand,fModel,1,v);
+                fBrand = brandSearch.getText().toString().toLowerCase();
+                fModel = modelSearch.getText().toString().toLowerCase();
+                fColor = colorSearch.getText().toString().toLowerCase();
+                createSearchList(fBrand,fModel,1,v,userId);
 
             }
         });
@@ -79,7 +80,7 @@ public class HomeFragment extends Fragment {
 
 
 
-    private  void createSearchQueue(String fBrand,String fModel, int page,View v) {
+    private  void createSearchList(String fBrand,String fModel, int page,View v,String userId) {
 
         ArrayList<Car> carList = new ArrayList<Car>();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -96,17 +97,20 @@ public class HomeFragment extends Fragment {
         else
             query = myRef.orderByValue();
         //Filtreleme bitişi
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     if (carList.size() < 5) {
-                        carList.add(dataSnapshot.getValue(Car.class));
+                        Car temp = dataSnapshot.getValue(Car.class);
+                        if( fColor.equals("") || temp.getColor().equals(fColor))
+                            carList.add(temp);
                     }
 
                 }
-                adapterCarRecycler = new AdapterCarRecycler(getActivity(),carList);
+                adapterCarRecycler.setNewList(carList);
                 mRecyclerView.setAdapter(adapterCarRecycler);
+
 
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                 linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -117,6 +121,8 @@ public class HomeFragment extends Fragment {
                             public void onItemClick(View view, int position) {
                                 Intent intent = new Intent(getActivity(),testForCarPage.class);
                                 intent.putExtra("car",carList.get(position));
+                                intent.putExtra("pageType","rentPage");
+                                intent.putExtra("userId",userId);
                                 startActivity(intent);
                             }
 
