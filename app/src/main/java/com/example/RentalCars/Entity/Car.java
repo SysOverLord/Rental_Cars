@@ -1,6 +1,8 @@
 package com.example.RentalCars.Entity;
 
-public class Car {
+import java.io.Serializable;
+
+public class Car implements Serializable {
 
     private String brand;
     private String model;

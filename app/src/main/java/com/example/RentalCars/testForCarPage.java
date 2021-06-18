@@ -29,11 +29,27 @@ public class testForCarPage extends AppCompatActivity {
         setContentView(R.layout.car_details);
         Bundle extras = getIntent().getExtras();
         //String carId = extras.getString("carId");
-        String carId = "e3b41480-794a-4d9e-b13b-db9cca713b7d";
-        createCarPageInformation(carId);
+        //String carId = "e3b41480-794a-4d9e-b13b-db9cca713b7d";
+        createCarPageInformation((Car)extras.get("car"));
+    }
+    public void createCarPageInformation(Car car){
+
+        TextView textBrand = findViewById(R.id.car_details_txtViewCarBrand);
+        TextView textModel = findViewById(R.id.car_details_txtViewCarModel);
+        TextView textColor = findViewById(R.id.car_details_txtViewCarColor);
+        TextView textPrice = findViewById(R.id.car_details_txtViewCarPrice);
+        TextView textDesc = findViewById(R.id.car_details_txtViewCarDescription);
+        textBrand.setText(car.getBrand());
+        textModel.setText(car.getModel());
+        textColor.setText(car.getColor());
+        textPrice.setText(String.format("%s", car.getDailyPrice()));
+        textDesc.setText(car.getDesc());
+
+
+
     }
 
-    public void createCarPageInformation(String carId){
+    public void createCarPageInformationFromDB(String carId){
 
         TextView textBrand = findViewById(R.id.car_details_txtViewCarBrand);
         TextView textModel = findViewById(R.id.car_details_txtViewCarModel);

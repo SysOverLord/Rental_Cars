@@ -45,7 +45,6 @@ public class LoginActivity extends AppCompatActivity {
         button.setOnClickListener(v -> {
             String username = textInputLayoutUser.getEditText().getText().toString().trim();
             String pass = textInputLayoutPass.getEditText().getText().toString().trim();
-            // public void loginMethod(String username,String password)
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef  = database.getReference("users");
             Query query = myRef.orderByChild("username").equalTo(username);

@@ -57,20 +57,20 @@ public class AdapterCar extends ArrayAdapter<Car> {
         public TextView display_dailyPrice;
 
     }
-/*
+
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
         final ViewHolder holder;
         try {
             if (convertView == null) {
                 //Layout Belirlenince hallediyok.
-                vi = inflater.inflate(R.layout.yourlayout, null);
+                vi = inflater.inflate(R.layout.car_item, null);
                 holder = new ViewHolder();
 
-                holder.display_brand = (TextView) vi.findViewById(R.id.display_brand);
-                holder.display_model = (TextView) vi.findViewById(R.id.display_model);
-                holder.display_color = (TextView) vi.findViewById(R.id.display_color);
-                holder.display_dailyPrice = (TextView) vi.findViewById(R.id.display_dailyPrice);
+                holder.display_brand = (TextView) vi.findViewById(R.id.car_item_txtViewCarBrand);
+                holder.display_model = (TextView) vi.findViewById(R.id.car_item_txtViewCarModel);
+                holder.display_color = (TextView) vi.findViewById(R.id.car_item_txtViewCarColor);
+                holder.display_dailyPrice = (TextView) vi.findViewById(R.id.car_item_txtViewCarPrice);
 
 
                 vi.setTag(holder);
@@ -83,12 +83,12 @@ public class AdapterCar extends ArrayAdapter<Car> {
             holder.display_brand.setText(lCar.get(position).getBrand());
             holder.display_model.setText(lCar.get(position).getModel());
             holder.display_color.setText(lCar.get(position).getColor());
-            holder.display_dailyPrice.setText((int) lCar.get(position).getDailyPrice());
+            holder.display_dailyPrice.setText(String.valueOf(lCar.get(position).getDailyPrice()));
 
         } catch (Exception e) {
 
 
         }
         return vi;
-    }*/
+    }
 }

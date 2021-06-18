@@ -1,5 +1,6 @@
 package com.example.RentalCars;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,9 +30,7 @@ import java.util.Queue;
 public class MyCarsFragment extends Fragment {
 
     private ListView mListView;
-    private ArrayAdapter<String> adapter;
-    private String[] myCars = {"CAR1", "CAR2", "CAR3", "CAR4", "CAR5",
-            "CAR6", "CAR7", "CAR8", "CAR9", "CAR10", "CAR11", "CAR12", "CAR13"};
+    private AdapterCar adapterCar;
 
 
     public void createCarList(String userId,View v){
@@ -44,22 +43,23 @@ public class MyCarsFragment extends Fragment {
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     carList.add(dataSnapshot.getValue(Car.class));
-                }
-                myCars = new String[carList.size()];
-                for(int i = 0; i<carList.size();i++){
-                    myCars[i] = carList.get(i).getBrand() + "-" + carList.get(i).getModel();
                 }
                 //show car list
                 mListView = (ListView)v.findViewById(R.id.listview_mycars);
-                adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,myCars);
-                mListView.setAdapter(adapter);
+                //adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,myCars);
+                adapterCar = new AdapterCar(getActivity(), android.R.layout.simple_list_item_1,carList);
+                mListView.setAdapter(adapterCar);
 
                 mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Toast.makeText(getContext(), myCars[position], Toast.LENGTH_SHORT).show();
+                        //Açıklama boş olursa crash yiyoz
+                        Intent intent = new Intent(getActivity(),testForCarPage.class);
+                        intent.putExtra("userId",userId);
+                        intent.putExtra("car",carList.get(position));
+                        startActivity(intent);
 
                     }
                 });

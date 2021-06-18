@@ -11,9 +11,12 @@
     <color name="gray">#2c3e50</color>
     <color name="ItemSelectedColor">#F87032</color>
     <color name="ItemUnselectedColor">#F3B99F</color>
-    <color name="homeFragmentBgColor">#FF835B</color>
+    <color name="homeFragmentBgColor">#FA876A</color>
     <color name="advertFragmentBgColor">#FFC107</color>
     <color name="profileFragmentBgColor">#FFEB3B</color>
     <color name="recyclerViewBgColor">#FAC87F</color>
+    <color name="searchBgColor">#F79F1F</color>
+    <color name="searchBtnColor">#EDE8C7</color>
+    <color name="searchTitleColor">#F79F1F</color>
 
 </resources>

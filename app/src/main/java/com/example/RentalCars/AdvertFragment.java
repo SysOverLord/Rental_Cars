@@ -1,5 +1,6 @@
 package com.example.RentalCars;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.RentalCars.Entity.Car;
@@ -56,11 +58,10 @@ public class AdvertFragment extends Fragment {
         String carId = UUID.randomUUID().toString();
 
         float dailyPrice = Float.parseFloat(checkingInputs[3].getTextInput().getEditText().getText().toString());
-        //DESC KISMI BOZUK DÜZELTELİM
-        Car newCar = new Car(checkingInputs[0].getTextInput().getEditText().getText().toString(),
-                checkingInputs[1].getTextInput().getEditText().getText().toString(),
-                checkingInputs[2].getTextInput().getEditText().getText().toString(),
-                dailyPrice, null
+        Car newCar = new Car(checkingInputs[0].getTextInput().getEditText().getText().toString().toLowerCase(),
+                checkingInputs[1].getTextInput().getEditText().getText().toString().toLowerCase(),
+                checkingInputs[2].getTextInput().getEditText().getText().toString().toLowerCase(),
+                dailyPrice, checkingInputs[4].getEdText().getText().toString()
                 , carId, userId);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -72,6 +73,11 @@ public class AdvertFragment extends Fragment {
                 myRef.setValue(newCar);
                 //BMF STANDS FOR BRAND MODEL FILTER
                 myRef.child("BMF").setValue(newCar.getBrand() + "_" + newCar.getModel());
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                Fragment HomeFragment = new HomeFragment();
+                activity.getSupportFragmentManager().beginTransaction().
+                        replace(((ViewGroup)getView().getParent()).getId(),HomeFragment)
+                        .addToBackStack(null).commit();
             }
 
             @Override
