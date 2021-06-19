@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/yellow">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <!--texts-->
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KİRALAYAN"
+                android:textSize="18dp"
+                android:fontFamily="@font/bungee"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/bungee"
+                android:text="KİRALAMA TARİHİ"
+                android:textSize="18dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TOPLAM ÜCRET"
+                android:textSize="18dp"
+                android:fontFamily="@font/bungee"/>
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtview_rental_renter"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="ATİBA HUTCHINSON"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/comfortaa_bold" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtview_rental_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="19/06/2021 - 30/06/2021"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/comfortaa_bold" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtview_rental_cost"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="5000"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/comfortaa_bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

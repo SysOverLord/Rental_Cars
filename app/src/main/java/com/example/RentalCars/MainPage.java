@@ -53,28 +53,29 @@ public class MainPage extends AppCompatActivity {
                         bundle.putString("userId",userId);
                         homeFragment.setArguments(bundle);
                         setFragment(homeFragment);
-                        Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.bottombar_menu_add:
                         bundle = new Bundle();
                         bundle.putString("userId",userId);
                         advertFragment.setArguments(bundle);
                         setFragment(advertFragment);
-                        Toast.makeText(getApplicationContext(), "Advertise", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "Advertise", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.bottombar_menu_profile:
                         bundle = new Bundle();
                         bundle.putString("userId",userId);
                         profileFragment.setArguments(bundle);
                         setFragment(profileFragment);
-                        Toast.makeText(getApplicationContext(), "Profile", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "Profile", Toast.LENGTH_SHORT).show();
                         return true;
-                    case R.id.bottombar_meny_mycars:
+                    case R.id.bottombar_menu_mycars:
                         bundle = new Bundle();
                         bundle.putString("userId",userId);
                         myCarsFragment.setArguments(bundle);
                         setFragment(myCarsFragment);
-                        Toast.makeText(getApplicationContext(), "My Cars", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), "My Cars", Toast.LENGTH_SHORT).show();
+                        return true;
                     default:
                         return false;
                 }

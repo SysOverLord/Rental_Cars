@@ -13,12 +13,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="KİRALAMAYA GİT"
-        android:layout_marginTop="-150dp"
+        android:layout_marginTop="-100dp"
         android:backgroundTint="@color/deneme"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:padding="15dp">
     </Button>
+
 
 </LinearLayout>

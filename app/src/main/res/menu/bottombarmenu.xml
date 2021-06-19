@@ -9,7 +9,7 @@
     <item
         android:id="@+id/bottombar_menu_add"
         android:icon="@drawable/ic_add"
-        android:title="Add Car"/>
+        android:title="Advert"/>
 
     <item
         android:id="@+id/bottombar_menu_profile"
@@ -17,7 +17,7 @@
         android:title="Profile"/>
 
     <item
-        android:id="@+id/bottombar_meny_mycars"
+        android:id="@+id/bottombar_menu_mycars"
         android:icon="@drawable/ic_car"
         android:title="My Cars"/>
 

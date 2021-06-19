@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 ArrayList<Car> carList = new ArrayList<Car>();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                    if (carList.size() < 5) {
+                    if (carList.size() < 20) {
                         Car temp = dataSnapshot.getValue(Car.class);
                         if( fColor.equals("") || temp.getColor().equals(fColor))
                             carList.add(temp);

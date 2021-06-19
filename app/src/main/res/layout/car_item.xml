@@ -2,15 +2,14 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="#F59C1D">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="5dp">
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="150dp"
@@ -69,7 +68,7 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="@android:color/black"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="15dp"/>
 
 
 </LinearLayout>

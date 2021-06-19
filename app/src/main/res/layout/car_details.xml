@@ -17,62 +17,7 @@
         android:textSize="24dp"
         android:gravity="center"
         android:layout_marginBottom="10dp"/>
-    <!--
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="fitXY"
-            android:id="@+id/car_details_carImage"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_margin="10dp"
-            android:layout_gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/car_details_txtViewCarBrand"
-                android:text="@string/car_brand"
-                android:textSize="18dp"
-                android:fontFamily="@font/bungee"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/car_details_txtViewCarModel"
-                android:text="@string/car_model"
-                android:textSize="18dp"
-                android:fontFamily="@font/bungee"
-                android:layout_marginTop="5dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/car_details_txtViewCarColor"
-                android:text="@string/car_color"
-                android:textSize="18dp"
-                android:fontFamily="@font/bungee"
-                android:layout_marginTop="5dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/car_details_txtViewCarPrice"
-                android:text="@string/car_daily_price"
-                android:textSize="18dp"
-                android:fontFamily="@font/bungee"
-                android:layout_marginTop="5dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/car_details_txtViewCarDescription"
-                android:text="@string/car_description"
-                android:textSize="18dp"
-                android:fontFamily="@font/bungee"
-                android:textStyle="bold"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="50dp"
-                android:scrollbars="vertical"/>
-        </LinearLayout>
-    -->
+
 
     <ImageView
         android:layout_width="match_parent"
@@ -92,6 +37,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginLeft="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KİRAYA VEREN"
+                android:textSize="18dp"
+                android:fontFamily="@font/bungee"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -137,6 +89,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!--search 0-->
+            <LinearLayout
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtview_owner"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:text="ATIBA HUTCHINSON"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:fontFamily="@font/comfortaa_bold" />
+
+            </LinearLayout>
+
+
             <!--search 1-->
             <LinearLayout
                 android:layout_width="220dp"
@@ -149,7 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:text="MERCEDES"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
                     android:textSize="18dp"
@@ -239,18 +211,27 @@
                     android:scrollbars="vertical"
                     android:fillViewport="true">
 
-                    <TextView
-                        android:id="@+id/txtview_desc"
-                        android:layout_width="fill_parent"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1.0"
-                        android:text="ASDASDSADSADSADASDASDSADSADSADSASADASDasdasdsadsadasads
-                             ASDASDSADSADSADASDASDSADSADSADSASADASDasdasdsadsadasads adsadasads Aadsadasads Aadsadasads A adsadasads A"
-                        android:textStyle="bold"
-                        android:textSize="18dp"
-                        android:fontFamily="@font/comfortaa_bold"
-                        android:lines="5"/>
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtview_desc"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.0"
+                            android:text="ASDASDSADSADSADASDASDSADSADSADSASADASDasdasdsadsadasads
+                                 ASDASDSADSADSADASDASDSADSADSADSASADASDasdasdsadsadasads adsadasads Aadsadasads Aadsadasads A adsadasads A"
+                            android:textStyle="bold"
+                            android:textSize="18dp"
+                            android:fontFamily="@font/comfortaa_bold"
+                            android:lines="5"/>
+
+                    </LinearLayout>
+
                 </ScrollView>
+
             </LinearLayout>
 
         </LinearLayout>
