@@ -9,13 +9,15 @@ public class Rental {
     private Date endDate;
     private float totalPrice;
     private String renterId;
+    private String carOwnerId;
 
-    public Rental(String rentedCarId, Date startDate, Date endDate, float totalPrice, String renterId) {
+    public Rental(String rentedCarId, Date startDate, Date endDate, float totalPrice, String renterId,String carOwnerId) {
         this.rentedCarId = rentedCarId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.totalPrice = totalPrice;
         this.renterId = renterId;
+        this.carOwnerId = carOwnerId;
     }
 
     public String getRenterId() {
@@ -39,4 +41,7 @@ public class Rental {
         return totalPrice;
     }
 
+    public String getCarOwnerId() {
+        return carOwnerId;
+    }
 }

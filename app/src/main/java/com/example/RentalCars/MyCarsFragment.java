@@ -7,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -24,8 +22,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
 
 public class MyCarsFragment extends Fragment {
@@ -57,8 +53,8 @@ public class MyCarsFragment extends Fragment {
                 mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        //Açıklama boş olursa crash yiyoz
-                        Intent intent = new Intent(getActivity(),testForCarPage.class);
+
+                        Intent intent = new Intent(getActivity(), ActivityCarPage.class);
                         intent.putExtra("userId",userId);
                         intent.putExtra("car",carList.get(position));
                         intent.putExtra("pageType","myCarPage");

@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".testForCarPage">
+        <activity android:name=".ActivityCarPage">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -54,13 +54,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.GET_CONTENT" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".SearchActivity">
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT" />
 

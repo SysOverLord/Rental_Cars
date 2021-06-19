@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                             dbPass = snapshot.child("password").getValue(String.class);
                             userId = snapshot.child("userId").getValue(String.class);
                         }
-                        if(dbPass.equals("")){
+                        if(userId.equals("")){
                             builder.setMessage("User not found");
                             AlertDialog alert = builder.create();
                             alert.setTitle("Notify");

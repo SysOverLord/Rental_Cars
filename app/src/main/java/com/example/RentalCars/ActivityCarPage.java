@@ -28,7 +28,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.Date;
 import java.util.UUID;
 
-public class testForCarPage extends AppCompatActivity {
+public class ActivityCarPage extends AppCompatActivity {
 
     boolean isRentable;
     boolean dbReturned;
@@ -59,10 +59,15 @@ public class testForCarPage extends AppCompatActivity {
             Car car = (Car) extras.get("car");
             createCarPageInformation(car);
             Button button = findViewById(R.id.btn_rent_car);
+            Intent rentIntent = new Intent(this,RentActivity.class);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    rentProcess(car.getCarId(),userId,car.getDailyPrice());
+                  rentIntent.putExtra("renterId",userId);
+                  rentIntent.putExtra("rentedCarId",car.getCarId());
+                  rentIntent.putExtra("dailyPrice",car.getDailyPrice());
+                  rentIntent.putExtra("carOwnerId",car.getOwnerId());
+                  startActivity(rentIntent);
 
 
                 }
@@ -71,61 +76,9 @@ public class testForCarPage extends AppCompatActivity {
 
     }
 
-    private void rentCar(Rental rent){
-        String uuid = UUID.randomUUID().toString();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("rentals/" + uuid );
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                myRef.setValue(rent);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-    private void checkDates(Date startDate, Date endDate, String rentedCarId,Rental rent){
-        //CircularProgressIndicator circular = findViewById(R.id.CPI);
-        //circular.setVisibility(View.VISIBLE);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("rentals/" );
-        Query query = myRef.orderByChild("rentedCarId").equalTo(rentedCarId);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                dbReturned = true;
-                if (snapshot.exists()){
-                    for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                        Date dbStart = dataSnapshot.child("startDate").getValue(Date.class);
-                        Date dbEnd = dataSnapshot.child("endDate").getValue(Date.class);
-                        if(dbEnd.compareTo(startDate) >= 0 && dbEnd.compareTo(endDate) <= 0){
-                            isRentable = false;
-                            break;
-                        }
-
-                        else if (dbStart.compareTo(startDate) >= 0 && dbStart.compareTo(endDate) <= 0){
-                            isRentable = false;
-                            break;
-                        }
 
 
-                    }
-                }
-                if (isRentable)
-                    rentCar(rent);
-                //circular.setVisibility(View.INVISIBLE);
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
     public void deleteCar(String carId){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("cars/" + carId );
@@ -142,30 +95,7 @@ public class testForCarPage extends AppCompatActivity {
             }
         });
     }
-    public void rentProcess(String rentedCarId,String renterId,float dailyPrice){
-        Date startDate = new Date(2021,11,25);
-        Date endDate = new Date(2021,11,27);
 
-        if(startDate.compareTo(endDate) <= 0){
-            int yearDiff = endDate.getYear() - startDate.getYear();
-            int monthDiff = endDate.getMonth() - startDate.getMonth();
-            int dayDiff = endDate.getDate() - startDate.getDate();
-            float totalPrice = (yearDiff * 365 + monthDiff * 30 + dayDiff + 1) * dailyPrice;
-
-
-            Rental rent = new Rental(rentedCarId,startDate,endDate,totalPrice,renterId);
-            isRentable = true;
-            dbReturned = false;
-
-            checkDates(startDate,endDate,rentedCarId,rent);
-        }
-        else{
-            //Hata mesajı
-            Toast.makeText(getApplicationContext(), "Illegal Date", Toast.LENGTH_SHORT).show();
-            //CircularProgressIndicator circular = findViewById(R.id.CPI);
-            //circular.setVisibility(View.INVISIBLE);
-        }
-    }
     public void createCarPageInformation(Car car){
 
         TextView textBrand = findViewById(R.id.txtview_brand);

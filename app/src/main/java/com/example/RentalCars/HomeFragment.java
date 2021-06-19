@@ -5,12 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -18,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.RentalCars.AdapterListeners.CarRecyclerItemClickListener;
-import com.example.RentalCars.Adapters.AdapterCar;
 import com.example.RentalCars.Adapters.AdapterCarRecycler;
 import com.example.RentalCars.Entity.Car;
 import com.google.firebase.database.DataSnapshot;
@@ -82,7 +77,7 @@ public class HomeFragment extends Fragment {
 
     private  void createSearchList(String fBrand,String fModel, int page,View v,String userId) {
 
-        ArrayList<Car> carList = new ArrayList<Car>();
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("cars/");
         Query query;
@@ -100,6 +95,7 @@ public class HomeFragment extends Fragment {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Car> carList = new ArrayList<Car>();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     if (carList.size() < 5) {
                         Car temp = dataSnapshot.getValue(Car.class);
@@ -119,7 +115,7 @@ public class HomeFragment extends Fragment {
                         new CarRecyclerItemClickListener(getActivity(), mRecyclerView, new CarRecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                Intent intent = new Intent(getActivity(),testForCarPage.class);
+                                Intent intent = new Intent(getActivity(), ActivityCarPage.class);
                                 intent.putExtra("car",carList.get(position));
                                 intent.putExtra("pageType","rentPage");
                                 intent.putExtra("userId",userId);
