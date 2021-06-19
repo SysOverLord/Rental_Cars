@@ -8,14 +8,17 @@
     <include
         layout="@layout/car_details"/>
 
-    <ImageButton
-        android:id="@+id/btn_delete_car"
+    <Button
+        android:id="@+id/btn_rent_car"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_delete"
+        android:text="KİRALAMAYA GİT"
         android:layout_marginTop="-150dp"
-        android:backgroundTint="@color/yellow"
-        android:layout_gravity="center">
-    </ImageButton>
+        android:backgroundTint="@color/deneme"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:padding="15dp">
+    </Button>
 
 </LinearLayout>

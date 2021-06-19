@@ -3,9 +3,14 @@ package com.example.RentalCars;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.RentalCars.Entity.Rental;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
@@ -20,9 +25,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
-public class RentActivity extends AppCompatActivity {
+public class RentActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
+
     boolean isRentable;
     boolean dbReturned;
+    ImageButton btn_startDate;
+    ImageButton btn_endDate;
+    TextView startDateText;
+    TextView endDateText;
+    Button btn_rental_complete;
+
     private void rentCar(Rental rent){
         String uuid = UUID.randomUUID().toString();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -82,6 +94,32 @@ public class RentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rent);
+
+
+        btn_startDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showStartDate();
+            }
+        });
+
+        btn_endDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showEndDate();
+            }
+        });
+
+        btn_rental_complete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // KİRALAMA İŞLEMLERİ
+
+            }
+        });
+
+
         Bundle extras = getIntent().getExtras();
         //String rentedCarId = extras.getString("rentedCarId");
         //String renterId = extras.getString("renterId");
@@ -108,4 +146,43 @@ public class RentActivity extends AppCompatActivity {
         checkDates(startDate,endDate,rentedCarId,rent);
         String a = "";
     }
+
+
+    private void showStartDate(){
+        DatePickerDialog startDatePickerDialog = new DatePickerDialog(
+                this,
+                this,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        );
+        startDatePickerDialog.show();
+    }
+
+    private void showEndDate(){
+        DatePickerDialog endDatePickerDialog = new DatePickerDialog(
+                this,
+                this,
+                Calendar.getInstance().get(Calendar.YEAR),
+                Calendar.getInstance().get(Calendar.MONTH),
+                Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+        );
+        endDatePickerDialog.show();
+    }
+
+
+    private void defineElements(){
+        btn_startDate = (ImageButton)findViewById(R.id.rental_start_date);
+        btn_endDate = (ImageButton)findViewById(R.id.rental_end_date);
+        startDateText = (TextView)findViewById(R.id.txtview_start_date);
+        endDateText = (TextView)findViewById(R.id.txtview_end_date);
+        btn_rental_complete = (Button)findViewById(R.id.btn_rental_complete);
+    }
+
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+        String date = "month/day/year" + month + "/" + dayOfMonth +"/" + year;
+        startDateText.setText(date);
+    }
+
 }
