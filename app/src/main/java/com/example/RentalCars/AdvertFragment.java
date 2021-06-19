@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
@@ -42,11 +43,12 @@ public class AdvertFragment extends Fragment {
         String userId = getArguments().getString("userId");
 
         CheckingInputs[] checkingInputs = defineElements(v);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isEmpty(checkingInputs))
+                if(!isEmpty(checkingInputs, builder))
                     addCar(v, checkingInputs, userId);
             }
         });
@@ -96,7 +98,7 @@ public class AdvertFragment extends Fragment {
                 new CheckingInputs("Model", model = (TextInputLayout) v.findViewById(R.id.advert_car_model)),
                 new CheckingInputs("Color", color = (TextInputLayout) v.findViewById(R.id.advert_car_color)),
                 new CheckingInputs("Price", price = (TextInputLayout) v.findViewById(R.id.advert_car_price)),
-                new CheckingInputs("Detail", detail = (EditText) v.findViewById(R.id.advert_car_description)),
+                new CheckingInputs("Details", detail = (EditText) v.findViewById(R.id.advert_car_description)),
         };
 
         btn_add = (Button) v.findViewById(R.id.btn_add);
@@ -104,16 +106,22 @@ public class AdvertFragment extends Fragment {
         return checkingInputs;
     }
 
-    private boolean isEmpty(CheckingInputs[] checkingInputs) {
+    private boolean isEmpty(CheckingInputs[] checkingInputs, AlertDialog.Builder builder) {
         for (CheckingInputs input : checkingInputs) {
             if (input.getEdText() != null){
                 if (input.getEdText().getText().toString().matches("")) {
-                    Toast.makeText(getContext(), "You did not enter the " + input.getName(), Toast.LENGTH_LONG).show();
+                    builder.setMessage(input.getName() + " is empty");
+                    AlertDialog alert = builder.create();
+                    alert.setTitle("Notify");
+                    alert.show();
                     return true;
                 }
             } else {
                 if (input.getTextInput().toString().matches("")) {
-                    Toast.makeText(getContext(), "You did not enter the " + input.getName(), Toast.LENGTH_LONG).show();
+                    builder.setMessage(input.getName() + " is empty");
+                    AlertDialog alert = builder.create();
+                    alert.setTitle("Notify");
+                    alert.show();
                     return true;
                 }
             }

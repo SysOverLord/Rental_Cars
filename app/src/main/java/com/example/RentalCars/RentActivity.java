@@ -36,7 +36,6 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
     Date startDate;
     Date endDate;
 
-
     String selectedDate;
 
     boolean isRentable;

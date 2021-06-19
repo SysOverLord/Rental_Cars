@@ -75,6 +75,7 @@ public class MainPage extends AppCompatActivity {
                         myCarsFragment.setArguments(bundle);
                         setFragment(myCarsFragment);
                         Toast.makeText(getApplicationContext(), "My Cars", Toast.LENGTH_SHORT).show();
+                        return true;
                     default:
                         return false;
                 }
