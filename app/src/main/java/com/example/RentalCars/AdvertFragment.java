@@ -56,12 +56,11 @@ public class AdvertFragment extends Fragment {
     private void addCar(View v, CheckingInputs[] checkingInputs, String userId) {
 
         String carId = UUID.randomUUID().toString();
-
         float dailyPrice = Float.parseFloat(checkingInputs[3].getTextInput().getEditText().getText().toString());
-        Car newCar = new Car(checkingInputs[0].getTextInput().getEditText().getText().toString().toLowerCase(),
-                checkingInputs[1].getTextInput().getEditText().getText().toString().toLowerCase(),
-                checkingInputs[2].getTextInput().getEditText().getText().toString().toLowerCase(),
-                dailyPrice, checkingInputs[4].getEdText().getText().toString()
+        Car newCar = new Car(checkingInputs[0].getTextInput().getEditText().getText().toString().toLowerCase().trim(),
+                checkingInputs[1].getTextInput().getEditText().getText().toString().toLowerCase().trim(),
+                checkingInputs[2].getTextInput().getEditText().getText().toString().toLowerCase().trim(),
+                dailyPrice, checkingInputs[4].getEdText().getText().toString().trim()
                 , carId, userId);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();

@@ -1,23 +1,17 @@
 package com.example.RentalCars;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.RentalCars.Entity.Car;
 import com.example.RentalCars.Entity.Rental;
-import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,8 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Date;
-import java.util.UUID;
+import java.util.ArrayList;
 
 public class ActivityCarPage extends AppCompatActivity {
 
@@ -58,7 +51,7 @@ public class ActivityCarPage extends AppCompatActivity {
             String userId = extras.getString("userId");
             Car car = (Car) extras.get("car");
             createCarPageInformation(car);
-            Button button = findViewById(R.id.btn_rent_car);
+            Button button = findViewById(R.id.btn_rental_complete);
             Intent rentIntent = new Intent(this,RentActivity.class);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -113,6 +106,30 @@ public class ActivityCarPage extends AppCompatActivity {
 
     }
 
+    public void createCarRentalInformationfromDB(String carId){
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("rentals" );
+        Query query = myRef.orderByChild("rentedCarId").equalTo(carId);
+        query.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                ArrayList<Rental>  rentals = new ArrayList<Rental>();
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    rentals.add(dataSnapshot.getValue(Rental.class));
+                }
+                //Arabanın bilgi kutucuklarını değiştir
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
     public void createCarPageInformationFromDB(String carId){
 
         TextView textBrand = findViewById(R.id.txtview_brand);

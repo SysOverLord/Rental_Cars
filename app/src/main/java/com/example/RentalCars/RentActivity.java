@@ -133,15 +133,15 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        String date = dayOfMonth + "/" + month +"/" + year;
+        String date = dayOfMonth + "/" + (month + 1) +"/" + year;
         if(selectedDate.equals("startDate")){
             startDateText.setText(date);
-            startDate = new Date(year,month,dayOfMonth);
+            startDate = new Date(year,month +1 ,dayOfMonth);
         }
 
         else{
             endDateText.setText(date);
-            endDate = new Date(year,month,dayOfMonth);
+            endDate = new Date(year,month +1 ,dayOfMonth);
         }
 
     }

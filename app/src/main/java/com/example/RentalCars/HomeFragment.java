@@ -1,5 +1,6 @@
 package com.example.RentalCars;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.RentalCars.AdapterListeners.CarRecyclerItemClickListener;
+import com.example.RentalCars.Adapters.AdapterCar;
 import com.example.RentalCars.Adapters.AdapterCarRecycler;
 import com.example.RentalCars.Entity.Car;
 import com.google.firebase.database.DataSnapshot;
@@ -31,13 +34,16 @@ public class HomeFragment extends Fragment {
     EditText brandSearch;
     EditText modelSearch;
     EditText colorSearch;
-    EditText priceSearch;
+    EditText price1Search;
+    EditText price2Search;
     ImageButton btn_carSearch;
     String fBrand;
     String fModel;
     String fColor;
     RecyclerView mRecyclerView;
-    AdapterCarRecycler adapterCarRecycler;
+    Activity activity;
+    ArrayList<Car> carList;
+
 
 
     @Override
@@ -47,11 +53,12 @@ public class HomeFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
         defineElements(v);
 
-        fBrand = brandSearch.getText().toString().toLowerCase();
-        fModel = modelSearch.getText().toString().toLowerCase();
-        fColor = colorSearch.getText().toString().toLowerCase();
+        fBrand = brandSearch.getText().toString().toLowerCase().trim();
+        fModel = modelSearch.getText().toString().toLowerCase().trim();
+        fColor = colorSearch.getText().toString().toLowerCase().trim();
         mRecyclerView = (RecyclerView) v.findViewById(R.id.home_fragment_recyclerView);
-        adapterCarRecycler = new AdapterCarRecycler(getActivity(),new ArrayList<Car>());
+        AdapterCarRecycler adapterCarRecycler = new AdapterCarRecycler(getActivity(),new ArrayList<Car>());
+        activity = getActivity();
         String userId = getArguments().getString("userId");
         createSearchList(fBrand,fModel,1,v,userId);
 
@@ -59,9 +66,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                fBrand = brandSearch.getText().toString().toLowerCase();
-                fModel = modelSearch.getText().toString().toLowerCase();
-                fColor = colorSearch.getText().toString().toLowerCase();
+                fBrand = brandSearch.getText().toString().toLowerCase().trim();
+                fModel = modelSearch.getText().toString().toLowerCase().trim();
+                fColor = colorSearch.getText().toString().toLowerCase().trim();
                 createSearchList(fBrand,fModel,1,v,userId);
 
             }
@@ -80,6 +87,14 @@ public class HomeFragment extends Fragment {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("cars/");
+        float num1 = 0;
+        float num2 = 0;
+        if(!price1Search.getText().toString().equals(""))
+            num1 = Float.parseFloat(price1Search.getText().toString());
+        if(!price2Search.getText().toString().equals(""))
+            num2 = Float.parseFloat(price2Search.getText().toString());
+        float upperbound = Math.max(num1,num2);
+        float lowerbound = Math.min(num1,num2);
         Query query;
         // Filtreleme başlangıcı
         if(!fBrand.equals("") && !fModel.equals("")){
@@ -95,16 +110,18 @@ public class HomeFragment extends Fragment {
         query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ArrayList<Car> carList = new ArrayList<Car>();
+                carList = new ArrayList<Car>();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                    if (carList.size() < 5) {
+                    if (carList.size() < 20) {
                         Car temp = dataSnapshot.getValue(Car.class);
-                        if( fColor.equals("") || temp.getColor().equals(fColor))
+                        if(( upperbound == 0 && lowerbound == 0 || (temp.getDailyPrice() >= lowerbound && temp.getDailyPrice() <= upperbound))
+                                && (fColor.equals("") || temp.getColor().equals(fColor)))
                             carList.add(temp);
                     }
 
                 }
-                adapterCarRecycler.setNewList(carList);
+
+                AdapterCarRecycler adapterCarRecycler = new AdapterCarRecycler(activity,carList);
                 mRecyclerView.setAdapter(adapterCarRecycler);
 
 
@@ -112,10 +129,10 @@ public class HomeFragment extends Fragment {
                 linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 mRecyclerView.setLayoutManager(linearLayoutManager);
                 mRecyclerView.addOnItemTouchListener(
-                        new CarRecyclerItemClickListener(getActivity(), mRecyclerView, new CarRecyclerItemClickListener.OnItemClickListener() {
+                        new CarRecyclerItemClickListener(activity, mRecyclerView, new CarRecyclerItemClickListener.OnItemClickListener() {
                             @Override
                             public void onItemClick(View view, int position) {
-                                Intent intent = new Intent(getActivity(), ActivityCarPage.class);
+                                Intent intent = new Intent(activity, ActivityCarPage.class);
                                 intent.putExtra("car",carList.get(position));
                                 intent.putExtra("pageType","rentPage");
                                 intent.putExtra("userId",userId);
@@ -142,7 +159,8 @@ public class HomeFragment extends Fragment {
         brandSearch = (EditText)v.findViewById(R.id.search_brand_edittxt);
         modelSearch = (EditText)v.findViewById(R.id.search_model_edittxt);
         colorSearch = (EditText)v.findViewById(R.id.search_color_edittxt);
-        priceSearch = (EditText)v.findViewById(R.id.search_price_edittxt);
+        price1Search = (EditText)v.findViewById(R.id.search_price1_edittxt);
+        price2Search = (EditText)v.findViewById(R.id.search_price2_edittxt);
         btn_carSearch = (ImageButton)v.findViewById(R.id.btn_search_car);
     }
 }

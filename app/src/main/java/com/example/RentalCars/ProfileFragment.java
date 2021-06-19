@@ -100,28 +100,20 @@ public class ProfileFragment extends Fragment {
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                if(!newEmail.getEditText().getText().equals("") || !newPassword.getEditText().getText().equals("") ){
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("users/" + userId);
-                    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            myRef.child("email").setValue(newEmail.getEditText().getText().toString());
-                            myRef.child("password").setValue(newPassword.getEditText().getText().toString());
+                    String newEmailStr = newEmail.getEditText().getText().toString();
+                    String newPasswordStr = newPassword.getEditText().getText().toString();
+                    if(newEmailStr.equals("") && newPasswordStr.equals("")){
+                        // Hata mesajı
+                    }
+                    else{
+                        if(!newEmailStr.equals("")){
+                            myRef.child("email").setValue(newEmailStr);
                         }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                }
-
-                else{
-                    //Hata Mesajı
-                }
+                        if(!newPasswordStr.equals(""))
+                            myRef.child("password").setValue(newPasswordStr);
+                    }
 
             }
         });
