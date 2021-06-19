@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="5dp"
     android:background="@color/yellow">
@@ -252,8 +252,8 @@
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1.0"
-                            android:text="ASDASDSADSADSADASDASDSADSADSADSASADASDasdasdsadsadasads
-                             ASDASDSADSADSADASDASDSADSADSADSASADASDasdasdsadsadasads adsadasads Aadsadasads Aadsadasads A adsadasads A"
+                            android:text="DYNAMIC SELECT dials in performance with the tap of a console button.
+                            Four preset modes vary shift points, throttle, steering and more, from easygoing ECO to sharp Sport+. Or create your own mode."
                             android:textStyle="bold"
                             android:textSize="18dp"
                             android:fontFamily="@font/comfortaa_bold"
