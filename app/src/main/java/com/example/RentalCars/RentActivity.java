@@ -85,7 +85,7 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
 
                     Rental rent = new Rental(rentedCarId, startDate, endDate, totalPrice, renterId,carOwnerId);
                     isRentable = true;
-                    checkDates(startDate,endDate, rent);
+                    getRenterFullName(rent);
 
                 } else {
                     //Hata mesajı
@@ -136,14 +136,36 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
         String date = dayOfMonth + "/" + (month + 1) +"/" + year;
         if(selectedDate.equals("startDate")){
             startDateText.setText(date);
-            startDate = new Date(year,month +1 ,dayOfMonth);
+            startDate = new Date(year - 1900,month +1 ,dayOfMonth);
         }
-
+        //Year - 1900 düzgün zamanı atması için öbür türlü 1900 yıl fazla atıyor
+        //Datenin işleyişine göre 121 değerinde olması gerekirken 2021 oluyor
+        //Sonuç olarak da kiralamaları listelerken 3921 yılında olduğunu gösteriyor.
         else{
             endDateText.setText(date);
-            endDate = new Date(year,month +1 ,dayOfMonth);
+            endDate = new Date(year - 1900,month +1 ,dayOfMonth);
         }
 
+    }
+
+    private void getRenterFullName(Rental rent){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference userRef = database.getReference("users/" + rent.getRenterId());
+        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    rent.setRenterFullName(String.format("%s %s"
+                            ,snapshot.child("firstName").getValue(String.class)
+                            ,snapshot.child("lastName").getValue(String.class)));
+                    checkDates(startDate,endDate, rent);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
 

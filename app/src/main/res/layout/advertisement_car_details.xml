@@ -15,7 +15,7 @@
             layout="@layout/car_details"/>
 
         <Button
-            android:id="@+id/btn_rental_complete"
+            android:id="@+id/btn_pickDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -25,7 +25,7 @@
             android:text="KİRALA"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:layout_marginBottom="20dp"></Button>
+            android:layout_marginBottom="20dp" />
 
 
         <TextView
@@ -40,67 +40,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/listview_prev_rentals"/>
-
-
-
-
-        <!--
-            <Button
-                android:id="@+id/btn_rent_car"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="KİRALAMAYA GİT"
-                android:layout_marginTop="-150dp"
-                android:backgroundTint="@color/deneme"
-                android:layout_gravity="center"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:padding="15dp"
-                android:layout_marginBottom="150dp">
-            </Button>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fillViewport="true">
-                <Button
-                    android:id="@+id/btn_ren_car"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="KİRALAMAYA GİT"
-                    android:layout_marginTop="-150dp"
-                    android:backgroundTint="@color/deneme"
-                    android:layout_gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:padding="15dp"
-                    android:layout_marginBottom="150dp">
-                </Button>
-                <Button
-                    android:id="@+id/btn_rent_ca"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="KİRALAMAYA GİT"
-                    android:layout_marginTop="-150dp"
-                    android:backgroundTint="@color/deneme"
-                    android:layout_gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:padding="15dp"
-                    android:layout_marginBottom="150dp">
-                </Button>
-            <ListView
-                android:id="@+id/rental_prev_rents"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            </ScrollView>
-            </LinearLayout>
-        -->
-
-
 
     </LinearLayout>
 

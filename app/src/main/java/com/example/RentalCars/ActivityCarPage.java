@@ -1,15 +1,18 @@
 package com.example.RentalCars;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.RentalCars.Adapters.AdapterRentals;
 import com.example.RentalCars.Entity.Car;
 import com.example.RentalCars.Entity.Rental;
 import com.google.firebase.database.DataSnapshot;
@@ -25,10 +28,13 @@ public class ActivityCarPage extends AppCompatActivity {
 
     boolean isRentable;
     boolean dbReturned;
+    ListView mListView;
+    ArrayList<Rental> rentalList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if(getIntent().getExtras().getString("pageType").equals("myCarPage")){
             setContentView(R.layout.my_car_details);
             Bundle extras = getIntent().getExtras();
@@ -45,13 +51,13 @@ public class ActivityCarPage extends AppCompatActivity {
 
         else{
             setContentView(R.layout.advertisement_car_details);
+            mListView = findViewById(R.id.listview_prev_rentals);
             Bundle extras = getIntent().getExtras();
-            //String carId = extras.getString("carId");
-            //String carId = "e3b41480-794a-4d9e-b13b-db9cca713b7d";
             String userId = extras.getString("userId");
             Car car = (Car) extras.get("car");
             createCarPageInformation(car);
-            Button button = findViewById(R.id.btn_rental_complete);
+            createCurrentCarRentalsList(car.getCarId());
+            Button button = findViewById(R.id.btn_pickDate);
             Intent rentIntent = new Intent(this,RentActivity.class);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -71,7 +77,29 @@ public class ActivityCarPage extends AppCompatActivity {
 
 
 
+    public void createCurrentCarRentalsList(String carId){
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("rentals");
+        Query query = myRef.orderByChild("rentedCarId").equalTo(carId);
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                rentalList =new ArrayList<Rental>();
+                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    rentalList.add(dataSnapshot.getValue(Rental.class));
+                }
+                mListView = findViewById(R.id.listview_prev_rentals);
+                AdapterRentals adapterRentals = new AdapterRentals(ActivityCarPage.this,android.R.layout.simple_list_item_1,rentalList);
+                mListView.setAdapter(adapterRentals);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
     public void deleteCar(String carId){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("cars/" + carId );
@@ -88,38 +116,15 @@ public class ActivityCarPage extends AppCompatActivity {
             }
         });
     }
-
-    public void createCarPageInformation(Car car){
-
-        TextView textBrand = findViewById(R.id.txtview_brand);
-        TextView textModel = findViewById(R.id.txtview_model);
-        TextView textColor = findViewById(R.id.txtview_color);
-        TextView textPrice = findViewById(R.id.txtview_dailyprice);
-        TextView textDesc = findViewById(R.id.txtview_desc);
-        textBrand.setText(car.getBrand());
-        textModel.setText(car.getModel());
-        textColor.setText(car.getColor());
-        textPrice.setText(String.format("%s", car.getDailyPrice()));
-        textDesc.setText(car.getDesc());
-
-
-
-    }
-
-    public void createCarRentalInformationfromDB(String carId){
-
+    public void findOwnerName(TextView textOwner,String ownerId){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("rentals" );
-        Query query = myRef.orderByChild("rentedCarId").equalTo(carId);
-        query.addValueEventListener(new ValueEventListener() {
-
+        DatabaseReference myRef = database.getReference("users/" + ownerId );
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                ArrayList<Rental>  rentals = new ArrayList<Rental>();
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    rentals.add(dataSnapshot.getValue(Rental.class));
-                }
-                //Arabanın bilgi kutucuklarını değiştir
+                String ownerFirstName = snapshot.child("firstName").getValue(String.class);
+                String ownerLastName = snapshot.child("lastName").getValue(String.class);
+                textOwner.setText(String.format("%s %s", ownerFirstName, ownerLastName));
 
             }
 
@@ -128,8 +133,24 @@ public class ActivityCarPage extends AppCompatActivity {
 
             }
         });
+    }
+    public void createCarPageInformation(Car car){
+
+        TextView textBrand = findViewById(R.id.txtview_brand);
+        TextView textModel = findViewById(R.id.txtview_model);
+        TextView textColor = findViewById(R.id.txtview_color);
+        TextView textPrice = findViewById(R.id.txtview_dailyprice);
+        TextView textDesc = findViewById(R.id.txtview_desc);
+        TextView textOwner = findViewById(R.id.txtview_owner);
+        textBrand.setText(car.getBrand());
+        textModel.setText(car.getModel());
+        textColor.setText(car.getColor());
+        textPrice.setText(String.format("%s", car.getDailyPrice()));
+        textDesc.setText(car.getDesc());
+        findOwnerName(textOwner,car.getOwnerId());
 
     }
+
     public void createCarPageInformationFromDB(String carId){
 
         TextView textBrand = findViewById(R.id.txtview_brand);

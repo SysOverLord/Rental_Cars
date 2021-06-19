@@ -18,6 +18,7 @@ import com.google.firebase.database.ThrowOnExtraProperties;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class AdapterRentals extends ArrayAdapter<Rental> {
@@ -47,35 +48,29 @@ public class AdapterRentals extends ArrayAdapter<Rental> {
         return position;
     }
 
-    public void setCarList(ArrayList<Rental> RentalList){
-        _lRental = RentalList;
-    }
-
     public long getItemId(int position) {
         return position;
     }
 
     public static class ViewHolder {
-        public TextView display_brand;
-        public TextView display_model;
-        public TextView display_color;
-        public TextView display_dailyPrice;
+        public TextView display_renter;
+        public TextView display_date;
+        public TextView display_totalPrice;
 
     }
-/*
+
     public View getView(int position, View convertView, ViewGroup parent) {
         View vi = convertView;
         final ViewHolder holder;
         try {
             if (convertView == null) {
                 //Layout Belirlenince hallediyok.
-                vi = inflater.inflate(R.layout.car_item, null);
+                vi = inflater.inflate(R.layout.rental_details, null);
                 holder = new ViewHolder();
 
-                holder.display_brand = (TextView) vi.findViewById(R.id.car_item_txtViewCarBrand);
-                holder.display_model = (TextView) vi.findViewById(R.id.car_item_txtViewCarModel);
-                holder.display_color = (TextView) vi.findViewById(R.id.car_item_txtViewCarColor);
-                holder.display_dailyPrice = (TextView) vi.findViewById(R.id.car_item_txtViewCarPrice);
+                holder.display_renter = (TextView) vi.findViewById(R.id.txtview_rental_renter);
+                holder.display_date = (TextView) vi.findViewById(R.id.txtview_rental_date);
+                holder.display_totalPrice = (TextView) vi.findViewById(R.id.txtview_rental_cost);
 
 
                 vi.setTag(holder);
@@ -85,15 +80,16 @@ public class AdapterRentals extends ArrayAdapter<Rental> {
 
 
 
-            holder.display_brand.setText(lRental.get(position).getStartDate());
-            holder.display_model.setText(lRental.get(position).getEndDate());
-            holder.display_color.setText(lRental.get(position).get());
-            holder.display_dailyPrice.setText(String.valueOf(lRental.get(position).getDailyPrice()));
+            holder.display_renter.setText(_lRental.get(position).getRenterFullName());
+            String startDateStr = new SimpleDateFormat("dd/MM/yyyy").format(_lRental.get(position).getStartDate());
+            String endDateStr = new SimpleDateFormat("dd/MM/yyyy").format(_lRental.get(position).getEndDate());
+            holder.display_date.setText(String.format("%s - %s",startDateStr,endDateStr));
+            holder.display_totalPrice.setText(String.valueOf(_lRental.get(position).getTotalPrice()));
 
         } catch (Exception e) {
 
 
         }
         return vi;
-    }*/
+    }
 }
