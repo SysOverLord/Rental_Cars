@@ -54,6 +54,12 @@ public class LoginActivity extends AppCompatActivity {
                 alert.setTitle("Notify");
                 alert.show();
             }
+            else if(pass.equals("")){
+                builder.setMessage("Password is empty");
+                AlertDialog alert = builder.create();
+                alert.setTitle("Notify");
+                alert.show();
+            }
             else{
                 Intent mainPage = new Intent(this, MainPage.class);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {

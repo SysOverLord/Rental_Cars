@@ -93,7 +93,7 @@ public class SignUp extends AppCompatActivity {
                                 myRef.setValue(person);
                                 builder.setMessage("User created.");
                                 AlertDialog alert = builder.create();
-                                alert.setTitle("Notify");
+                                alert.setTitle("Uyarı");
                                 alert.show();
                                 intent.putExtra("userId",person.getUserId());
                                 startActivity(intent);
@@ -102,7 +102,7 @@ public class SignUp extends AppCompatActivity {
                             else {
                                 builder.setMessage("User has already created.");
                                 AlertDialog alert = builder.create();
-                                alert.setTitle("Notify");
+                                alert.setTitle("Uyarı");
                                 alert.show();
                             }
                         }
@@ -151,14 +151,31 @@ public class SignUp extends AppCompatActivity {
 
     private boolean isEmpty(CheckingInputs[] checkingInputs, AlertDialog.Builder builder) {
         for (CheckingInputs input : checkingInputs) {
-            if (input.getTextInput().getEditText().getText().toString().equals("")) {
-                builder.setMessage(input.getName() + " is empty");
-                AlertDialog alert = builder.create();
-                alert.setTitle("Notify");
-                alert.show();
-                return true;
+            if(!input.getName().equals("Card Cvv")){
+                if (input.getTextInput().getEditText().getText().toString().equals("")) {
+                    builder.setMessage(input.getName() + " is empty");
+                    AlertDialog alert = builder.create();
+                    alert.setTitle("Notify");
+                    alert.show();
+                    return true;
+                }
             }
-
+            else{
+                if (input.getTextInput().getEditText().getText().toString().equals("")) {
+                    builder.setMessage(input.getName() + " is empty");
+                    AlertDialog alert = builder.create();
+                    alert.setTitle("Notify");
+                    alert.show();
+                    return true;
+                }
+                else if(input.getTextInput().getEditText().getText().toString().length() != 3){
+                    builder.setMessage("CVV's length must be three.");
+                    AlertDialog alert = builder.create();
+                    alert.setTitle("Notify");
+                    alert.show();
+                    return true;
+                }
+            }
         }
         return false;
     }

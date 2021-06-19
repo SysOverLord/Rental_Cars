@@ -109,23 +109,22 @@ public class AdvertFragment extends Fragment {
     private boolean isEmpty(CheckingInputs[] checkingInputs, AlertDialog.Builder builder) {
         for (CheckingInputs input : checkingInputs) {
             if (input.getEdText() != null){
-                if (input.getEdText().getText().toString().matches("")) {
+                if (input.getEdText().getText().toString().equals("")) {
                     builder.setMessage(input.getName() + " is empty");
                     AlertDialog alert = builder.create();
-                    alert.setTitle("Notify");
+                    alert.setTitle("Uyarı");
                     alert.show();
                     return true;
                 }
             } else {
-                if (input.getTextInput().toString().matches("")) {
+                if (input.getTextInput().getEditText().getText().toString().equals("")) {
                     builder.setMessage(input.getName() + " is empty");
                     AlertDialog alert = builder.create();
-                    alert.setTitle("Notify");
+                    alert.setTitle("Uyarı");
                     alert.show();
                     return true;
                 }
             }
-
         }
         return false;
     }
