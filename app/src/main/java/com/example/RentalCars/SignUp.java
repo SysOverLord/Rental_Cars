@@ -151,25 +151,25 @@ public class SignUp extends AppCompatActivity {
 
     private boolean isEmpty(CheckingInputs[] checkingInputs, AlertDialog.Builder builder) {
         for (CheckingInputs input : checkingInputs) {
-            if(!input.getName().equals("Card Cvv")){
-                if (input.getTextInput().getEditText().getText().toString().equals("")) {
-                    builder.setMessage(input.getName() + " is empty");
-                    AlertDialog alert = builder.create();
-                    alert.setTitle("Notify");
-                    alert.show();
-                    return true;
-                }
+            if(input.getName().equals("Card Cvv") && !input.getTextInput().getEditText().getText().toString().equals("") &&
+                    input.getTextInput().getEditText().getText().toString().length() != 3){
+                builder.setMessage("CVV's length must be 3.");
+                AlertDialog alert = builder.create();
+                alert.setTitle("Notify");
+                alert.show();
+                return true;
+            }
+            else if(input.getName().equals("Card No") && !input.getTextInput().getEditText().getText().toString().equals("") &&
+                    input.getTextInput().getEditText().getText().toString().length() != 16){
+                builder.setMessage("Card No's length must be 16.");
+                AlertDialog alert = builder.create();
+                alert.setTitle("Notify");
+                alert.show();
+                return true;
             }
             else{
                 if (input.getTextInput().getEditText().getText().toString().equals("")) {
                     builder.setMessage(input.getName() + " is empty");
-                    AlertDialog alert = builder.create();
-                    alert.setTitle("Notify");
-                    alert.show();
-                    return true;
-                }
-                else if(input.getTextInput().getEditText().getText().toString().length() != 3){
-                    builder.setMessage("CVV's length must be three.");
                     AlertDialog alert = builder.create();
                     alert.setTitle("Notify");
                     alert.show();
