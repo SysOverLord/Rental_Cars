@@ -94,10 +94,10 @@ public class ActivityCarPage extends AppCompatActivity {
     }
 
     public void getImageFromStorage(String imageId){
-
         if(imageId != null){
             final long FIVE_MEGABYTE = 5 * 1024 * 1024;
 
+            DialogHelper dialogHelper = DialogHelper.getInstance();
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageReference = storage.getReference("images/"+imageId);
 
@@ -115,7 +115,7 @@ public class ActivityCarPage extends AppCompatActivity {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(ActivityCarPage.this,"Encountered error while getting image",Toast.LENGTH_SHORT);
+                    dialogHelper.ShowMessage("Encountered error while getting image", ActivityCarPage.this);
                 }
             });
         }
@@ -137,9 +137,6 @@ public class ActivityCarPage extends AppCompatActivity {
             }
         });
     }
-
-
-
 
     public void deleteCar(String carId){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -166,7 +163,6 @@ public class ActivityCarPage extends AppCompatActivity {
                 String ownerFirstName = snapshot.child("firstName").getValue(String.class);
                 String ownerLastName = snapshot.child("lastName").getValue(String.class);
                 textOwner.setText(String.format("%s %s", ownerFirstName, ownerLastName));
-
             }
 
             @Override

@@ -157,6 +157,7 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
 
 
     private void checkLimit(Rental rent){
+        DialogHelper dialogHelper = DialogHelper.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference userRef = database.getReference("users/" + rent.getRenterId() + "/creditCard");
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -171,6 +172,7 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
                 }
                 else {
                     //Yetersiz Limit
+                    dialogHelper.ShowMessage("Inadequate limit", RentActivity.this);
                 }
             }
 

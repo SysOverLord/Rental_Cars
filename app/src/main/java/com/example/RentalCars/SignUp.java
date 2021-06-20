@@ -96,7 +96,6 @@ public class SignUp extends AppCompatActivity {
                                 dialogHelper.ShowMessage("User created.", SignUp.this);
                                 intent.putExtra("userId",person.getUserId());
                                 startActivity(intent);
-
                             }
                             else
                                 dialogHelper.ShowMessage("User has already created.", SignUp.this);
