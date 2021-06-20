@@ -22,7 +22,6 @@ public class MainPage extends AppCompatActivity {
     private MyCarsFragment myCarsFragment;
     Bundle bundle;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +42,7 @@ public class MainPage extends AppCompatActivity {
         mBottomBar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-
-
                 switch (item.getItemId()){
-
                     case R.id.bottombar_menu_home:
                         bundle = new Bundle();
                         bundle.putString("userId",userId);
@@ -81,7 +76,6 @@ public class MainPage extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private void setFragment(Fragment fragment){
@@ -89,5 +83,4 @@ public class MainPage extends AppCompatActivity {
         transaction.replace(R.id.main_page_frameLayout, fragment);
         transaction.commit();
     }
-
 }

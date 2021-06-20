@@ -11,7 +11,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.RentalCars.Entity.Address;
+import com.example.RentalCars.Entity.CheckingInputs;
 import com.example.RentalCars.Entity.CreditCard;
+import com.example.RentalCars.Entity.DialogHelper;
 import com.example.RentalCars.Entity.Person;
 import com.example.RentalCars.Entity.User;
 import com.google.android.material.textfield.TextInputLayout;
@@ -54,8 +56,8 @@ public class SignUp extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sign_up);
 
-        defineElements();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        CheckingInputs[] checkingInputs = defineElements();
+        DialogHelper dialogHelper = DialogHelper.getInstance();
         Intent intent = new Intent(this,MainPage.class);
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
@@ -83,34 +85,21 @@ public class SignUp extends AppCompatActivity {
                 myRef = myRef.child(newId);
 
 
-                if(user.getUsername().equals("")){
-                    builder.setMessage("Username is empty");
-                    AlertDialog alert = builder.create();
-                    alert.setTitle("Notify");
-                    alert.show();
-                }
-
+                if(isEmpty(checkingInputs, dialogHelper))
+                    dialogHelper.ShowMessage("Username is empty", SignUp.this);
                 else{
-
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if(!dataSnapshot.exists()){
                                 myRef.setValue(person);
-                                builder.setMessage("User created.");
-                                AlertDialog alert = builder.create();
-                                alert.setTitle("Notify");
-                                alert.show();
+                                dialogHelper.ShowMessage("User created.", SignUp.this);
                                 intent.putExtra("userId",person.getUserId());
                                 startActivity(intent);
 
                             }
-                            else {
-                                builder.setMessage("User has already created.");
-                                AlertDialog alert = builder.create();
-                                alert.setTitle("Notify");
-                                alert.show();
-                            }
+                            else
+                                dialogHelper.ShowMessage("User has already created.", SignUp.this);
                         }
                         @Override
                         public void onCancelled(DatabaseError error) {
@@ -118,11 +107,7 @@ public class SignUp extends AppCompatActivity {
 
                         }
                     });
-
-
                 }
-
-
             }
         });
 
@@ -134,25 +119,49 @@ public class SignUp extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
 
-    private void defineElements(){
-        firstName = (TextInputLayout) findViewById(R.id.firstName);
-        lastName = (TextInputLayout) findViewById(R.id.lastName);
-        username = (TextInputLayout) findViewById(R.id.userName);
-        email = (TextInputLayout) findViewById(R.id.email);
-        password = (TextInputLayout) findViewById(R.id.password);
-        city = (TextInputLayout) findViewById(R.id.city);
-        district = (TextInputLayout) findViewById(R.id.district);
-        street = (TextInputLayout) findViewById(R.id.street);
-        no = (TextInputLayout) findViewById(R.id.addressNo);
-        cardName = (TextInputLayout) findViewById(R.id.cardName);
-        cardNo = (TextInputLayout) findViewById(R.id.cardNumber);
-        cardCvv = (TextInputLayout) findViewById(R.id.cardCvv);
+    private CheckingInputs[] defineElements() {
+        CheckingInputs[] checkingInputs = {new CheckingInputs("First Name", firstName = findViewById(R.id.firstName)),
+                new CheckingInputs("Last Name", lastName = findViewById(R.id.lastName)),
+                new CheckingInputs("Username", username = findViewById(R.id.userName)),
+                new CheckingInputs("Email", email = findViewById(R.id.email)),
+                new CheckingInputs("Password", password = findViewById(R.id.password)),
+                new CheckingInputs("City", city = findViewById(R.id.city)),
+                new CheckingInputs("District", district = findViewById(R.id.district)),
+                new CheckingInputs("Street", street = findViewById(R.id.street)),
+                new CheckingInputs("No", no = findViewById(R.id.addressNo)),
+                new CheckingInputs("Card Name", cardName = findViewById(R.id.cardName)),
+                new CheckingInputs("Card No", cardNo = findViewById(R.id.cardNumber)),
+                new CheckingInputs("Card Cvv", cardCvv = findViewById(R.id.cardCvv)),
+        };
+
         btn_signup = (Button)findViewById(R.id.btn_signup);
         btn_call_login = (Button)findViewById(R.id.btn_login_screen);
+
+        return checkingInputs;
     }
 
+    private boolean isEmpty(CheckingInputs[] checkingInputs, DialogHelper dialogHelper) {
+        for (CheckingInputs input : checkingInputs) {
+            if(input.getName().equals("Card Cvv") && !input.getTextInput().getEditText().getText().toString().equals("") &&
+                    input.getTextInput().getEditText().getText().toString().length() != 3){
+                dialogHelper.ShowMessage("CVV's length must be 3.", this);
+                return true;
+            }
+            else if(input.getName().equals("Card No") && !input.getTextInput().getEditText().getText().toString().equals("") &&
+                    input.getTextInput().getEditText().getText().toString().length() != 16){
+                dialogHelper.ShowMessage("Card No's length must be 16.", this);
+                return true;
+            }
+            else{
+                if (input.getTextInput().getEditText().getText().toString().equals("")) {
+                    dialogHelper.ShowMessage(input.getName() + " is empty", this);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

@@ -30,7 +30,7 @@
         </Button>
 
         <Button
-            android:id="@+id/btn_go_prev_rentals"
+            android:id="@+id/btn_history"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

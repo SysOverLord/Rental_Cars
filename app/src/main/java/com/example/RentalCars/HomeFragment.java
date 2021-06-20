@@ -29,8 +29,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
-
-
     EditText brandSearch;
     EditText modelSearch;
     EditText colorSearch;
@@ -43,8 +41,6 @@ public class HomeFragment extends Fragment {
     RecyclerView mRecyclerView;
     Activity activity;
     ArrayList<Car> carList;
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,26 +61,18 @@ public class HomeFragment extends Fragment {
         btn_carSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 fBrand = brandSearch.getText().toString().toLowerCase().trim();
                 fModel = modelSearch.getText().toString().toLowerCase().trim();
                 fColor = colorSearch.getText().toString().toLowerCase().trim();
                 createSearchList(fBrand,fModel,1,v,userId);
-
             }
         });
 
-
         // Inflate the layout for this fragment
         return v;
-
     }
 
-
-
     private  void createSearchList(String fBrand,String fModel, int page,View v,String userId) {
-
-
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("cars/");
         float num1 = 0;
@@ -124,7 +112,6 @@ public class HomeFragment extends Fragment {
                 AdapterCarRecycler adapterCarRecycler = new AdapterCarRecycler(activity,carList);
                 mRecyclerView.setAdapter(adapterCarRecycler);
 
-
                 LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
                 linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
                 mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -144,7 +131,6 @@ public class HomeFragment extends Fragment {
 
                             }
                         }));
-
             }
 
             @Override
@@ -153,7 +139,6 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
 
     private void defineElements(View v){
         brandSearch = (EditText)v.findViewById(R.id.search_brand_edittxt);

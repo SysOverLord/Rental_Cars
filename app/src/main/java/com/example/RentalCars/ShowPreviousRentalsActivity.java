@@ -29,11 +29,6 @@ public class ShowPreviousRentalsActivity extends AppCompatActivity {
         createCurrentCarRentalsList(carId);
     }
 
-
-
-
-
-
     public void createCurrentCarRentalsList(String carId){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("rentals");
@@ -55,6 +50,5 @@ public class ShowPreviousRentalsActivity extends AppCompatActivity {
 
             }
         });
-
     }
 }

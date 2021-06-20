@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.RentalCars.Entity.Car;
+import com.example.RentalCars.Entity.DialogHelper;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -28,7 +29,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class ActivityCarPage extends AppCompatActivity {
-
     boolean isRentable;
     boolean dbReturned;
 
@@ -37,8 +37,6 @@ public class ActivityCarPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
 
         if(getIntent().getExtras().getString("pageType").equals("myCarPage")){
 
@@ -56,8 +54,8 @@ public class ActivityCarPage extends AppCompatActivity {
                 }
             });
         }
-
         else{
+            DialogHelper dialogHelper = DialogHelper.getInstance();
             setContentView(R.layout.advertisement_car_details);
             imageView = findViewById(R.id.car_details_carImage);
             Bundle extras = getIntent().getExtras();
@@ -80,10 +78,10 @@ public class ActivityCarPage extends AppCompatActivity {
                     }
                 });
             }
-            else{
-                Toast.makeText(this,"You can't rent your own car",Toast.LENGTH_SHORT);
-            }
-            Button rentHistoryButton = findViewById(R.id.btn_go_prev_rentals);
+            else
+                dialogHelper.ShowMessage("You can't rent your own car", this);
+
+            Button rentHistoryButton = findViewById(R.id.btn_history);
             Intent rentHistoryIntent = new Intent(this,ShowPreviousRentalsActivity.class);
             rentHistoryButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -93,15 +91,11 @@ public class ActivityCarPage extends AppCompatActivity {
                 }
             });
         }
-
     }
-
 
     public void getImageFromStorage(String imageId){
 
         if(imageId != null){
-
-
             final long FIVE_MEGABYTE = 5 * 1024 * 1024;
 
             FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -125,10 +119,8 @@ public class ActivityCarPage extends AppCompatActivity {
                 }
             });
         }
-
-
-
     }
+
     public void getImageIdFromDB(String carId){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference databaseReference = database.getReference("cars/" + carId).child("imageId");
@@ -137,7 +129,6 @@ public class ActivityCarPage extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String imageId = snapshot.getValue(String.class);
                 getImageFromStorage(imageId);
-
             }
 
             @Override
@@ -184,8 +175,8 @@ public class ActivityCarPage extends AppCompatActivity {
             }
         });
     }
-    public void createCarPageInformation(Car car){
 
+    public void createCarPageInformation(Car car){
         TextView textBrand = findViewById(R.id.txtview_brand);
         TextView textModel = findViewById(R.id.txtview_model);
         TextView textColor = findViewById(R.id.txtview_color);
@@ -198,11 +189,9 @@ public class ActivityCarPage extends AppCompatActivity {
         textPrice.setText(String.format("%s", car.getDailyPrice()));
         textDesc.setText(car.getDesc());
         findOwnerName(textOwner,car.getOwnerId());
-
     }
 
     public void createCarPageInformationFromDB(String carId){
-
         TextView textBrand = findViewById(R.id.txtview_brand);
         TextView textModel = findViewById(R.id.txtview_model);
         TextView textColor = findViewById(R.id.txtview_color);
@@ -232,6 +221,5 @@ public class ActivityCarPage extends AppCompatActivity {
 
             }
         });
-
     }
 }

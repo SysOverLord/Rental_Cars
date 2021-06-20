@@ -26,7 +26,6 @@ import java.util.ArrayList;
 
 
 public class ProfileFragment extends Fragment {
-
     private TextView firstName;
     private TextView lastName;
     private TextView email;
@@ -37,9 +36,6 @@ public class ProfileFragment extends Fragment {
     private TextInputLayout newPassword;
     private Button btn_save;
     private Button btn_showUsers;
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -65,12 +61,9 @@ public class ProfileFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
         saveChanges(v,userId);
-
         return v;
     }
-
 
     public void createProfileInf(String userId){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -80,7 +73,6 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-
                     Person person = dataSnapshot.getValue(Person.class);
 
                     firstName.setText(person.getFirstName());
@@ -89,13 +81,7 @@ public class ProfileFragment extends Fragment {
                     username.setText(person.getUsername());
                     creditLimit.setText(Float.toString(person.getCreditCard().getLimit()));
                     registerDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(person.getRegisterDate()));
-
                 }
-
-
-
-
-
             }
 
             @Override
@@ -119,7 +105,6 @@ public class ProfileFragment extends Fragment {
     }
 
     private void saveChanges(View v,String userId){
-
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,17 +115,14 @@ public class ProfileFragment extends Fragment {
                     if(newEmailStr.equals("") && newPasswordStr.equals("")){
                         // Hata mesajı
                     }
-                    else{
-                        if(!newEmailStr.equals("")){
+                    else {
+                        if (!newEmailStr.equals("")) {
                             myRef.child("email").setValue(newEmailStr);
                         }
-                        if(!newPasswordStr.equals(""))
+                        if (!newPasswordStr.equals(""))
                             myRef.child("password").setValue(newPasswordStr);
                     }
-
             }
         });
-
     }
-
 }

@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.RentalCars.Entity.Car;
 import com.example.RentalCars.Entity.CheckingInputs;
+import com.example.RentalCars.Entity.DialogHelper;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
@@ -64,6 +65,7 @@ public class AdvertFragment extends Fragment {
         String userId = getArguments().getString("userId");
 
         CheckingInputs[] checkingInputs = defineElements(v);
+        DialogHelper dialogHelper = DialogHelper.getInstance();
         selectImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +75,7 @@ public class AdvertFragment extends Fragment {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isEmpty(checkingInputs))
+                if(!isEmpty(checkingInputs, dialogHelper))
                     addCar(v, checkingInputs, userId);
             }
         });
@@ -141,16 +143,16 @@ public class AdvertFragment extends Fragment {
         return checkingInputs;
     }
 
-    private boolean isEmpty(CheckingInputs[] checkingInputs) {
+    private boolean isEmpty(CheckingInputs[] checkingInputs, DialogHelper dialogHelper) {
         for (CheckingInputs input : checkingInputs) {
             if (input.getEdText() != null){
-                if (input.getEdText().getText().toString().matches("")) {
-                    Toast.makeText(getContext(), "You did not enter the " + input.getName(), Toast.LENGTH_LONG).show();
+                if (input.getEdText().getText().toString().equals("")) {
+                    dialogHelper.ShowMessage("You did not enter the " + input.getName(), getContext());
                     return true;
                 }
             } else {
-                if (input.getTextInput().toString().matches("")) {
-                    Toast.makeText(getContext(), "You did not enter the " + input.getName(), Toast.LENGTH_LONG).show();
+                if (input.getTextInput().getEditText().getText().toString().equals("")) {
+                    dialogHelper.ShowMessage("You did not enter the " + input.getName(), getContext());
                     return true;
                 }
             }
@@ -183,6 +185,7 @@ public class AdvertFragment extends Fragment {
             }
         }
     }
+
     private  void uploadImage(){
         if(imageUri != null){
             ProgressDialog progressDialog = new ProgressDialog(getContext());

@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         };
 
         handler.postDelayed(runnable, 4500);
-
         txtAppName.setAnimation(txtViewAnimation);
     }
 }

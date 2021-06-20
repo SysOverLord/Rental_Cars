@@ -20,8 +20,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class ShowUsersActivity extends AppCompatActivity {
-
-
     private ArrayList<Person> arrayListPerson;
     private ListView mListView;
 
@@ -32,9 +30,6 @@ public class ShowUsersActivity extends AppCompatActivity {
         mListView = findViewById(R.id.listview_allUsers);
         getUsersFromDB();
     }
-
-
-
 
     public void getUsersFromDB(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -49,7 +44,6 @@ public class ShowUsersActivity extends AppCompatActivity {
                 }
                 AdapterPerson adapterPerson = new AdapterPerson(ShowUsersActivity.this, android.R.layout.simple_list_item_1,arrayListPerson);
                 mListView.setAdapter(adapterPerson);
-
             }
 
             @Override

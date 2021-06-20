@@ -25,16 +25,13 @@ import java.util.ArrayList;
 
 
 public class MyCarsFragment extends Fragment {
-
     private ListView mListView;
     private AdapterCar adapterCar;
-
 
     public void createCarList(String userId,View v,Activity activity){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("cars" );
         Query query = myRef.orderByChild("ownerId").equalTo(userId);
-
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -53,13 +50,11 @@ public class MyCarsFragment extends Fragment {
                 mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                         Intent intent = new Intent(getActivity(), ActivityCarPage.class);
                         intent.putExtra("userId",userId);
                         intent.putExtra("car",carList.get(position));
                         intent.putExtra("pageType","myCarPage");
                         startActivity(intent);
-
                     }
                 });
             }
@@ -69,13 +64,12 @@ public class MyCarsFragment extends Fragment {
 
             }
         });
-
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
 
         View v =  inflater.inflate(R.layout.fragment_my_cars, container, false);
         Activity activity = getActivity();
@@ -83,10 +77,6 @@ public class MyCarsFragment extends Fragment {
         String userId = extras.getString("userId");
         createCarList(userId,v,activity);
 
-
-
-
         return v;
     }
-
 }

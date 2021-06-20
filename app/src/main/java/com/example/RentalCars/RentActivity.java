@@ -32,23 +32,17 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
     TextView endDateText;
     Button btn_rental_complete;
 
-
     Date startDate;
     Date endDate;
-
-
     String selectedDate;
 
     boolean isRentable;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rent);
         defineElements();
-
 
         btn_startDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,13 +63,11 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
         btn_rental_complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Bundle extras = getIntent().getExtras();
                 String rentedCarId = extras.getString("rentedCarId");
                 String renterId = extras.getString("renterId");
                 String carOwnerId = extras.getString("carOwnerId");
                 float dailyPrice = extras.getFloat("dailyPrice");
-
 
                 if (startDate != null && endDate != null && startDate.compareTo(endDate) <= 0) {
                     long dayDiff = (endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000);
@@ -87,19 +79,16 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
                     isRentable = true;
                     getRenterFullName(rent);
 
-                } else {
+                }
+                else {
                     //Hata mesajı
                     Toast.makeText(getApplicationContext(), "Illegal Date", Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
-
-
-
-
-
     }
+
     private void showStartDate(){
         DatePickerDialog startDatePickerDialog = new DatePickerDialog(
                 this,
@@ -145,7 +134,6 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
             endDateText.setText(date);
             endDate = new Date(year - 1900,month +1 ,dayOfMonth);
         }
-
     }
 
     private void getRenterFullName(Rental rent){
@@ -158,7 +146,6 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
                             ,snapshot.child("firstName").getValue(String.class)
                             ,snapshot.child("lastName").getValue(String.class)));
                     checkDates(startDate,endDate, rent);
-
             }
 
             @Override
@@ -185,7 +172,6 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
                 else {
                     //Yetersiz Limit
                 }
-
             }
 
             @Override
@@ -194,6 +180,7 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
     }
+
     private void transactionToOwner(Rental rent){
         String carOwnerId = rent.getCarOwnerId();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -212,6 +199,7 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
     }
+
     private void rentCar(Rental rent){
         String uuid = UUID.randomUUID().toString();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -234,6 +222,7 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
     }
+
     private void checkDates(Date startDate, Date endDate,Rental rent){
         //CircularProgressIndicator circular = findViewById(R.id.CPI);
         //circular.setVisibility(View.VISIBLE);
@@ -254,17 +243,13 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
                             isRentable = false;
                             break;
                         }
-
-
                     }
                 }
 
                 if (isRentable){
                     checkLimit(rent);
                 }
-
                 //circular.setVisibility(View.INVISIBLE);
-
             }
 
             @Override
@@ -273,5 +258,4 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
     }
-
 }

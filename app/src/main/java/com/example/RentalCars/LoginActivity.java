@@ -11,6 +11,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 
+import com.example.RentalCars.Entity.CheckingInputs;
+import com.example.RentalCars.Entity.DialogHelper;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,7 +20,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -33,8 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         TextInputLayout textInputLayoutPass = findViewById(R.id.login_password);
         Button button = findViewById(R.id.login);
         Button toRegBut = findViewById(R.id.signUpScreen);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
+        DialogHelper dialogHelper = DialogHelper.getInstance();
 
         toRegBut.setOnClickListener(v -> {
             Intent register = new Intent(this, SignUp.class);
@@ -48,12 +49,11 @@ public class LoginActivity extends AppCompatActivity {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference myRef  = database.getReference("users");
             Query query = myRef.orderByChild("username").equalTo(username);
-            if(username.equals("")){
-                builder.setMessage("Username is empty");
-                AlertDialog alert = builder.create();
-                alert.setTitle("Notify");
-                alert.show();
-            }
+
+            if(username.equals(""))
+                dialogHelper.ShowMessage("Username is empty", this);
+            else if(pass.equals(""))
+                dialogHelper.ShowMessage("Password is empty", this);
             else{
                 Intent mainPage = new Intent(this, MainPage.class);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -65,28 +65,16 @@ public class LoginActivity extends AppCompatActivity {
                             dbPass = snapshot.child("password").getValue(String.class);
                             userId = snapshot.child("userId").getValue(String.class);
                         }
-                        if(userId.equals("")){
-                            builder.setMessage("User not found");
-                            AlertDialog alert = builder.create();
-                            alert.setTitle("Notify");
-                            alert.show();
-                        }
+                        if(userId.equals(""))
+                            dialogHelper.ShowMessage("User not found", LoginActivity.this);
                         else if(dbPass.equals(pass.trim())){
-                            builder.setMessage("Login Successful");
-                            AlertDialog alert = builder.create();
-                            alert.setTitle("Notify");
-                            alert.show();
+                            dialogHelper.ShowMessage("Login Successful", LoginActivity.this);
                             //Login olduk MainPageye götür
                             mainPage.putExtra("userId",userId);
                             startActivity(mainPage);
                         }
-                        else{
-                            builder.setMessage("Wrong password");
-                            AlertDialog alert = builder.create();
-                            alert.setTitle("Notify");
-                            alert.show();
-                        }
-
+                        else
+                            dialogHelper.ShowMessage("Wrong password", LoginActivity.this);
                     }
 
                     @Override
@@ -97,7 +85,5 @@ public class LoginActivity extends AppCompatActivity {
                 });
             }
         });
-
-
     }
 }
