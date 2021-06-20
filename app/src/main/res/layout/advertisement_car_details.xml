@@ -3,23 +3,45 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/yellow">
 
     <include
         layout="@layout/car_details"/>
 
-    <Button
-        android:id="@+id/btn_rent_car"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="KİRALAMAYA GİT"
-        android:layout_marginTop="-100dp"
-        android:backgroundTint="@color/deneme"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:padding="15dp">
-    </Button>
+        android:orientation="horizontal"
+        android:layout_marginTop="25dp">
 
+        <Button
+            android:id="@+id/btn_rent_car"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KİRALAMAYA GİT"
+            android:backgroundTint="@color/deneme"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:padding="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="25dp">
+        </Button>
+
+        <Button
+            android:id="@+id/btn_go_prev_rentals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/gray"
+            android:padding="15dp"
+            android:text="KİRALAMA GEÇMİŞİ"
+            android:textColor="@color/white"
+            android:textStyle="bold">
+        </Button>
+
+    </LinearLayout>
 
 </LinearLayout>
+

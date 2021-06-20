@@ -27,6 +27,22 @@
         android:layout_marginLeft="25dp"
         android:layout_marginTop="75dp">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            android:id="@+id/advert_carImage"
+            android:layout_marginBottom="5dp"/>
+
+        <Button
+            android:id="@+id/btn_add_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Image"
+            android:backgroundTint="@color/searchBgColor"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"/>
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,7 +122,7 @@
             android:text="ADD MY CAR"
             android:backgroundTint="@color/gray"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 
