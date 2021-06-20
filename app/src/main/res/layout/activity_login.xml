@@ -86,7 +86,7 @@
             android:id="@+id/signUpScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:backgroundTint="@color/white"
+            app:backgroundTint="@color/white3"
             android:textColor="@color/black"
             android:text="New User? SIGN UP"
             android:layout_gravity="right"

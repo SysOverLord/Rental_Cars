@@ -22,7 +22,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="KİRALAYAN"
+                android:text="ADI SOYADI"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
 
@@ -30,13 +30,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bungee"
-                android:text="KİRALAMA TARİHİ"
+                android:text="MAİL"
                 android:textSize="18dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TOPLAM ÜCRET"
+                android:text="TELEFON"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
         </LinearLayout>
@@ -56,7 +56,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/txtview_rental_renter"
+                    android:id="@+id/txtview_user_fullname"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:text="ATİBA HUTCHINSON"
@@ -76,11 +76,11 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/txtview_rental_date"
+                    android:id="@+id/txtview_user_mail"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:text="19/06/2021 - 30/06/2021"
-                    android:layout_marginTop="30dp"
+                    android:text="atiba@gmail.com"
+                    android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
                     android:textSize="18dp"
@@ -96,11 +96,11 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/txtview_rental_cost"
+                    android:id="@+id/txtview_user_date"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:text="5000"
-                    android:layout_marginTop="30dp"
+                    android:text="0555 555 55 55"
+                    android:layout_marginTop="25dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
                     android:textSize="18dp"
@@ -110,8 +110,15 @@
 
         </LinearLayout>
 
-
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/btn_delete_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_delete"
+        android:backgroundTint="@color/yellow4"
+        android:layout_gravity="right">
+    </ImageButton>
 
 </LinearLayout>

@@ -19,7 +19,7 @@
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottombarmenu"
         android:id="@+id/main_page_bottomNavigationView"
-        android:background="@color/gray"
+        android:background="@color/black3"
         app:itemIconTint="@color/bottombar_color"
         app:itemTextColor="@color/bottombar_color"/>
 

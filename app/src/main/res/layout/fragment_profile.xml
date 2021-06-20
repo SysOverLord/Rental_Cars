@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment"
-    android:background="@color/profileFragmentBgColor">
+    android:background="@color/yellow4">
 
     <!-- TODO: Update blank fragment layout
     <TextView
@@ -132,7 +132,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -157,6 +157,18 @@
             android:text="KAYDET"
             android:backgroundTint="@color/gray"
             android:layout_gravity="right"/>
+
+
+        <Button
+            android:id="@+id/btn_show_users"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KULLANICILARI GÖRÜNTÜLE"
+            android:backgroundTint="@color/gray"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="invisible"/>
 
     </LinearLayout>
 

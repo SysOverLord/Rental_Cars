@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/homeFragmentBgColor"
+    android:background="@color/black1"
     android:orientation="vertical"
     tools:context=".HomeFragment">
 
@@ -17,7 +17,7 @@
         android:gravity="center"
         android:text="İLANLAR"
         android:layout_marginBottom="10dp"
-        android:background="@color/searchTitleColor"/>
+        android:background="@color/yellow1"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,6 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Marka"
+                android:textColor="@color/yellow1"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
 
@@ -43,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bungee"
+                android:textColor="@color/yellow1"
                 android:text="Model"
                 android:textSize="18dp"/>
 
@@ -50,12 +52,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Renk"
+                android:textColor="@color/yellow1"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/yellow1"
                 android:text="Günlük Ücret"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
@@ -82,7 +86,7 @@
                     android:layout_height="35dp"
                     android:layout_weight="4"
                     android:layout_margin="5dp"
-                    android:background="@color/advertFragmentBgColor"
+                    android:background="@color/yellow5"
                     android:ems="10"
                     android:hint="Search brand"
                     android:gravity="center"
@@ -107,7 +111,7 @@
                     android:layout_height="35dp"
                     android:layout_weight="4"
                     android:layout_margin="5dp"
-                    android:background="@color/advertFragmentBgColor"
+                    android:background="@color/yellow5"
                     android:ems="10"
                     android:hint="Search model"
                     android:gravity="center"
@@ -133,7 +137,7 @@
                     android:layout_height="35dp"
                     android:layout_weight="4"
                     android:layout_margin="5dp"
-                    android:background="@color/advertFragmentBgColor"
+                    android:background="@color/yellow5"
                     android:ems="10"
                     android:hint="Search color"
                     android:gravity="center"
@@ -159,7 +163,7 @@
                     android:layout_height="35dp"
                     android:layout_weight="4"
                     android:layout_margin="5dp"
-                    android:background="@color/advertFragmentBgColor"
+                    android:background="@color/yellow5"
                     android:ems="10"
                     android:hint="Search price"
                     android:gravity="center"
@@ -177,7 +181,7 @@
                 android:cropToPadding="false"
                 android:layout_gravity="center"
                 android:background="@drawable/ic__search_24"
-                android:backgroundTint="@color/searchBtnColor">
+                android:backgroundTint="@color/yellow6">
             </ImageButton>
 
         </LinearLayout>
