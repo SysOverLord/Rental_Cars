@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/yellow">
+    android:background="@color/whiteX">
 
     <include
         layout="@layout/car_details"/>
@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_delete"
         android:layout_marginTop="25dp"
-        android:backgroundTint="@color/yellow"
+        android:backgroundTint="@color/whiteX"
         android:layout_gravity="center">
     </ImageButton>
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient1"
+    android:background="@color/whiteX"
     tools:context=".MainPage">
 
     <FrameLayout
@@ -19,7 +19,7 @@
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottombarmenu"
         android:id="@+id/main_page_bottomNavigationView"
-        android:background="@color/gray"
+        android:background="@color/black2"
         app:itemIconTint="@color/bottombar_color"
         app:itemTextColor="@color/bottombar_color"/>
 

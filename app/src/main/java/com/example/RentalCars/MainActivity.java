@@ -1,6 +1,7 @@
 package com.example.RentalCars;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
@@ -22,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
         txtAppName = findViewById(R.id.txtAppName);
         txtViewAnimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.textview_animation);
-
         handler = new Handler();
 
         Runnable runnable = new Runnable() {

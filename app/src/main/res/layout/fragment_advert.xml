@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".AdvertFragment"
-        android:background="@color/advertFragmentBgColor">
+        android:background="@color/whiteX">
 
 
         <TextView
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:textSize="32dp"
-            android:textColor="@color/black"
+            android:textColor="@color/black2"
             android:fontFamily="@font/comfortaa_bold"
             android:text="@string/add_advert"
             android:layout_marginBottom="10dp"
@@ -33,11 +33,12 @@
             android:layout_marginTop="75dp">
 
             <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:scaleType="fitXY"
                 android:id="@+id/advert_carImage"
-                android:layout_marginBottom="5dp"/>
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center"/>
 
             <Button
                 android:id="@+id/btn_add_image"
@@ -118,14 +119,14 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
-                android:background="@android:color/black" />
+                android:background="@color/black2" />
 
             <Button
                 android:id="@+id/btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/add_car_button_text"
-                android:backgroundTint="@color/gray"
+                android:backgroundTint="@color/black2"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"/>
 

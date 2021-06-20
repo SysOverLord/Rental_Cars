@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfileFragment"
-    android:background="@color/profileFragmentBgColor">
+    android:background="@color/whiteX">
 
     <!-- TODO: Update blank fragment layout
     <TextView
@@ -154,7 +154,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/profile_save_button_text"
-            android:backgroundTint="@color/gray"
+            android:backgroundTint="@color/black2"
             android:layout_gravity="right"/>
 
         <Button

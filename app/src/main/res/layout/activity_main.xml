@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@color/yellow">
+    android:background="@color/whiteX">
 
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         android:textStyle="bold"
         android:textSize="30dp"
         android:fontFamily="@font/comfortaa_bold"
-        android:textColor="@color/gray"
+        android:textColor="@color/black2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

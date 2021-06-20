@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/recyclerViewBgColor">
+    android:background="@color/whiteX">
 
     <TextView
         android:layout_width="match_parent"
@@ -25,14 +25,12 @@
         android:gravity="center"
         android:layout_marginTop="50dp"
         android:layout_marginLeft="20dp"/>
-
-
     <ImageButton
         android:id="@+id/rental_start_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_action_name"
-        android:background="@color/recyclerViewBgColor">
+        android:background="@color/whiteX">
     </ImageButton>
 
 
@@ -65,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_action_name"
-        android:background="@color/recyclerViewBgColor">
+        android:background="@color/whiteX">
     </ImageButton>
 
 
@@ -86,7 +84,7 @@
         android:layout_height="wrap_content"
         android:text="@string/hire_screen_hire_button"
         android:layout_marginTop="50dp"
-        android:backgroundTint="@color/gray"
+        android:backgroundTint="@color/black2"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textColor="@color/white"

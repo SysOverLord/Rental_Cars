@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/yellow">
+    android:background="@color/whiteX">
 
     <include
         layout="@layout/car_details"/>
@@ -20,10 +20,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/go_to_hire_message"
-            android:backgroundTint="@color/deneme"
+            android:backgroundTint="@color/searchBgColor"
             android:layout_gravity="center"
             android:textStyle="bold"
-            android:textColor="@color/white"
+            android:textColor="@color/whiteX"
             android:padding="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginLeft="25dp">
@@ -34,10 +34,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="@color/gray"
+            android:backgroundTint="@color/black2"
             android:padding="15dp"
             android:text="@string/hire_history_text"
-            android:textColor="@color/white"
+            android:textColor="@color/whiteX"
             android:textStyle="bold">
         </Button>
 

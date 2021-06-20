@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/homeFragmentBgColor"
+    android:background="@color/black2"
     android:orientation="vertical"
     tools:context=".HomeFragment">
 
@@ -13,11 +13,11 @@
         android:textStyle="bold"
         android:textSize="24dp"
         android:fontFamily="@font/comfortaa_bold"
-        android:textColor="@color/black"
+        android:textColor="@color/whiteX"
         android:gravity="center"
         android:text="@string/adverts_page_tittle"
         android:layout_marginBottom="10dp"
-        android:background="@color/searchTitleColor"/>
+        android:background="@color/black2"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,28 +37,32 @@
                 android:layout_height="wrap_content"
                 android:text="@string/car_brand"
                 android:textSize="18dp"
-                android:fontFamily="@font/bungee"/>
+                android:fontFamily="@font/bungee"
+                android:textColor="@color/whiteX"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bungee"
                 android:text="@string/car_model"
-                android:textSize="18dp"/>
+                android:textSize="18dp"
+                android:textColor="@color/whiteX"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/car_color"
                 android:textSize="18dp"
-                android:fontFamily="@font/bungee"/>
+                android:fontFamily="@font/bungee"
+                android:textColor="@color/whiteX"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/car_daily_price"
                 android:textSize="18dp"
-                android:fontFamily="@font/bungee"/>
+                android:fontFamily="@font/bungee"
+                android:textColor="@color/whiteX"/>
 
         </LinearLayout>
 
@@ -80,7 +84,8 @@
                     android:layout_height="35dp"
                     android:layout_weight="4"
                     android:layout_margin="5dp"
-                    android:background="@color/advertFragmentBgColor"
+                    android:background="@color/whiteX"
+                    android:textColor="@color/black2"
                     android:ems="10"
                     android:hint="@string/search_brand_message"
                     android:gravity="center"
@@ -102,7 +107,8 @@
                     android:layout_height="35dp"
                     android:layout_weight="4"
                     android:layout_margin="5dp"
-                    android:background="@color/advertFragmentBgColor"
+                    android:background="@color/whiteX"
+                    android:textColor="@color/black2"
                     android:ems="10"
                     android:hint="@string/search_model_message"
                     android:gravity="center"
@@ -126,7 +132,8 @@
                     android:layout_height="35dp"
                     android:layout_weight="4"
                     android:layout_margin="5dp"
-                    android:background="@color/advertFragmentBgColor"
+                    android:background="@color/whiteX"
+                    android:textColor="@color/black2"
                     android:ems="10"
                     android:hint="@string/search_color_message"
                     android:gravity="center"
@@ -149,7 +156,8 @@
                     android:layout_height="35dp"
                     android:layout_weight="4"
                     android:layout_margin="5dp"
-                    android:background="@color/advertFragmentBgColor"
+                    android:background="@color/whiteX"
+                    android:textColor="@color/black2"
                     android:inputType="number"
                     android:hint="@string/search_min_price_message"
                     android:gravity="center"
@@ -163,7 +171,8 @@
                     android:layout_height="35dp"
                     android:layout_weight="4"
                     android:layout_margin="5dp"
-                    android:background="@color/advertFragmentBgColor"
+                    android:background="@color/whiteX"
+                    android:textColor="@color/black2"
                     android:inputType="number"
                     android:hint="@string/search_max_price_message"
                     android:gravity="center"
@@ -274,10 +283,10 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/home_fragment_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/home_fragment_recyclerView"
         android:scrollbars="vertical"
-        tools:listitem="@layout/car_item"/>
+        tools:listitem="@layout/car_item" />
 
 </LinearLayout>

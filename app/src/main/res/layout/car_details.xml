@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="5dp"
-    android:background="@color/yellow">
+    android:background="@color/whiteX">
 
 
     <TextView
@@ -21,8 +21,9 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="260dp"
         android:scaleType="fitXY"
+        android:layout_gravity="center"
         android:id="@+id/car_details_carImage"/>
 
     <LinearLayout
