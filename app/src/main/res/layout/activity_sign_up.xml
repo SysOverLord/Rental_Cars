@@ -13,26 +13,27 @@
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginTop="-30dp"
-        android:src="@drawable/logo2">
+        android:src="@drawable/logo1"
+        android:layout_gravity="center">
     </ImageView>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-50dp"
         android:fontFamily="@font/bungee"
         android:text="@string/sign_up_page_tittle_message"
-        android:textColor="@color/black"
-        android:textSize="40sp">
-    </TextView>
+        android:textColor="@color/black2"
+        android:textSize="40sp"
+        android:layout_marginTop="-30dp"
+        android:layout_gravity="center" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-30dp"
         android:text="@string/sign_up_page_sub_message"
-        android:textSize="18sp">
+        android:textSize="18sp"
+        android:layout_gravity="center">
     </TextView>
 
     <ScrollView
@@ -254,7 +255,7 @@
                 android:id="@+id/btn_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/gray"
+                android:backgroundTint="@color/black2"
                 android:text="@string/sign_up_button_text"
                 android:textColor="@color/white">
             </Button>
@@ -263,10 +264,10 @@
                 android:id="@+id/btn_login_screen"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/white"
+                android:backgroundTint="@color/white3"
                 android:text="@string/sign_up_already_member"
                 android:textColor="@color/black"
-                android:layout_margin="5dp"></Button>
+                android:layout_margin="5dp" />
 
         </LinearLayout>
 

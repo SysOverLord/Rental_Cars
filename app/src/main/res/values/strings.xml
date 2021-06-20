@@ -10,7 +10,7 @@
     <string name="car_description">DESCRIPTION</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="login_tittle">Hello there, Welcome Back.</string>
+    <string name="login_tittle">Hello there Welcome Back</string>
     <string name="login_tittle_message">Sign In to continue</string>
     <string name="login_text">LOGIN</string>
     <string name="new_user">New User? SIGN UP</string>

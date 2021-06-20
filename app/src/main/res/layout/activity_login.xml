@@ -11,26 +11,31 @@
 
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:src="@drawable/logo2">
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/logo1"
+        android:layout_gravity="center"
+        android:layout_marginTop="-15dp"
+        >
     </ImageView>
 
     <TextView
         android:id="@+id/logoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login_tittle"
-        android:textSize="40sp"
+        android:layout_gravity="center"
         android:layout_marginTop="-50dp"
         android:fontFamily="@font/bungee"
-        android:textColor="@color/black">
-    </TextView>
+        android:text="@string/login_tittle"
+        android:textAlignment="center"
+        android:textColor="@color/black2"
+        android:textSize="40sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login_tittle_message"
+        android:layout_gravity="center"
         android:textSize="18sp">
     </TextView>
 
@@ -77,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login_text"
-            android:backgroundTint="@color/gray"
+            android:backgroundTint="@color/black2"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp">
         </Button>
@@ -86,7 +91,7 @@
             android:id="@+id/signUpScreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:backgroundTint="@color/white"
+            app:backgroundTint="@color/white3"
             android:textColor="@color/black"
             android:text="@string/new_user"
             android:layout_gravity="right"

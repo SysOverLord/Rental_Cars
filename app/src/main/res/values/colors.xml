@@ -16,7 +16,7 @@
     <color name="homeFragmentBgColor">#FA876A</color>
     <color name="advertFragmentBgColor">#FFC107</color>
     <color name="profileFragmentBgColor">#FFEB3B</color>
-    <color name="recyclerViewBgColor">#FAC87F</color>
+    <color name="recyclerViewBgColor">#FFCF99</color>
 
     <color name="searchBgColor">#F79F1F</color>
     <color name="searchBtnColor">#EDE8C7</color>
