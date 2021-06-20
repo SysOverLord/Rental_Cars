@@ -158,6 +158,17 @@
             android:backgroundTint="@color/gray"
             android:layout_gravity="right"/>
 
+        <Button
+            android:id="@+id/btn_show_users"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="KULLANICILARI GÖRÜNTÜLE"
+            android:backgroundTint="@color/gray"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="invisible"/>
+
     </LinearLayout>
 
 

@@ -104,6 +104,9 @@ public class AdvertFragment extends Fragment {
                 if(imageId != null){
                     myRef.child("imageId").setValue(imageId);
                 }
+                else{
+                    myRef.child("imageId").setValue("placeholder_500x500.png");
+                }
 
                 AppCompatActivity activity = (AppCompatActivity) v.getContext();
                 Fragment HomeFragment = new HomeFragment();

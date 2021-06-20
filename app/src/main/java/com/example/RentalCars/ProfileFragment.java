@@ -1,5 +1,6 @@
 package com.example.RentalCars;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 
 public class ProfileFragment extends Fragment {
@@ -34,6 +36,9 @@ public class ProfileFragment extends Fragment {
     private TextInputLayout newEmail;
     private TextInputLayout newPassword;
     private Button btn_save;
+    private Button btn_showUsers;
+
+
 
 
     @Override
@@ -45,10 +50,27 @@ public class ProfileFragment extends Fragment {
         defineElements(v);
         String userId = getArguments().getString("userId");
         createProfileInf(userId);
+        if(userId.equals("admin")){
+            btn_showUsers.setVisibility(View.VISIBLE);
+            btn_showUsers.setClickable(true);
+        }
+        else
+            btn_showUsers.setClickable(false);
+
+
+        btn_showUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),ShowUsersActivity.class);
+                startActivity(intent);
+            }
+        });
+
         saveChanges(v,userId);
 
         return v;
     }
+
 
     public void createProfileInf(String userId){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -93,6 +115,7 @@ public class ProfileFragment extends Fragment {
         newEmail = v.findViewById(R.id.prf_newMail);
         newPassword =v.findViewById(R.id.prf_newPassword);
         btn_save = (Button)v.findViewById(R.id.btn_save);
+        btn_showUsers = (Button) v.findViewById(R.id.btn_show_users);
     }
 
     private void saveChanges(View v,String userId){
