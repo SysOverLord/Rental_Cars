@@ -9,7 +9,6 @@
     <include
         layout="@layout/car_details"/>
 
-
     <ImageButton
         android:id="@+id/btn_delete_car"
         android:layout_width="wrap_content"

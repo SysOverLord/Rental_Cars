@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.RentalCars.Entity.DialogHelper;
 import com.example.RentalCars.Entity.Rental;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,6 +44,7 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rent);
         defineElements();
+        DialogHelper dialogHelper = DialogHelper.getInstance();
 
         btn_startDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +76,6 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
                     //24 hours 60 minutes 60 seconds 1000 milliseconds
                     float totalPrice = (dayDiff + 1) * dailyPrice;
 
-
                     Rental rent = new Rental(rentedCarId, startDate, endDate, totalPrice, renterId,carOwnerId);
                     isRentable = true;
                     getRenterFullName(rent);
@@ -82,9 +83,8 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
                 }
                 else {
                     //Hata mesajı
-                    Toast.makeText(getApplicationContext(), "Illegal Date", Toast.LENGTH_SHORT).show();
+                    dialogHelper.ShowMessage("Illegal Date.", RentActivity.this);
                 }
-
             }
         });
     }

@@ -19,7 +19,7 @@
             android:id="@+id/btn_rent_car"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="KİRALAMAYA GİT"
+            android:text="@string/go_to_hire_message"
             android:backgroundTint="@color/deneme"
             android:layout_gravity="center"
             android:textStyle="bold"
@@ -36,7 +36,7 @@
             android:layout_gravity="center"
             android:backgroundTint="@color/gray"
             android:padding="15dp"
-            android:text="KİRALAMA GEÇMİŞİ"
+            android:text="@string/hire_history_text"
             android:textColor="@color/white"
             android:textStyle="bold">
         </Button>

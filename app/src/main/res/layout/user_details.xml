@@ -22,22 +22,22 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ADI SOYADI"
-                android:textSize="18dp"
+                android:text="@string/user_details_name_surname"
+                android:textSize="17dp"
                 android:fontFamily="@font/bungee"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bungee"
-                android:text="MAİL"
-                android:textSize="18dp"/>
+                android:text="@string/sign_up_email"
+                android:textSize="17dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ŞEHİR"
-                android:textSize="18dp"
+                android:text="@string/user_details_city"
+                android:textSize="17dp"
                 android:fontFamily="@font/bungee"/>
         </LinearLayout>
 
@@ -59,7 +59,7 @@
                     android:id="@+id/txtview_user_fullname"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:text="ATİBA HUTCHINSON"
+                    android:text=""
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
@@ -79,7 +79,7 @@
                     android:id="@+id/txtview_user_mail"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:text="atiba@gmail.com"
+                    android:text=""
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
@@ -87,7 +87,6 @@
                     android:fontFamily="@font/comfortaa_bold" />
 
             </LinearLayout>
-
 
 
             <LinearLayout
@@ -99,7 +98,7 @@
                     android:id="@+id/txtview_user_City"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:text="PlaceholderCity"
+                    android:text=""
                     android:layout_marginTop="25dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"

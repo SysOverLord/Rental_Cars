@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import com.example.RentalCars.Entity.DialogHelper;
 import com.example.RentalCars.Entity.Person;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -112,9 +113,12 @@ public class ProfileFragment extends Fragment {
                     DatabaseReference myRef = database.getReference("users/" + userId);
                     String newEmailStr = newEmail.getEditText().getText().toString();
                     String newPasswordStr = newPassword.getEditText().getText().toString();
-                    if(newEmailStr.equals("") && newPasswordStr.equals("")){
-                        // Hata mesajı
-                    }
+                DialogHelper dialogHelper = DialogHelper.getInstance();
+
+                    if(newEmailStr.equals(""))
+                        dialogHelper.ShowMessage("New mail is empty.", getContext());
+                    else if(newPasswordStr.equals(""))
+                        dialogHelper.ShowMessage("New password is empty.", getContext());
                     else {
                         if (!newEmailStr.equals("")) {
                             myRef.child("email").setValue(newEmailStr);

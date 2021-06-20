@@ -15,7 +15,7 @@
         android:fontFamily="@font/comfortaa_bold"
         android:textColor="@color/black"
         android:gravity="center"
-        android:text="İLANLAR"
+        android:text="@string/adverts_page_tittle"
         android:layout_marginBottom="10dp"
         android:background="@color/searchTitleColor"/>
 
@@ -35,7 +35,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Marka"
+                android:text="@string/car_brand"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
 
@@ -43,26 +43,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bungee"
-                android:text="Model"
+                android:text="@string/car_model"
                 android:textSize="18dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Renk"
+                android:text="@string/car_color"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Günlük Ücret"
+                android:text="@string/car_daily_price"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
 
         </LinearLayout>
-
-
 
         <LinearLayout
             android:id="@+id/rl_ListView2"
@@ -84,15 +82,13 @@
                     android:layout_margin="5dp"
                     android:background="@color/advertFragmentBgColor"
                     android:ems="10"
-                    android:hint="Search brand"
+                    android:hint="@string/search_brand_message"
                     android:gravity="center"
                     android:singleLine="true"
                     android:layout_marginTop="-20dp">
                 </EditText>
 
             </LinearLayout>
-
-
 
             <!--search 2-->
             <LinearLayout
@@ -108,15 +104,13 @@
                     android:layout_margin="5dp"
                     android:background="@color/advertFragmentBgColor"
                     android:ems="10"
-                    android:hint="Search model"
+                    android:hint="@string/search_model_message"
                     android:gravity="center"
                     android:singleLine="true"
                     android:layout_marginTop="-20dp">
                 </EditText>
 
             </LinearLayout>
-
-
 
 
             <!--search 3-->
@@ -134,15 +128,13 @@
                     android:layout_margin="5dp"
                     android:background="@color/advertFragmentBgColor"
                     android:ems="10"
-                    android:hint="Search color"
+                    android:hint="@string/search_color_message"
                     android:gravity="center"
                     android:singleLine="true"
                     android:layout_marginTop="-20dp">
                 </EditText>
 
             </LinearLayout>
-
-
 
 
             <!--search 4-->
@@ -159,7 +151,7 @@
                     android:layout_margin="5dp"
                     android:background="@color/advertFragmentBgColor"
                     android:inputType="number"
-                    android:hint="Minimum"
+                    android:hint="@string/search_min_price_message"
                     android:gravity="center"
                     android:singleLine="true"
                     android:layout_marginTop="-20dp">
@@ -173,7 +165,7 @@
                     android:layout_margin="5dp"
                     android:background="@color/advertFragmentBgColor"
                     android:inputType="number"
-                    android:hint="Maximum"
+                    android:hint="@string/search_max_price_message"
                     android:gravity="center"
                     android:singleLine="true"
                     android:layout_marginTop="-20dp">
@@ -287,7 +279,5 @@
         android:id="@+id/home_fragment_recyclerView"
         android:scrollbars="vertical"
         tools:listitem="@layout/car_item"/>
-
-
 
 </LinearLayout>

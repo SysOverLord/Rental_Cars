@@ -22,7 +22,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="KİRALAYAN"
+                android:text="@string/rental_details_renter"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
 
@@ -30,13 +30,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bungee"
-                android:text="KİRALAMA TARİHİ"
+                android:text="@string/rental_details_rent_date"
                 android:textSize="18dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="TOPLAM ÜCRET"
+                android:text="@string/rental_details_total_price"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
         </LinearLayout>
@@ -59,7 +59,7 @@
                     android:id="@+id/txtview_rental_renter"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:text="ATİBA HUTCHINSON"
+                    android:text=""
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
@@ -79,7 +79,7 @@
                     android:id="@+id/txtview_rental_date"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:text="19/06/2021 - 30/06/2021"
+                    android:text=""
                     android:layout_marginTop="30dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
@@ -99,7 +99,7 @@
                     android:id="@+id/txtview_rental_cost"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:text="5000"
+                    android:text=""
                     android:layout_marginTop="30dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
@@ -117,7 +117,6 @@
         android:layout_height="2dp"
         android:background="@android:color/black"
         android:layout_marginTop="15dp"/>
-
 
 
 </LinearLayout>

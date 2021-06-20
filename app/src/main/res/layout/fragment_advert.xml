@@ -19,7 +19,7 @@
             android:textSize="32dp"
             android:textColor="@color/black"
             android:fontFamily="@font/comfortaa_bold"
-            android:text="İLAN EKLEME"
+            android:text="@string/add_advert"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal" />
@@ -43,7 +43,7 @@
                 android:id="@+id/btn_add_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select Image"
+                android:text="@string/select_image_message"
                 android:backgroundTint="@color/searchBgColor"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"/>
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/advert_car_brand"
-                android:hint="Enter your car's brand"
+                android:hint="@string/enter_brand_message"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -65,7 +65,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/advert_car_model"
-                android:hint="Enter your car's model"
+                android:hint="@string/enter_model_message"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -78,7 +78,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/advert_car_color"
-                android:hint="Enter your car's color"
+                android:hint="@string/enter_color_message"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -91,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/advert_car_price"
-                android:hint="Define a daily price"
+                android:hint="@string/enter_price_message"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -105,7 +105,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/advert_car_description"
-                android:hint="Express your car details"
+                android:hint="@string/enter_detail_message"
                 android:gravity="top"
                 android:inputType="text"
                 android:lines="1"
@@ -124,13 +124,12 @@
                 android:id="@+id/btn_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ADD MY CAR"
+                android:text="@string/add_car_button_text"
                 android:backgroundTint="@color/gray"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"/>
 
         </LinearLayout>
-
 
     </RelativeLayout>
 

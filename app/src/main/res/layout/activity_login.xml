@@ -20,7 +20,7 @@
         android:id="@+id/logoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello there, Welcome Back"
+        android:text="@string/login_tittle"
         android:textSize="40sp"
         android:layout_marginTop="-50dp"
         android:fontFamily="@font/bungee"
@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign In to continue"
+        android:text="@string/login_tittle_message"
         android:textSize="18sp">
     </TextView>
 
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/login_username"
-            android:hint="Username"
+            android:hint="@string/sign_up_username"
             app:startIconDrawable="@drawable/outline_login_black_18"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/login_password"
-            android:hint="Password"
+            android:hint="@string/sign_up_password"
             app:startIconDrawable="@drawable/outline_password_black_18"
             app:passwordToggleEnabled="true"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -76,7 +76,7 @@
             android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LOGIN"
+            android:text="@string/login_text"
             android:backgroundTint="@color/gray"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp">
@@ -88,7 +88,7 @@
             android:layout_height="wrap_content"
             app:backgroundTint="@color/white"
             android:textColor="@color/black"
-            android:text="New User? SIGN UP"
+            android:text="@string/new_user"
             android:layout_gravity="right"
             android:layout_margin="5dp">
         </Button>

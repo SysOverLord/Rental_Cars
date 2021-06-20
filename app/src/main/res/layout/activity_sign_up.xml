@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-50dp"
         android:fontFamily="@font/bungee"
-        android:text="WELCOME"
+        android:text="@string/sign_up_page_tittle_message"
         android:textColor="@color/black"
         android:textSize="40sp">
     </TextView>
@@ -31,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-30dp"
-        android:text="Sign up to start your new Journey"
+        android:text="@string/sign_up_page_sub_message"
         android:textSize="18sp">
     </TextView>
 
@@ -57,7 +57,7 @@
                     android:layout_width="183dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:hint="First Name"
+                    android:hint="@string/sign_up_first_name"
                     android:orientation="horizontal"
                     app:startIconDrawable="@drawable/outline_account_circle_black_18">
 
@@ -73,7 +73,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="182dp"
                     android:layout_height="wrap_content"
-                    android:hint="Last Name"
+                    android:hint="@string/sign_up_last_name"
                     app:startIconDrawable="@drawable/outline_account_circle_black_18">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -90,7 +90,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Username"
+                android:hint="@string/sign_up_username"
                 app:startIconDrawable="@drawable/ic_person">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -106,7 +106,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/sign_up_email"
                 app:startIconDrawable="@drawable/outline_email_black_18">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -122,7 +122,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/sign_up_password"
                 app:passwordToggleEnabled="true"
                 app:startIconDrawable="@drawable/outline_lock_black_18">
 
@@ -146,7 +146,7 @@
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:hint="City"
+                    android:hint="@string/sign_up_city"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -162,7 +162,7 @@
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:hint="District"
+                    android:hint="@string/sign_up_district"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -178,7 +178,7 @@
                     android:layout_width="90dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="6dp"
-                    android:hint="Street"
+                    android:hint="@string/sign_up_street"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -193,7 +193,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="75dp"
                     android:layout_height="wrap_content"
-                    android:hint="No"
+                    android:hint="@string/sign_up_no"
                     android:orientation="horizontal">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -210,7 +210,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter the name on the credit card"
+                android:hint="@string/sign_up_Card_Name"
                 app:startIconDrawable="@drawable/outline_badge_black_18">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -225,7 +225,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter the numbers on the credit card"
+                android:hint="@string/sign_up_Card_No"
                 app:startIconDrawable="@drawable/outline_credit_card_black_18">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -240,7 +240,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Enter the cvv number on the credit card"
+                android:hint="@string/sign_up_Card_Cvv"
                 app:startIconDrawable="@drawable/outline_pin_black_18">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -255,7 +255,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/gray"
-                android:text="SIGN UP"
+                android:text="@string/sign_up_button_text"
                 android:textColor="@color/white">
             </Button>
 
@@ -264,13 +264,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/white"
-                android:text="Already have an account? LogIn"
+                android:text="@string/sign_up_already_member"
                 android:textColor="@color/black"
                 android:layout_margin="5dp"></Button>
 
         </LinearLayout>
 
     </ScrollView>
-
 
 </LinearLayout>
