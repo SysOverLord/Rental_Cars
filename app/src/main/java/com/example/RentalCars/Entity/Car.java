@@ -11,6 +11,7 @@ public class Car implements Serializable {
     private String desc;
     private String carId;
     private String ownerId;
+    private String imageId;
 
     public Car(String brand, String model, String color, float dailyPrice, String desc, String carId, String ownerId) {
         this.brand = brand;
@@ -67,4 +68,7 @@ public class Car implements Serializable {
     public void setColor(String color) {
         this.color = color;
     }
+
+    public String getImageId() {    return imageId; }
+
 }

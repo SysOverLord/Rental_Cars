@@ -64,22 +64,23 @@ public class ActivityCarPage extends AppCompatActivity {
             getImageIdFromDB(car.getCarId());
             createCarPageInformation(car);
             Button button = findViewById(R.id.btn_rent_car);
-            if(!car.getOwnerId().equals(userId)){
-                Intent rentIntent = new Intent(this,RentActivity.class);
 
-                button.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rentIntent.putExtra("renterId",userId);
-                        rentIntent.putExtra("rentedCarId",car.getCarId());
-                        rentIntent.putExtra("dailyPrice",car.getDailyPrice());
-                        rentIntent.putExtra("carOwnerId",car.getOwnerId());
+            Intent rentIntent = new Intent(this,RentActivity.class);
+
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(!car.getOwnerId().equals(userId)) {
+                        rentIntent.putExtra("renterId", userId);
+                        rentIntent.putExtra("rentedCarId", car.getCarId());
+                        rentIntent.putExtra("dailyPrice", car.getDailyPrice());
+                        rentIntent.putExtra("carOwnerId", car.getOwnerId());
                         startActivity(rentIntent);
                     }
-                });
-            }
-            else
-                dialogHelper.ShowMessage("You can't rent your own car", this);
+                    else
+                        dialogHelper.ShowMessage("You can't rent your own car", ActivityCarPage.this);
+                }
+            });
 
             Button rentHistoryButton = findViewById(R.id.btn_history);
             Intent rentHistoryIntent = new Intent(this,ShowPreviousRentalsActivity.class);
