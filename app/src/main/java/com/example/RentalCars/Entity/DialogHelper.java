@@ -2,9 +2,6 @@ package com.example.RentalCars.Entity;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.view.ContextThemeWrapper;
-
-import com.example.RentalCars.R;
 
 public class DialogHelper {
     private static DialogHelper instance = new DialogHelper();
