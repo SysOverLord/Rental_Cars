@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.RentalCars.Entity.Address;
 import com.example.RentalCars.Entity.CheckingInputs;
 import com.example.RentalCars.Entity.CreditCard;
+import com.example.RentalCars.Entity.DialogHelper;
 import com.example.RentalCars.Entity.Person;
 import com.example.RentalCars.Entity.User;
 import com.google.android.material.textfield.TextInputLayout;
@@ -57,7 +58,7 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
 
         CheckingInputs[] checkingInputs = defineElements();
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        DialogHelper dialogHelper = DialogHelper.getInstance();
         Intent intent = new Intent(this,MainPage.class);
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
@@ -84,26 +85,18 @@ public class SignUp extends AppCompatActivity {
                 Query query = myRef.orderByChild("username").equalTo(user.getUsername());
                 myRef = myRef.child(newId);
 
-
-                if(!isEmpty(checkingInputs, builder)){
+                if(!isEmpty(checkingInputs, dialogHelper)){
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if(!dataSnapshot.exists()){
                                 myRef.setValue(person);
-                                builder.setMessage("User created.");
-                                AlertDialog alert = builder.create();
-                                alert.setTitle("Uyarı");
-                                alert.show();
+                                dialogHelper.ShowMessage("User created.", SignUp.this);
                                 intent.putExtra("userId",person.getUserId());
                                 startActivity(intent);
-
                             }
                             else {
-                                builder.setMessage("User has already created.");
-                                AlertDialog alert = builder.create();
-                                alert.setTitle("Uyarı");
-                                alert.show();
+                                dialogHelper.ShowMessage("User has already created.", SignUp.this);
                             }
                         }
                         @Override
@@ -149,30 +142,21 @@ public class SignUp extends AppCompatActivity {
         return checkingInputs;
     }
 
-    private boolean isEmpty(CheckingInputs[] checkingInputs, AlertDialog.Builder builder) {
+    private boolean isEmpty(CheckingInputs[] checkingInputs, DialogHelper dialogHelper) {
         for (CheckingInputs input : checkingInputs) {
             if(input.getName().equals("Card Cvv") && !input.getTextInput().getEditText().getText().toString().equals("") &&
                     input.getTextInput().getEditText().getText().toString().length() != 3){
-                builder.setMessage("CVV's length must be 3.");
-                AlertDialog alert = builder.create();
-                alert.setTitle("Notify");
-                alert.show();
+                dialogHelper.ShowMessage("CVV's length must be 3.", this);
                 return true;
             }
             else if(input.getName().equals("Card No") && !input.getTextInput().getEditText().getText().toString().equals("") &&
                     input.getTextInput().getEditText().getText().toString().length() != 16){
-                builder.setMessage("Card No's length must be 16.");
-                AlertDialog alert = builder.create();
-                alert.setTitle("Notify");
-                alert.show();
+                dialogHelper.ShowMessage("Card No's length must be 16.", this);
                 return true;
             }
             else{
                 if (input.getTextInput().getEditText().getText().toString().equals("")) {
-                    builder.setMessage(input.getName() + " is empty");
-                    AlertDialog alert = builder.create();
-                    alert.setTitle("Notify");
-                    alert.show();
+                    dialogHelper.ShowMessage(input.getName() + " is empty", this);
                     return true;
                 }
             }

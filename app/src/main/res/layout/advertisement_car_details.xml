@@ -12,7 +12,7 @@
         android:id="@+id/btn_rent_car"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="KİRALAMAYA GİT"
+        android:text="@string/go_to_hire_message"
         android:layout_marginTop="-150dp"
         android:backgroundTint="@color/deneme"
         android:layout_gravity="center"

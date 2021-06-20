@@ -14,7 +14,7 @@
         android:textSize="32dp"
         android:textColor="@color/black"
         android:fontFamily="@font/comfortaa_bold"
-        android:text="İLAN EKLEME"
+        android:text="@string/add_advert"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
        android:gravity="center_horizontal" />
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/advert_car_brand"
-            android:hint="Enter your car's brand"
+            android:hint="@string/enter_brand_message"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -44,7 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/advert_car_model"
-            android:hint="Enter your car's model"
+            android:hint="@string/enter_model_message"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/advert_car_color"
-            android:hint="Enter your car's color"
+            android:hint="@string/enter_color_message"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -70,12 +70,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/advert_car_price"
-            android:hint="Define a daily price"
+            android:hint="@string/enter_price_message"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

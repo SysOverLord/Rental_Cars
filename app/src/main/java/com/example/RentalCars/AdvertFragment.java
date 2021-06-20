@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.RentalCars.Entity.Car;
 import com.example.RentalCars.Entity.CheckingInputs;
+import com.example.RentalCars.Entity.DialogHelper;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -43,12 +44,12 @@ public class AdvertFragment extends Fragment {
         String userId = getArguments().getString("userId");
 
         CheckingInputs[] checkingInputs = defineElements(v);
-        AlertDialog.Builder builder = new AlertDialog.Builder(this.getContext());
+        DialogHelper dialogHelper = DialogHelper.getInstance();
 
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!isEmpty(checkingInputs, builder))
+                if(!isEmpty(checkingInputs, dialogHelper))
                     addCar(v, checkingInputs, userId);
             }
         });
@@ -106,22 +107,30 @@ public class AdvertFragment extends Fragment {
         return checkingInputs;
     }
 
-    private boolean isEmpty(CheckingInputs[] checkingInputs, AlertDialog.Builder builder) {
+    private boolean isEmpty(CheckingInputs[] checkingInputs, DialogHelper dialogHelper) {
         for (CheckingInputs input : checkingInputs) {
             if (input.getEdText() != null){
                 if (input.getEdText().getText().toString().equals("")) {
-                    builder.setMessage(input.getName() + " is empty");
-                    AlertDialog alert = builder.create();
-                    alert.setTitle("Uyarı");
-                    alert.show();
+                    dialogHelper.ShowMessage(input.getName() + " is empty", this.getContext());
                     return true;
                 }
             } else {
+                if(input.getName().equals("Price")){
+                    if (input.getTextInput().getEditText().getText().toString().equals("")) {
+                        dialogHelper.ShowMessage(input.getName() + " is empty", this.getContext());
+                        return true;
+                    }
+                    else if (input.getTextInput().getEditText().getText().toString().equals(".")) {
+                        dialogHelper.ShowMessage("Invalid price input. Please try again.", this.getContext());
+                        return true;
+                    }
+                    else if (input.getTextInput().getEditText().getText().toString().charAt(0) == '.') {
+                        input.getTextInput().getEditText().setText("0" + input.getTextInput().getEditText().getText().toString());
+                        return false;
+                    }
+                }
                 if (input.getTextInput().getEditText().getText().toString().equals("")) {
-                    builder.setMessage(input.getName() + " is empty");
-                    AlertDialog alert = builder.create();
-                    alert.setTitle("Uyarı");
-                    alert.show();
+                    dialogHelper.ShowMessage(input.getName() + " is empty", this.getContext());
                     return true;
                 }
             }

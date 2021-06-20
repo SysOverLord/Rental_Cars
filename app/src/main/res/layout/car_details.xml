@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="İLAN DETAYLARI"
+        android:text="@string/car_details_tittle"
         android:textStyle="bold"
         android:fontFamily="@font/comfortaa_bold"
         android:textSize="24dp"
@@ -96,7 +96,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Marka"
+                android:text="@string/car_brand"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
 
@@ -104,27 +104,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/bungee"
-                android:text="Model"
+                android:text="@string/car_model"
                 android:textSize="18dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Renk"
+                android:text="@string/car_color"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Günlük Ücret"
+                android:text="@string/car_daily_price"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Açıklama"
+                android:text="@string/car_description"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"/>
 
@@ -148,7 +148,7 @@
                     android:id="@+id/txtview_brand"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:text="MERCEDES"
+                    android:text=""
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
@@ -170,7 +170,7 @@
                     android:id="@+id/txtview_model"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:text="C 180"
+                    android:text=""
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
@@ -193,7 +193,7 @@
                     android:id="@+id/txtview_color"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:text="GRİ"
+                    android:text=""
                     android:layout_marginTop="20dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
@@ -216,7 +216,7 @@
                     android:id="@+id/txtview_dailyprice"
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
-                    android:text="500"
+                    android:text=""
                     android:layout_marginTop="25dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
@@ -244,8 +244,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1.0"
-                        android:text="ASDASDSADSADSADASDASDSADSADSADSASADASDasdasdsadsadasads
-                             ASDASDSADSADSADASDASDSADSADSADSASADASDasdasdsadsadasads adsadasads Aadsadasads Aadsadasads A adsadasads A"
+                        android:text=""
                         android:textStyle="bold"
                         android:textSize="18dp"
                         android:fontFamily="@font/comfortaa_bold"

@@ -28,7 +28,7 @@
             android:id="@+id/prf_firstName"
             android:textSize="18dp"
             android:textColor="@color/black"
-            android:text="İSİM"
+            android:text="@string/profile_name"
             android:layout_marginBottom="5dp">
         </TextView>
 
@@ -43,7 +43,7 @@
             android:id="@+id/prf_lastName"
             android:textSize="18dp"
             android:textColor="@color/black"
-            android:text="SOYİSİM "
+            android:text="@string/profile_surname"
             android:layout_marginBottom="5dp">
         </TextView>
 
@@ -58,7 +58,7 @@
             android:id="@+id/prf_email"
             android:textSize="18dp"
             android:textColor="@color/black"
-            android:text="MAİL"
+            android:text="@string/profile_mail"
             android:layout_marginBottom="5dp">
         </TextView>
 
@@ -73,7 +73,7 @@
             android:id="@+id/prf_username"
             android:textSize="18dp"
             android:textColor="@color/black"
-            android:text="KULLANICIADI"
+            android:text="@string/profile_username"
             android:layout_marginBottom="5dp">
         </TextView>
 
@@ -88,7 +88,7 @@
             android:id="@+id/prf_cardLimit"
             android:textSize="18dp"
             android:textColor="@color/black"
-            android:text="KREDİ KARTI LİMİTİ"
+            android:text="@string/profile_card_limit"
             android:layout_marginBottom="5dp">
         </TextView>
 
@@ -103,7 +103,7 @@
             android:id="@+id/prf_register_time"
             android:textSize="18dp"
             android:textColor="@color/black"
-            android:text="ŞU TARİHTEN BERİ ÜYE"
+            android:text="@string/profile_membership_date"
             android:layout_marginBottom="5dp">
         </TextView>
 
@@ -127,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/prf_newMail"
-            android:hint="Define a new mail"
+            android:hint="@string/profile_change_mail_message"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -141,7 +141,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/prf_newPassword"
-            android:hint="Define a new password"
+            android:hint="@string/profile_change_password_message"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -154,7 +154,7 @@
             android:id="@+id/btn_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="KAYDET"
+            android:text="@string/profile_save_button_text"
             android:backgroundTint="@color/gray"
             android:layout_gravity="right"/>
 

@@ -9,7 +9,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="KİRALAMA DETAYLARI"
+        android:text="@string/hire_screen_tittle"
         android:textStyle="bold"
         android:fontFamily="@font/comfortaa_bold"
         android:textSize="24dp"
@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="BAŞLANGIÇ TARİHİ SEÇİNİZ"
+        android:text="@string/hire_screen_start_date"
         android:textStyle="bold"
         android:fontFamily="@font/bungee"
         android:gravity="center"
@@ -52,7 +52,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TESLİM TARİHİ SEÇİNİZ"
+        android:text="@string/hire_screen_end_date"
         android:textStyle="bold"
         android:fontFamily="@font/bungee"
         android:gravity="center"
@@ -84,7 +84,7 @@
         android:id="@+id/btn_rental_complete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="KİRALA"
+        android:text="@string/hire_screen_hire_button"
         android:layout_marginTop="50dp"
         android:backgroundTint="@color/gray"
         android:layout_gravity="center"
