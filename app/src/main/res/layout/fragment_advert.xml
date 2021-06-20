@@ -1,114 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AdvertFragment"
-    android:background="@color/advertFragmentBgColor">
+    android:layout_height="wrap_content">
 
-
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="32dp"
-        android:textColor="@color/black"
-        android:fontFamily="@font/comfortaa_bold"
-        android:text="İLAN EKLEME"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal" />
+        android:layout_height="match_parent"
+        tools:context=".AdvertFragment"
+        android:background="@color/advertFragmentBgColor">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginRight="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginTop="75dp">
 
-        <com.google.android.material.textfield.TextInputLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/advert_car_brand"
-            android:hint="Enter your car's brand"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            android:textStyle="bold"
+            android:textSize="32dp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/comfortaa_bold"
+            android:text="İLAN EKLEME"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal" />
 
-            <com.google.android.material.textfield.TextInputEditText
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="75dp">
+
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:id="@+id/advert_carImage"
+                android:layout_marginBottom="5dp"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/btn_add_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Image"
+                android:backgroundTint="@color/searchBgColor"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/advert_car_model"
-            android:hint="Enter your car's model"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/advert_car_color"
-            android:hint="Enter your car's color"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/advert_car_price"
-            android:hint="Define a daily price"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-            <com.google.android.material.textfield.TextInputEditText
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:id="@+id/advert_car_brand"
+                android:hint="Enter your car's brand"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/advert_car_description"
-            android:hint="Express your car details"
-            android:gravity="top"
-            android:inputType="text"
-            android:lines="1"
-            android:maxLines="5"
-            android:scrollbars="vertical"
-            android:layout_marginTop="15dp"
-            android:padding="10dp"
-            android:background="@drawable/text_border"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@android:color/black" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/advert_car_model"
+                android:hint="Enter your car's model"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ADD MY CAR"
-            android:backgroundTint="@color/gray"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"/>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/advert_car_color"
+                android:hint="Enter your car's color"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/advert_car_price"
+                android:hint="Define a daily price"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/advert_car_description"
+                android:hint="Express your car details"
+                android:gravity="top"
+                android:inputType="text"
+                android:lines="1"
+                android:maxLines="5"
+                android:scrollbars="vertical"
+                android:layout_marginTop="15dp"
+                android:padding="10dp"
+                android:background="@drawable/text_border"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/black" />
+
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ADD MY CAR"
+                android:backgroundTint="@color/gray"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
 
 
-</RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

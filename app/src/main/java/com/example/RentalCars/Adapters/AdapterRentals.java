@@ -83,7 +83,7 @@ public class AdapterRentals extends ArrayAdapter<Rental> {
             holder.display_renter.setText(_lRental.get(position).getRenterFullName());
             String startDateStr = new SimpleDateFormat("dd/MM/yyyy").format(_lRental.get(position).getStartDate());
             String endDateStr = new SimpleDateFormat("dd/MM/yyyy").format(_lRental.get(position).getEndDate());
-            holder.display_date.setText(String.format("%s - %s",startDateStr,endDateStr));
+            holder.display_date.setText(String.format("%s-%s",startDateStr,endDateStr));
             holder.display_totalPrice.setText(String.valueOf(_lRental.get(position).getTotalPrice()));
 
         } catch (Exception e) {

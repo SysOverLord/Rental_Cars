@@ -1,44 +1,52 @@
 package com.example.RentalCars;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.RentalCars.Adapters.AdapterRentals;
 import com.example.RentalCars.Entity.Car;
-import com.example.RentalCars.Entity.Rental;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class ActivityCarPage extends AppCompatActivity {
 
     boolean isRentable;
     boolean dbReturned;
-    ListView mListView;
-    ArrayList<Rental> rentalList;
+
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         if(getIntent().getExtras().getString("pageType").equals("myCarPage")){
+
             setContentView(R.layout.my_car_details);
+            imageView = findViewById(R.id.car_details_carImage);
             Bundle extras = getIntent().getExtras();
             Car car = (Car) extras.get("car");
+            getImageIdFromDB(car.getCarId());
             createCarPageInformation(car);
             ImageButton imageButton = findViewById(R.id.btn_delete_car);
             imageButton.setOnClickListener(new View.OnClickListener() {
@@ -51,24 +59,37 @@ public class ActivityCarPage extends AppCompatActivity {
 
         else{
             setContentView(R.layout.advertisement_car_details);
-            mListView = findViewById(R.id.listview_prev_rentals);
+            imageView = findViewById(R.id.car_details_carImage);
             Bundle extras = getIntent().getExtras();
             String userId = extras.getString("userId");
             Car car = (Car) extras.get("car");
+            getImageIdFromDB(car.getCarId());
             createCarPageInformation(car);
-            createCurrentCarRentalsList(car.getCarId());
-            Button button = findViewById(R.id.btn_pickDate);
-            Intent rentIntent = new Intent(this,RentActivity.class);
-            button.setOnClickListener(new View.OnClickListener() {
+            Button button = findViewById(R.id.btn_rent_car);
+            if(!car.getOwnerId().equals(userId)){
+                Intent rentIntent = new Intent(this,RentActivity.class);
+
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        rentIntent.putExtra("renterId",userId);
+                        rentIntent.putExtra("rentedCarId",car.getCarId());
+                        rentIntent.putExtra("dailyPrice",car.getDailyPrice());
+                        rentIntent.putExtra("carOwnerId",car.getOwnerId());
+                        startActivity(rentIntent);
+                    }
+                });
+            }
+            else{
+                Toast.makeText(this,"You can't rent your own car",Toast.LENGTH_SHORT);
+            }
+            Button rentHistoryButton = findViewById(R.id.btn_go_prev_rentals);
+            Intent rentHistoryIntent = new Intent(this,ShowPreviousRentalsActivity.class);
+            rentHistoryButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                  rentIntent.putExtra("renterId",userId);
-                  rentIntent.putExtra("rentedCarId",car.getCarId());
-                  rentIntent.putExtra("dailyPrice",car.getDailyPrice());
-                  rentIntent.putExtra("carOwnerId",car.getOwnerId());
-                  startActivity(rentIntent);
-
-
+                    rentHistoryIntent.putExtra("carId",car.getCarId());
+                    startActivity(rentHistoryIntent);
                 }
             });
         }
@@ -76,21 +97,47 @@ public class ActivityCarPage extends AppCompatActivity {
     }
 
 
+    public void getImageFromStorage(String imageId){
 
-    public void createCurrentCarRentalsList(String carId){
+        if(imageId != null){
+
+
+            final long FIVE_MEGABYTE = 5 * 1024 * 1024;
+
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference storageReference = storage.getReference("images/"+imageId);
+
+            storageReference.getBytes(FIVE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+                    Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    DisplayMetrics dm = new DisplayMetrics();
+                    getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+                    imageView.setMinimumHeight(dm.heightPixels);
+                    imageView.setMinimumWidth(dm.widthPixels);
+                    imageView.setImageBitmap(bm);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(ActivityCarPage.this,"Encountered error while getting image",Toast.LENGTH_SHORT);
+                }
+            });
+        }
+
+
+
+    }
+    public void getImageIdFromDB(String carId){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("rentals");
-        Query query = myRef.orderByChild("rentedCarId").equalTo(carId);
-        query.addValueEventListener(new ValueEventListener() {
+        DatabaseReference databaseReference = database.getReference("cars/" + carId).child("imageId");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                rentalList =new ArrayList<Rental>();
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    rentalList.add(dataSnapshot.getValue(Rental.class));
-                }
-                mListView = findViewById(R.id.listview_prev_rentals);
-                AdapterRentals adapterRentals = new AdapterRentals(ActivityCarPage.this,android.R.layout.simple_list_item_1,rentalList);
-                mListView.setAdapter(adapterRentals);
+                String imageId = snapshot.getValue(String.class);
+                getImageFromStorage(imageId);
+
             }
 
             @Override
@@ -98,8 +145,11 @@ public class ActivityCarPage extends AppCompatActivity {
 
             }
         });
-
     }
+
+
+
+
     public void deleteCar(String carId){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("cars/" + carId );
