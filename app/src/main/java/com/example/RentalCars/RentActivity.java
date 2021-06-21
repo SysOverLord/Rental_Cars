@@ -75,7 +75,7 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
                 currentDate.setSeconds(0);
                 currentDate.setHours(0);
 
-                if (currentDate.compareTo(startDate) <= 0 && startDate != null && endDate != null && startDate.compareTo(endDate) <= 0) {
+                if (startDate != null && endDate != null && currentDate.compareTo(startDate) <= 0 && startDate.compareTo(endDate) <= 0) {
                     long dayDiff = (endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000);
                     //24 hours 60 minutes 60 seconds 1000 milliseconds
                     float totalPrice = (dayDiff + 1) * dailyPrice;
