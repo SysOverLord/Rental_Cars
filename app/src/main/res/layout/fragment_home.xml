@@ -220,7 +220,9 @@
                     tools:listitem="@layout/car_item" />
 
             </RelativeLayout>
+
         </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>

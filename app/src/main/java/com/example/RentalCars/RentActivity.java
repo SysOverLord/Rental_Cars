@@ -229,8 +229,6 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
     }
 
     private void checkDates(Date startDate, Date endDate,Rental rent){
-        //CircularProgressIndicator circular = findViewById(R.id.CPI);
-        //circular.setVisibility(View.VISIBLE);
         DialogHelper dialogHelper = DialogHelper.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("rentals/" );
@@ -256,7 +254,6 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
                     checkLimit(rent);
                 else
                     dialogHelper.ShowMessage("Date is not available for rent.", RentActivity.this);
-                //circular.setVisibility(View.INVISIBLE);
             }
 
             @Override

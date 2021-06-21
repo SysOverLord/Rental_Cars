@@ -68,21 +68,18 @@ public class ProfileFragment extends Fragment {
 
     public void createProfileInf(String userId){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("users/");
-        Query query = myRef.orderByChild("userId").equalTo(userId);
-        query.addValueEventListener(new ValueEventListener() {
+        DatabaseReference myRef = database.getReference("users/" + userId);
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    Person person = dataSnapshot.getValue(Person.class);
+                Person person = snapshot.getValue(Person.class);
 
-                    firstName.setText("First Name: " + person.getFirstName());
-                    lastName.setText("Last Name: " + person.getLastName());
-                    email.setText("Email: " + person.getEmail());
-                    username.setText("Username: " + person.getUsername());
-                    creditLimit.setText("Card Limit: " + Float.toString(person.getCreditCard().getLimit()));
-                    registerDate.setText("Register Date: " + new SimpleDateFormat("dd/MM/yyyy").format(person.getRegisterDate()));
-                }
+                firstName.setText("First Name: " + person.getFirstName());
+                lastName.setText("Last Name: " + person.getLastName());
+                email.setText("Email: " + person.getEmail());
+                username.setText("Username: " + person.getUsername());
+                creditLimit.setText("Card Limit: " + Float.toString(person.getCreditCard().getLimit()));
+                registerDate.setText("Register Date: " + new SimpleDateFormat("dd/MM/yyyy").format(person.getRegisterDate()));
             }
 
             @Override
@@ -93,16 +90,16 @@ public class ProfileFragment extends Fragment {
     }
 
     private void defineElements(View v){
-        firstName = (TextView)v.findViewById(R.id.prf_firstName);
-        lastName = (TextView)v.findViewById(R.id.prf_lastName);
-        email = (TextView)v.findViewById(R.id.prf_email);
-        username = (TextView)v.findViewById(R.id.prf_username);
-        creditLimit = (TextView)v.findViewById(R.id.prf_cardLimit);
-        registerDate = (TextView)v.findViewById(R.id.prf_register_time);
+        firstName = v.findViewById(R.id.prf_firstName);
+        lastName = v.findViewById(R.id.prf_lastName);
+        email = v.findViewById(R.id.prf_email);
+        username = v.findViewById(R.id.prf_username);
+        creditLimit = v.findViewById(R.id.prf_cardLimit);
+        registerDate = v.findViewById(R.id.prf_register_time);
         newEmail = v.findViewById(R.id.prf_newMail);
         newPassword =v.findViewById(R.id.prf_newPassword);
-        btn_save = (Button)v.findViewById(R.id.btn_save);
-        btn_showUsers = (Button) v.findViewById(R.id.btn_show_users);
+        btn_save = v.findViewById(R.id.btn_save);
+        btn_showUsers = v.findViewById(R.id.btn_show_users);
     }
 
     private void saveChanges(View v,String userId){

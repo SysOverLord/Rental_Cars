@@ -45,9 +45,7 @@ public class MyCarsFragment extends Fragment {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     carList.add(dataSnapshot.getValue(Car.class));
                 }
-                //show car list
 
-                //adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,myCars);
                 mRecyclerView = (RecyclerView) v.findViewById(R.id.mycars_fragment_recyclerview);
                 adapterCarRecycler = new AdapterCarRecycler(activity,carList);
                 mRecyclerView.setAdapter(adapterCarRecycler);
@@ -83,7 +81,6 @@ public class MyCarsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
         View v =  inflater.inflate(R.layout.fragment_my_cars, container, false);
         Activity activity = getActivity();
         Bundle extras = getArguments();

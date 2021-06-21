@@ -56,7 +56,7 @@ public class HomeFragment extends Fragment {
         AdapterCarRecycler adapterCarRecycler = new AdapterCarRecycler(getActivity(),new ArrayList<Car>());
         activity = getActivity();
         String userId = getArguments().getString("userId");
-        createSearchList(fBrand,fModel,1,v,userId);
+        createSearchList(fBrand, fModel, userId);
 
         btn_carSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +64,7 @@ public class HomeFragment extends Fragment {
                 fBrand = brandSearch.getText().toString().toLowerCase().trim();
                 fModel = modelSearch.getText().toString().toLowerCase().trim();
                 fColor = colorSearch.getText().toString().toLowerCase().trim();
-                createSearchList(fBrand,fModel,1,v,userId);
+                createSearchList(fBrand, fModel, userId);
             }
         });
 
@@ -72,7 +72,7 @@ public class HomeFragment extends Fragment {
         return v;
     }
 
-    private  void createSearchList(String fBrand,String fModel, int page,View v,String userId) {
+    private  void createSearchList(String fBrand, String fModel, String userId) {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("cars/");
         float num1 = 0;
@@ -84,6 +84,7 @@ public class HomeFragment extends Fragment {
         float upperbound = Math.max(num1,num2);
         float lowerbound = Math.min(num1,num2);
         Query query;
+
         // Filtreleme başlangıcı
         if(!fBrand.equals("") && !fModel.equals("")){
             query = myRef.orderByChild("BMF").equalTo(fBrand + "_" + fModel);
@@ -94,6 +95,7 @@ public class HomeFragment extends Fragment {
             query = myRef.orderByChild("brand").equalTo(fBrand);
         else
             query = myRef.orderByValue();
+
         //Filtreleme bitişi
         query.addValueEventListener(new ValueEventListener() {
             @Override

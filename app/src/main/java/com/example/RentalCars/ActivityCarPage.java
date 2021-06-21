@@ -183,40 +183,8 @@ public class ActivityCarPage extends AppCompatActivity {
         textBrand.setText(car.getBrand());
         textModel.setText(car.getModel());
         textColor.setText(car.getColor());
-        textPrice.setText(String.format("%s", car.getDailyPrice()));
+        textPrice.setText(String.valueOf(car.getDailyPrice()));
         textDesc.setText(car.getDesc());
         findOwnerName(textOwner,car.getOwnerId());
-    }
-
-    public void createCarPageInformationFromDB(String carId){
-        TextView textBrand = findViewById(R.id.txtview_brand);
-        TextView textModel = findViewById(R.id.txtview_model);
-        TextView textColor = findViewById(R.id.txtview_color);
-        TextView textPrice = findViewById(R.id.txtview_dailyprice);
-        TextView textDesc = findViewById(R.id.txtview_desc);
-
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("cars" );
-        Query query = myRef.orderByChild("carId").equalTo(carId);
-        query.addValueEventListener(new ValueEventListener() {
-            Car car = new Car();
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()){
-                    car = dataSnapshot.getValue(Car.class);
-                }
-                //Arabanın bilgi kutucuklarını değiştir
-                textBrand.setText(car.getBrand());
-                textModel.setText(car.getModel());
-                textColor.setText(car.getColor());
-                textPrice.setText(String.format("%s", car.getDailyPrice()));
-                textDesc.setText(car.getDesc());
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
     }
 }

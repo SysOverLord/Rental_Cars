@@ -70,7 +70,6 @@ public class SignUp extends AppCompatActivity {
                 Address address = new Address(city.getEditText().getText().toString(),
                         district.getEditText().getText().toString(), street.getEditText().getText().toString(),
                         no.getEditText().getText().toString());
-                    //EXPİRE DATE NULL OLMAYACAK DEĞİŞTİR ONU
                 CreditCard creditCard = new CreditCard(null,cardCvv.getEditText().getText().toString()
                         ,cardNo.getEditText().getText().toString());
                 Date registerDate = new Date();
