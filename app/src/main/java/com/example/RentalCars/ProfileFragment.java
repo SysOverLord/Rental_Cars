@@ -76,12 +76,12 @@ public class ProfileFragment extends Fragment {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Person person = dataSnapshot.getValue(Person.class);
 
-                    firstName.setText(person.getFirstName());
-                    lastName.setText(person.getLastName());
-                    email.setText(person.getEmail());
-                    username.setText(person.getUsername());
-                    creditLimit.setText(Float.toString(person.getCreditCard().getLimit()));
-                    registerDate.setText(new SimpleDateFormat("dd/MM/yyyy").format(person.getRegisterDate()));
+                    firstName.setText("First Name: " + person.getFirstName());
+                    lastName.setText("Last Name: " + person.getLastName());
+                    email.setText("Email: " + person.getEmail());
+                    username.setText("Username: " + person.getUsername());
+                    creditLimit.setText("Card Limit: " + Float.toString(person.getCreditCard().getLimit()));
+                    registerDate.setText("Register Date: " + new SimpleDateFormat("dd/MM/yyyy").format(person.getRegisterDate()));
                 }
             }
 
