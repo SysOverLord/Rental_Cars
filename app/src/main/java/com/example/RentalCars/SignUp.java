@@ -84,10 +84,7 @@ public class SignUp extends AppCompatActivity {
                 Query query = myRef.orderByChild("username").equalTo(user.getUsername());
                 myRef = myRef.child(newId);
 
-
-                if(isEmpty(checkingInputs, dialogHelper))
-                    dialogHelper.ShowMessage("Username is empty", SignUp.this);
-                else{
+                if(!isEmpty(checkingInputs, dialogHelper)){
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
