@@ -100,13 +100,10 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 carList = new ArrayList<Car>();
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-                    if (carList.size() < 20) {
-                        Car temp = dataSnapshot.getValue(Car.class);
-                        if(( upperbound == 0 && lowerbound == 0 || (temp.getDailyPrice() >= lowerbound && temp.getDailyPrice() <= upperbound))
-                                && (fColor.equals("") || temp.getColor().contains(fColor)))
-                            carList.add(temp);
-                    }
-
+                    Car temp = dataSnapshot.getValue(Car.class);
+                    if(( upperbound == 0 && lowerbound == 0 || (temp.getDailyPrice() >= lowerbound && temp.getDailyPrice() <= upperbound))
+                            && (fColor.equals("") || temp.getColor().contains(fColor)))
+                        carList.add(temp);
                 }
 
                 AdapterCarRecycler adapterCarRecycler = new AdapterCarRecycler(activity,carList);

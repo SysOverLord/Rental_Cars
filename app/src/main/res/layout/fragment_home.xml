@@ -1,292 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black2"
-    android:orientation="vertical"
     tools:context=".HomeFragment">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="24dp"
         android:fontFamily="@font/comfortaa_bold"
-        android:textColor="@color/whiteX"
+        android:textColor="@color/yellow5"
         android:gravity="center"
         android:text="@string/adverts_page_tittle"
         android:layout_marginBottom="10dp"
         android:background="@color/black2"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
-
-        <!--search texts-->
         <LinearLayout
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/car_brand"
-                android:textSize="18dp"
-                android:fontFamily="@font/bungee"
-                android:textColor="@color/yellow5"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/bungee"
-                android:text="@string/car_model"
-                android:textSize="18dp"
-                android:textColor="@color/yellow5"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/car_color"
-                android:textSize="18dp"
-                android:fontFamily="@font/bungee"
-                android:textColor="@color/yellow5"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/car_daily_price"
-                android:textSize="18dp"
-                android:fontFamily="@font/bungee"
-                android:textColor="@color/yellow5"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/rl_ListView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!--search 1-->
             <LinearLayout
-                android:layout_width="220dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
 
-                <EditText
-                    android:id="@+id/search_brand_edittxt"
+                <!--search texts-->
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/car_brand"
+                        android:textSize="18dp"
+                        android:fontFamily="@font/bungee"
+                        android:textColor="@color/yellow5"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/bungee"
+                        android:text="@string/car_model"
+                        android:textSize="18dp"
+                        android:textColor="@color/yellow5"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/car_color"
+                        android:textSize="18dp"
+                        android:fontFamily="@font/bungee"
+                        android:textColor="@color/yellow5"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/car_daily_price"
+                        android:textSize="18dp"
+                        android:fontFamily="@font/bungee"
+                        android:textColor="@color/yellow5"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/rl_ListView2"
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_weight="4"
-                    android:layout_margin="5dp"
-                    android:background="@color/whiteX"
-                    android:textColor="@color/black2"
-                    android:ems="10"
-                    android:hint="@string/search_brand_message"
-                    android:gravity="center"
-                    android:singleLine="true"
-                    android:layout_marginTop="-20dp">
-                </EditText>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <!--search 1-->
+                    <LinearLayout
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/search_brand_edittxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_weight="4"
+                            android:layout_margin="5dp"
+                            android:background="@color/whiteX"
+                            android:textColor="@color/black2"
+                            android:ems="10"
+                            android:hint="@string/search_brand_message"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:layout_marginTop="-20dp">
+                        </EditText>
+
+                    </LinearLayout>
+
+                    <!--search 2-->
+                    <LinearLayout
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/search_model_edittxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_weight="4"
+                            android:layout_margin="5dp"
+                            android:background="@color/whiteX"
+                            android:textColor="@color/black2"
+                            android:ems="10"
+                            android:hint="@string/search_model_message"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:layout_marginTop="-20dp">
+                        </EditText>
+
+                    </LinearLayout>
+
+
+                    <!--search 3-->
+                    <LinearLayout
+                        android:layout_width="220dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="left"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/search_color_edittxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:layout_weight="4"
+                            android:layout_margin="5dp"
+                            android:background="@color/whiteX"
+                            android:textColor="@color/black2"
+                            android:ems="10"
+                            android:hint="@string/search_color_message"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:layout_marginTop="-20dp">
+                        </EditText>
+
+                    </LinearLayout>
+
+
+                    <!--search 4-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/search_price1_edittxt"
+                            android:layout_width="100dp"
+                            android:layout_height="35dp"
+                            android:layout_weight="4"
+                            android:layout_margin="5dp"
+                            android:background="@color/whiteX"
+                            android:textColor="@color/black2"
+                            android:inputType="number"
+                            android:hint="@string/search_min_price_message"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:layout_marginTop="-20dp">
+                        </EditText>
+
+                        <EditText
+                            android:id="@+id/search_price2_edittxt"
+                            android:layout_width="100dp"
+                            android:layout_height="35dp"
+                            android:layout_weight="4"
+                            android:layout_margin="5dp"
+                            android:background="@color/whiteX"
+                            android:textColor="@color/black2"
+                            android:inputType="number"
+                            android:hint="@string/search_max_price_message"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:layout_marginTop="-20dp">
+                        </EditText>
+
+
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/btn_search_car"
+                        android:scaleType="fitXY"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:cropToPadding="false"
+                        android:layout_gravity="center"
+                        android:background="@drawable/ic__search_24"
+                        android:backgroundTint="@color/yellow5">
+                    </ImageButton>
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <!--search 2-->
-            <LinearLayout
-                android:layout_width="220dp"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:descendantFocusability="blocksDescendants">
 
-                <EditText
-                    android:id="@+id/search_model_edittxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_weight="4"
-                    android:layout_margin="5dp"
-                    android:background="@color/whiteX"
-                    android:textColor="@color/black2"
-                    android:ems="10"
-                    android:hint="@string/search_model_message"
-                    android:gravity="center"
-                    android:singleLine="true"
-                    android:layout_marginTop="-20dp">
-                </EditText>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_fragment_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="vertical"
+                    tools:listitem="@layout/car_item" />
 
-            </LinearLayout>
-
-
-            <!--search 3-->
-            <LinearLayout
-                android:layout_width="220dp"
-                android:layout_height="wrap_content"
-                android:gravity="left"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/search_color_edittxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:layout_weight="4"
-                    android:layout_margin="5dp"
-                    android:background="@color/whiteX"
-                    android:textColor="@color/black2"
-                    android:ems="10"
-                    android:hint="@string/search_color_message"
-                    android:gravity="center"
-                    android:singleLine="true"
-                    android:layout_marginTop="-20dp">
-                </EditText>
-
-            </LinearLayout>
-
-
-            <!--search 4-->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/search_price1_edittxt"
-                    android:layout_width="100dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="4"
-                    android:layout_margin="5dp"
-                    android:background="@color/whiteX"
-                    android:textColor="@color/black2"
-                    android:inputType="number"
-                    android:hint="@string/search_min_price_message"
-                    android:gravity="center"
-                    android:singleLine="true"
-                    android:layout_marginTop="-20dp">
-                </EditText>
-
-                <EditText
-                    android:id="@+id/search_price2_edittxt"
-                    android:layout_width="100dp"
-                    android:layout_height="35dp"
-                    android:layout_weight="4"
-                    android:layout_margin="5dp"
-                    android:background="@color/whiteX"
-                    android:textColor="@color/black2"
-                    android:inputType="number"
-                    android:hint="@string/search_max_price_message"
-                    android:gravity="center"
-                    android:singleLine="true"
-                    android:layout_marginTop="-20dp">
-                </EditText>
-
-
-            </LinearLayout>
-
-            <ImageButton
-                android:id="@+id/btn_search_car"
-                android:scaleType="fitXY"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:cropToPadding="false"
-                android:layout_gravity="center"
-                android:background="@drawable/ic__search_24"
-                android:backgroundTint="@color/yellow5">
-            </ImageButton>
-
+            </RelativeLayout>
         </LinearLayout>
-
     </LinearLayout>
 
-
-
-    <!--
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/bungee"
-                android:text="Brand"
-                android:textColor="@color/gray"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/car_brand"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/yellow" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/bungee"
-                android:text="MODEL"
-                android:textColor="@color/gray"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/car_model"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/yellow" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/bungee"
-                android:text="COLOR"
-                android:textColor="@color/gray"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/car_color"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/yellow" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/bungee"
-                android:text="DAILY PRICE"
-                android:textColor="@color/gray"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/car_daily_price"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@color/yellow" />
-        </LinearLayout>
-    <include
-            layout="@layout/car_item"/>
-    -->
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/home_fragment_recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/car_item" />
-
-</LinearLayout>
+</ScrollView>

@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:text=""
-                    android:layout_marginTop="25dp"
+                    android:layout_marginTop="18dp"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
                     android:textSize="18dp"
@@ -109,8 +109,18 @@
 
         </LinearLayout>
 
-
     </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/btn_delete_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_user_delete"
+        android:backgroundTint="@color/whiteX"
+        android:layout_gravity="right">
+    </ImageButton>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
