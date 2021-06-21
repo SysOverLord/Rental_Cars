@@ -38,7 +38,7 @@
                 android:text="@string/car_brand"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"
-                android:textColor="@color/whiteX"/>
+                android:textColor="@color/yellow5"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
                 android:fontFamily="@font/bungee"
                 android:text="@string/car_model"
                 android:textSize="18dp"
-                android:textColor="@color/whiteX"/>
+                android:textColor="@color/yellow5"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
                 android:text="@string/car_color"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"
-                android:textColor="@color/whiteX"/>
+                android:textColor="@color/yellow5"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -62,7 +62,7 @@
                 android:text="@string/car_daily_price"
                 android:textSize="18dp"
                 android:fontFamily="@font/bungee"
-                android:textColor="@color/whiteX"/>
+                android:textColor="@color/yellow5"/>
 
         </LinearLayout>
 
@@ -191,7 +191,7 @@
                 android:cropToPadding="false"
                 android:layout_gravity="center"
                 android:background="@drawable/ic__search_24"
-                android:backgroundTint="@color/searchBtnColor">
+                android:backgroundTint="@color/yellow5">
             </ImageButton>
 
         </LinearLayout>

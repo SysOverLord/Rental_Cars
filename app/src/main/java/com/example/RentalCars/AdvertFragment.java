@@ -145,16 +145,29 @@ public class AdvertFragment extends Fragment {
         for (CheckingInputs input : checkingInputs) {
             if (input.getEdText() != null){
                 if (input.getEdText().getText().toString().equals("")) {
-                    dialogHelper.ShowMessage("You did not enter the " + input.getName(), getContext());
+                    dialogHelper.ShowMessage(input.getName() + " is empty", this.getContext());
                     return true;
                 }
             } else {
+                if(input.getName().equals("Price")){
+                    if (input.getTextInput().getEditText().getText().toString().equals("")) {
+                        dialogHelper.ShowMessage(input.getName() + " is empty", this.getContext());
+                        return true;
+                    }
+                    else if (input.getTextInput().getEditText().getText().toString().equals(".")) {
+                        dialogHelper.ShowMessage("Invalid price input. Please try again.", this.getContext());
+                        return true;
+                    }
+                    else if (input.getTextInput().getEditText().getText().toString().charAt(0) == '.') {
+                        input.getTextInput().getEditText().setText("0" + input.getTextInput().getEditText().getText().toString());
+                        return false;
+                    }
+                }
                 if (input.getTextInput().getEditText().getText().toString().equals("")) {
-                    dialogHelper.ShowMessage("You did not enter the " + input.getName(), getContext());
+                    dialogHelper.ShowMessage(input.getName() + " is empty", this.getContext());
                     return true;
                 }
             }
-
         }
         return false;
     }

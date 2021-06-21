@@ -204,7 +204,8 @@
                 android:layout_marginLeft="10dp">
 
                 <ScrollView
-                    android:layout_width="match_parent"
+                    android:id="@+id/SCROLLER_ID"
+                    android:layout_width="fill_parent"
                     android:layout_height="100dip"
                     android:scrollbars="vertical"
                     android:fillViewport="true">
@@ -223,7 +224,7 @@
                             android:textStyle="bold"
                             android:textSize="18dp"
                             android:fontFamily="@font/comfortaa_bold"
-                            android:maxHeight="25dp"/>
+                            android:lines="5"/>
 
                     </LinearLayout>
 

@@ -10,14 +10,6 @@
     <color name="yellow">#F3D784</color>
     <color name="gray">#2c3e50</color>
 
-    <color name="ItemSelectedColor">#F87032</color>
-    <color name="ItemUnselectedColor">#F3B99F</color>
-
-    <color name="homeFragmentBgColor">#FA876A</color>
-    <color name="advertFragmentBgColor">#FFC107</color>
-    <color name="profileFragmentBgColor">#FFEB3B</color>
-    <color name="recyclerViewBgColor">#FFCF99</color>
-
     <color name="searchBgColor">#F79F1F</color>
     <color name="searchBtnColor">#EDE8C7</color>
     <color name="searchTitleColor">#F79F1F</color>
@@ -28,22 +20,8 @@
     <color name="whiteX">#F8F9FB</color>
     <color name="dark_blueX">#1F273A</color>
 
-    <color name="yellow1">#F5D10D</color>
-    <color name="yellow2">#F6E71D</color>
-    <color name="yellow3">#FEA82F</color>
-    <color name="yellow4">#ffca00</color>
-    <color name="yellow5">#fcd800</color>
-    <color name="yellow6">#fdc029</color>
-
-    <color name="black1">#242C30</color>
+    <color name="yellow5">#F79F1F</color>
     <color name="black2">#293438</color>
-    <color name="black3">#181818</color>
-    <color name="black4">#424642</color>
-    <color name="black5">#393B44</color>
-    <color name="black6">#2d3a4c</color>
-
-    <color name="white1">#f8f9f2</color>
-    <color name="white2">#F4F4F2</color>
     <color name="white3">#E8E8E8</color>
 
 </resources>

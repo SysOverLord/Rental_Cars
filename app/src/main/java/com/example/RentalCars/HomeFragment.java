@@ -103,7 +103,7 @@ public class HomeFragment extends Fragment {
                     if (carList.size() < 20) {
                         Car temp = dataSnapshot.getValue(Car.class);
                         if(( upperbound == 0 && lowerbound == 0 || (temp.getDailyPrice() >= lowerbound && temp.getDailyPrice() <= upperbound))
-                                && (fColor.equals("") || temp.getColor().equals(fColor)))
+                                && (fColor.equals("") || temp.getColor().contains(fColor)))
                             carList.add(temp);
                     }
 
