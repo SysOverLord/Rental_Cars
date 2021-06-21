@@ -71,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                             dialogHelper.ShowMessage("Login Successful", LoginActivity.this);
                             //Login olduk MainPageye götür
                             mainPage.putExtra("userId",userId);
+                            dialogHelper.ShowMessage("", LoginActivity.this);
                             startActivity(mainPage);
                         }
                         else

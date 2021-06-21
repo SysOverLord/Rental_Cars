@@ -51,11 +51,9 @@ public class AdvertFragment extends Fragment {
     private Button btn_add;
     private Button selectImage;
 
-
     private String imageId;
     private Uri imageUri;
     private static final int IMAGE_REQUEST = 22;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

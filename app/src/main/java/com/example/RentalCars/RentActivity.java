@@ -70,8 +70,12 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
                 String renterId = extras.getString("renterId");
                 String carOwnerId = extras.getString("carOwnerId");
                 float dailyPrice = extras.getFloat("dailyPrice");
+                Date currentDate = new Date();
+                currentDate.setMinutes(0);
+                currentDate.setSeconds(0);
+                currentDate.setHours(0);
 
-                if (startDate != null && endDate != null && startDate.compareTo(endDate) <= 0) {
+                if (currentDate.compareTo(startDate) <= 0 && startDate != null && endDate != null && startDate.compareTo(endDate) <= 0) {
                     long dayDiff = (endDate.getTime() - startDate.getTime()) / (24 * 60 * 60 * 1000);
                     //24 hours 60 minutes 60 seconds 1000 milliseconds
                     float totalPrice = (dayDiff + 1) * dailyPrice;
@@ -79,7 +83,6 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
                     Rental rent = new Rental(rentedCarId, startDate, endDate, totalPrice, renterId,carOwnerId);
                     isRentable = true;
                     getRenterFullName(rent);
-
                 }
                 else {
                     //Hata mesajı
@@ -125,14 +128,14 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
         String date = dayOfMonth + "/" + (month + 1) +"/" + year;
         if(selectedDate.equals("startDate")){
             startDateText.setText(date);
-            startDate = new Date(year - 1900,month +1 ,dayOfMonth);
+            startDate = new Date(year - 1900, month, dayOfMonth);
         }
         //Year - 1900 düzgün zamanı atması için öbür türlü 1900 yıl fazla atıyor
         //Datenin işleyişine göre 121 değerinde olması gerekirken 2021 oluyor
         //Sonuç olarak da kiralamaları listelerken 3921 yılında olduğunu gösteriyor.
         else{
             endDateText.setText(date);
-            endDate = new Date(year - 1900,month +1 ,dayOfMonth);
+            endDate = new Date(year - 1900, month, dayOfMonth);
         }
     }
 
@@ -228,6 +231,7 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
     private void checkDates(Date startDate, Date endDate,Rental rent){
         //CircularProgressIndicator circular = findViewById(R.id.CPI);
         //circular.setVisibility(View.VISIBLE);
+        DialogHelper dialogHelper = DialogHelper.getInstance();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("rentals/" );
         Query query = myRef.orderByChild("rentedCarId").equalTo(rent.getRentedCarId());
@@ -248,9 +252,10 @@ public class RentActivity extends AppCompatActivity implements DatePickerDialog.
                     }
                 }
 
-                if (isRentable){
+                if (isRentable)
                     checkLimit(rent);
-                }
+                else
+                    dialogHelper.ShowMessage("Date is not available for rent.", RentActivity.this);
                 //circular.setVisibility(View.INVISIBLE);
             }
 

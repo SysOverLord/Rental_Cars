@@ -19,10 +19,17 @@
         android:fontFamily="@font/comfortaa_bold"
         android:gravity="center"/>
 
-    <ListView
-        android:id="@+id/listview_mycars"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/whiteX" />
+        android:layout_height="match_parent"
+        android:id="@+id/mycars_fragment_recyclerview"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/car_item"/>
+
+<!--    <ListView-->
+<!--        android:id="@+id/listview_mycars"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/whiteX" />-->
 
 </LinearLayout>

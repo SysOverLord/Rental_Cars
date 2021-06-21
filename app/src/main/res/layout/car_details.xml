@@ -21,7 +21,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="230dp"
         android:scaleType="fitXY"
         android:layout_gravity="center"
         android:id="@+id/car_details_carImage"/>
@@ -29,8 +29,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
+        android:orientation="horizontal">
 
         <!--search texts-->
         <LinearLayout
@@ -205,8 +204,7 @@
                 android:layout_marginLeft="10dp">
 
                 <ScrollView
-                    android:id="@+id/SCROLLER_ID"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="100dip"
                     android:scrollbars="vertical"
                     android:fillViewport="true">
@@ -225,7 +223,7 @@
                             android:textStyle="bold"
                             android:textSize="18dp"
                             android:fontFamily="@font/comfortaa_bold"
-                            android:lines="5"/>
+                            android:maxHeight="25dp"/>
 
                     </LinearLayout>
 

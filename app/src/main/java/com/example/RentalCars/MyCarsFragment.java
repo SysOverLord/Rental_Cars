@@ -11,8 +11,12 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.RentalCars.AdapterListeners.CarRecyclerItemClickListener;
 import com.example.RentalCars.Adapters.AdapterCar;
+import com.example.RentalCars.Adapters.AdapterCarRecycler;
 import com.example.RentalCars.Entity.Car;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,8 +29,8 @@ import java.util.ArrayList;
 
 
 public class MyCarsFragment extends Fragment {
-    private ListView mListView;
-    private AdapterCar adapterCar;
+    private RecyclerView mRecyclerView;
+    private AdapterCarRecycler adapterCarRecycler;
 
     public void createCarList(String userId,View v,Activity activity){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -44,19 +48,28 @@ public class MyCarsFragment extends Fragment {
                 //show car list
 
                 //adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1,myCars);
-                mListView = (ListView)v.findViewById(R.id.listview_mycars);
-                adapterCar = new AdapterCar(activity, android.R.layout.simple_list_item_1,carList);
-                mListView.setAdapter(adapterCar);
-                mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(getActivity(), ActivityCarPage.class);
-                        intent.putExtra("userId",userId);
-                        intent.putExtra("car",carList.get(position));
-                        intent.putExtra("pageType","myCarPage");
-                        startActivity(intent);
-                    }
-                });
+                mRecyclerView = (RecyclerView) v.findViewById(R.id.mycars_fragment_recyclerview);
+                adapterCarRecycler = new AdapterCarRecycler(activity,carList);
+                mRecyclerView.setAdapter(adapterCarRecycler);
+                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                mRecyclerView.setLayoutManager(linearLayoutManager);
+                mRecyclerView.addOnItemTouchListener(
+                        new CarRecyclerItemClickListener(activity, mRecyclerView, new CarRecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Intent intent = new Intent(activity, ActivityCarPage.class);
+                                intent.putExtra("userId",userId);
+                                intent.putExtra("car",carList.get(position));
+                                intent.putExtra("pageType","myCarPage");
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+
+                            }
+                        }));
             }
 
             @Override

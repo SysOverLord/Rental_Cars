@@ -16,7 +16,11 @@ public class DialogHelper {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage(message);
         AlertDialog alert = builder.create();
-        alert.setTitle("System Message");
-        alert.show();
+        if(!message.equals("")){
+            alert.setTitle("System Message");
+            alert.show();
+        }
+        else
+            alert.dismiss();
     }
 }

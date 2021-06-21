@@ -43,7 +43,7 @@
             android:id="@+id/prf_lastName"
             android:textSize="18dp"
             android:textColor="@color/black"
-            android:text="@string/profile_surname "
+            android:text="@string/profile_surname"
             android:layout_marginBottom="5dp">
         </TextView>
 
